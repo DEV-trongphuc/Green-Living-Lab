@@ -407,8 +407,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Google Sheets Integration & Quotation/Success Modals
   // ==========================================================================
   const GOOGLE_SHEET_ID = '1r_Mh2zjcLZio3m-ozGoDRfDu0uJPHKrp9lPAF1YUds0';
-  // Optional deployed Web App URL (can be customized via config or default webhook)
-  const GOOGLE_SHEET_SCRIPT_URL = window.HOA_HIEP_SCRIPT_URL || '';
+  // Deployed Google Apps Script Web App URL (Live Connected)
+  const GOOGLE_SHEET_SCRIPT_URL = window.HOA_HIEP_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbzHk3rzOzwwFVErevqP41BAjT9sebhnele14QWHYvFyjHaQUXL2C-nBw-CUNRQq7Jxp/exec';
 
   // Quotation Modal Elements
   const quoteModal = document.getElementById('quotation-modal');
