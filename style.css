@@ -2329,11 +2329,12 @@ h1, h2, h3, h4, h5, h6,
 
 .metric-stat {
   font-family: var(--font-serif);
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1;
+  font-size: 2.05rem;
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--emerald-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
 }
 
 .metric-title {
