@@ -622,6 +622,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================================================
+  // 11. Mobile Slidedots Pagination Engine
+  // ==========================================================================
+  const initMobileSliderDots = () => {
+    const sliders = [
+      { container: document.querySelector('.concept-grid'), dotsWrap: document.getElementById('dots-concept') },
+      { container: document.querySelector('.living-timeline-grid'), dotsWrap: document.getElementById('dots-living') },
+      { container: document.querySelector('.gallery-grid'), dotsWrap: document.getElementById('dots-gallery') },
+      { container: document.querySelector('.location-grid'), dotsWrap: document.getElementById('dots-location') }
+    ];
+
+    sliders.forEach(({ container, dotsWrap }) => {
+      if (!container || !dotsWrap) return;
+
+      const refreshDots = () => {
+        if (window.innerWidth > 768) {
+          dotsWrap.innerHTML = '';
+          return;
+        }
+
+        const cards = Array.from(container.children).filter(c => {
+          return c.classList.contains('concept-card') ||
+                 c.classList.contains('living-card') ||
+                 c.classList.contains('gallery-card') ||
+                 c.classList.contains('location-card');
+        }).filter(c => window.getComputedStyle(c).display !== 'none');
+
+        if (cards.length <= 1) {
+          dotsWrap.innerHTML = '';
+          return;
+        }
+
+        if (dotsWrap.children.length !== cards.length) {
+          dotsWrap.innerHTML = '';
+          cards.forEach((card, idx) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Trang ${idx + 1}`);
+            dot.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const cardOffset = card.offsetLeft - container.offsetLeft;
+              const centerOffset = cardOffset - (container.offsetWidth - card.offsetWidth) / 2;
+              container.scrollTo({ left: Math.max(0, centerOffset), behavior: 'smooth' });
+            });
+            dotsWrap.appendChild(dot);
+          });
+        }
+
+        // Active dot calculation based on center position
+        const scrollLeft = container.scrollLeft;
+        const containerCenter = scrollLeft + container.offsetWidth / 2;
+        let closestIdx = 0;
+        let minDiff = Infinity;
+
+        cards.forEach((card, idx) => {
+          const cardCenter = card.offsetLeft - container.offsetLeft + card.offsetWidth / 2;
+          const diff = Math.abs(containerCenter - cardCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIdx = idx;
+          }
+        });
+
+        Array.from(dotsWrap.children).forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === closestIdx);
+        });
+      };
+
+      refreshDots();
+      container.addEventListener('scroll', () => {
+        requestAnimationFrame(refreshDots);
+      }, { passive: true });
+
+      container._refreshDots = refreshDots;
+    });
+  };
+
+  initMobileSliderDots();
+
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.concept-grid, .living-timeline-grid, .gallery-grid, .location-grid').forEach(c => {
+      if (c._refreshDots) c._refreshDots();
+    });
+  }, { passive: true });
+
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        const galleryGrid = document.querySelector('.gallery-grid');
+        if (galleryGrid && galleryGrid._refreshDots) {
+          galleryGrid._refreshDots();
+        }
+      }, 300);
+    });
+  });
+
   // Console Welcome Branding
   console.log(
     '%c🌿 HÒA HIỆP SPONGE CITY - GREEN LIVING LAB\n%cThiết kế Cảnh quan bởi APA Consultant | Chủ Đầu Tư: Capital House\n%cGoogle Sheet Connected: ' + GOOGLE_SHEET_ID,

@@ -2892,7 +2892,11 @@ h1, h2, h3, h4, h5, h6,
 
 @media (max-width: 768px) {
   body {
-    padding-bottom: max(60px, calc(52px + env(safe-area-inset-bottom)));
+    padding-bottom: 0 !important;
+  }
+
+  .site-footer {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
   }
 
   .section { 
@@ -2901,8 +2905,12 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .hero-section {
-    padding-top: 90px;
+    padding-top: 80px;
     padding-bottom: 46px;
+  }
+
+  .hero-badge {
+    display: none !important;
   }
 
   .hero-brand { 
@@ -3118,9 +3126,184 @@ h1, h2, h3, h4, h5, h6,
     font-size: 0.78rem;
   }
 
+  /* 4 Metric Cards: 2 card 1 hàng, bỏ description, chữ nhỏ gọn */
   .metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .metric-card {
+    padding: 16px 10px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .metric-top-icon {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .metric-stat {
+    font-size: 1.45rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.1 !important;
+  }
+
+  .metric-title {
+    font-size: 0.82rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .metric-desc {
+    display: none !important;
+  }
+
+  /* Savings Pill: Nút nhận bảng tính xuống hàng */
+  .metrics-savings-pill {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: center !important;
+    border-radius: 18px !important;
+    padding: 18px 14px !important;
+    gap: 14px !important;
+    margin-top: 22px !important;
+  }
+
+  .savings-pill-text {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .savings-pill-text i {
+    font-size: 1.4rem !important;
+    margin: 0 auto !important;
+  }
+
+  .metrics-savings-pill .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 11px 18px !important;
+    border-radius: 30px !important;
+    font-size: 0.88rem !important;
+    margin: 0 auto !important;
+  }
+
+  /* Progress Section: Ảnh ở trên, timeline ở dưới */
+  .progress-grid-split {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .progress-photo-card {
+    height: 230px !important;
+    width: 100% !important;
+    border-radius: 14px !important;
+  }
+
+  .progress-photo-card img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .progress-line-dot-list {
+    padding-left: 36px !important;
+    width: 100% !important;
+  }
+
+  .progress-line-dot-item {
+    width: 100% !important;
+  }
+
+  .p-card-box {
+    width: 100% !important;
+    padding: 16px 18px !important;
+  }
+
+  .p-card-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .p-card-top h4 {
+    font-size: 0.98rem !important;
+  }
+
+  /* Mobile Slidedot Carousels for 4 sections */
+  .concept-grid,
+  .living-timeline-grid,
+  .gallery-grid,
+  .location-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 8px 14px 14px !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+    scrollbar-width: none !important;
+  }
+
+  .concept-grid::-webkit-scrollbar,
+  .living-timeline-grid::-webkit-scrollbar,
+  .gallery-grid::-webkit-scrollbar,
+  .location-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .concept-grid > .concept-card,
+  .living-timeline-grid > .living-card,
+  .gallery-grid > .gallery-card,
+  .location-grid > .location-card {
+    flex: 0 0 84% !important;
+    min-width: 84% !important;
+    max-width: 84% !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+    margin: 0 !important;
+  }
+
+  .slider-dots-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin-top: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .slider-dot {
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 4px !important;
+    background: #cbd5e1 !important;
+    border: none !important;
+    padding: 0 !important;
+    transition: all 0.25s ease !important;
+    cursor: pointer !important;
+  }
+
+  .slider-dot.active {
+    width: 22px !important;
+    background: var(--emerald-primary) !important;
+  }
+
+  .location-section .slider-dot.active {
+    background: var(--gold-primary) !important;
   }
 
   .metrics-savings-banner {
@@ -3186,8 +3369,32 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 2px 10px rgba(197, 157, 63, 0.35);
   }
 
+  /* Keep Back-To-Top button on mobile right above bottom bar */
   .floating-actions {
-    display: none;
+    display: flex !important;
+    bottom: 64px !important;
+    right: 14px !important;
+    z-index: 998 !important;
+    gap: 6px !important;
+  }
+
+  .float-call,
+  .float-register {
+    display: none !important;
+  }
+
+  .float-backtop {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .slider-dots-wrap {
+    display: none !important;
   }
 }
 
@@ -3202,10 +3409,5 @@ h1, h2, h3, h4, h5, h6,
 
   #btn-header-consult {
     padding: 8px 12px;
-  }
-
-  .hero-badge {
-    font-size: 0.74rem;
-    padding: 5px 12px;
   }
 }
