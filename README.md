@@ -1,16 +1,16 @@
-# HÒA HIỆP GREEN LIVING LAB — LANDING PAGE UI/UX
+# ECOLIFE SIGNATURE — LANDING PAGE UI/UX
 
 > **Đô thị sinh thái bọt biển tiên phong tại Tây Bắc Đà Nẵng (Hòa Hiệp Nam, Liên Chiểu)**  
 > **Chủ Đầu Tư:** Tập đoàn Capital House  
 > **Tư Vấn Thiết Kế Cảnh Quan:** APA Consultant Co., Ltd
 
-![Hòa Hiệp Green Living Lab Preview](preview.png)
+![EcoLife Signature Preview](preview.png)
 
 ---
 
 ## 🌿 Giới Thiệu Dự Án
 
-**Hòa Hiệp Green Living Lab (Hòa Hiệp Sponge City)** là dự án tiên phong ứng dụng mô hình đô thị bọt biển tuần hoàn tại Liên Chiểu, Đà Nẵng. Dự án tích hợp các giải pháp cảnh quan thấm hút tự nhiên, tuần hoàn sinh thái và hạ nhiệt vi khí hậu, phục vụ cộng đồng cư dân tinh hoa với hơn 23+ tiện ích đặc quyền.
+**EcoLife Signature** là dự án tiên phong ứng dụng mô hình đô thị bọt biển tuần hoàn tại Liên Chiểu, Đà Nẵng. Dự án tích hợp các giải pháp cảnh quan thấm hút tự nhiên, tuần hoàn sinh thái và hạ nhiệt vi khí hậu, phục vụ cộng đồng cư dân tinh hoa với hơn 23+ tiện ích đặc quyền.
 
 ---
 
@@ -62,4 +62,4 @@ Dự án được cấu hình sẵn GitHub Actions workflow tự động deploy 
 ---
 
 ## 📜 Bản Quyền
-© 2026 HÒA HIỆP GREEN LIVING LAB. Bản quyền thuộc về Chủ Đầu Tư & Đơn vị Tư vấn APA.
+© 2026 ECOLIFE SIGNATURE. Bản quyền thuộc về Chủ Đầu Tư & Đơn vị Tư vấn APA.

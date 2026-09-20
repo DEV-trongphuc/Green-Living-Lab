@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HÒA HIỆP GREEN LIVING LAB - LUXURY REAL ESTATE LANDING PAGE
+   ECOLIFE SIGNATURE - LUXURY REAL ESTATE LANDING PAGE
    Theme: Balanced Bright Luxury + Dramatic Dark Emerald Parallax
    Style: Architectural Haute Couture, Balanced Typography (No Orphan Words)
    ========================================================================== */
@@ -220,6 +220,18 @@ h1, h2, h3, h4, h5, h6,
   align-items: center;
   gap: 12px;
   text-decoration: none;
+}
+
+.brand-logo-emblem {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo:hover .brand-logo-emblem {
+  transform: scale(1.08) rotate(3deg);
 }
 
 .logo-emblem {
@@ -1536,12 +1548,38 @@ h1, h2, h3, h4, h5, h6,
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--gold-light);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.footer-logo-emblem {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
+}
+
+.footer-logo-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-title {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  line-height: 1.1;
+}
+
+.footer-logo-sub {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #a7f3d0;
+  text-transform: uppercase;
 }
 
 .footer-tagline {

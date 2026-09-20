@@ -1,5 +1,5 @@
 /**
- * HÒA HIỆP SPONGE CITY - GREEN LIVING LAB
+ * ECOLIFE SIGNATURE
  * Luxury Real Estate Landing Page Interactive Engine
  * Developed with Vanilla JS & Modern Browser APIs
  */
@@ -343,8 +343,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const openLightbox = (imgSrc, title, desc) => {
     if (!lightboxModal || !lightboxImg) return;
     lightboxImg.src = imgSrc;
-    lightboxImg.alt = title || 'Phối cảnh dự án Hòa Hiệp';
-    if (lbTitle) lbTitle.textContent = title || 'Hòa Hiệp Sponge City';
+    lightboxImg.alt = title || 'Phối cảnh dự án EcoLife Signature';
+    if (lbTitle) lbTitle.textContent = title || 'EcoLife Signature';
     if (lbDesc) lbDesc.textContent = desc || 'Phối cảnh không gian sống sinh thái tuần hoàn.';
 
     lightboxModal.classList.add('active');
@@ -722,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Console Welcome Branding
   console.log(
-    '%c🌿 HÒA HIỆP SPONGE CITY - GREEN LIVING LAB\n%cThiết kế Cảnh quan bởi APA Consultant | Chủ Đầu Tư: Capital House\n%cGoogle Sheet Connected: ' + GOOGLE_SHEET_ID,
+    '%c🌿 ECOLIFE SIGNATURE\n%cThiết kế Cảnh quan bởi APA Consultant | Chủ Đầu Tư: Capital House\n%cGoogle Sheet Connected: ' + GOOGLE_SHEET_ID,
     'color: #d4af37; font-size: 16px; font-weight: bold; background: #07130e; padding: 8px 14px; border-radius: 6px;',
     'color: #8fa89b; font-size: 12px; margin-top: 4px;',
     'color: #10b981; font-size: 11px; margin-top: 2px;'

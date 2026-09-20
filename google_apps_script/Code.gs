@@ -1,5 +1,5 @@
 /**
- * GOOGLE APPS SCRIPT FOR HÒA HIỆP GREEN LIVING LAB
+ * GOOGLE APPS SCRIPT FOR ECOLIFE SIGNATURE
  * Spreadsheet ID: 1r_Mh2zjcLZio3m-ozGoDRfDu0uJPHKrp9lPAF1YUds0
  * Link Sheet: https://docs.google.com/spreadsheets/d/1r_Mh2zjcLZio3m-ozGoDRfDu0uJPHKrp9lPAF1YUds0/edit?gid=0#gid=0
  * 
@@ -10,7 +10,7 @@
  * 4. Nhấn nút "Triển khai" (Deploy) ở góc trên bên phải -> Chọn "Tùy chọn triển khai mới" (New deployment).
  * 5. Chọn loại: "Ứng dụng web" (Web App).
  * 6. Cấu hình:
- *    - Mô tả: Hòa Hiệp Landing Page API
+ *    - Mô tả: EcoLife Signature Landing Page API
  *    - Thực thi dưới dạng (Execute as): "Tôi" (Me)
  *    - Ai có quyền truy cập (Who has access): "Bất kỳ ai" (Anyone).
  * 7. Nhấn "Triển khai" (Deploy) -> Cấp quyền (Authorize access) -> Sao chép URL ứng dụng web (Web App URL).
@@ -67,7 +67,7 @@ function doPost(e) {
     const email = data.email || 'Chưa cung cấp';
     const interestType = data.interestType || '';
     const consultTime = data.consultTime || 'Sớm nhất có thể';
-    const source = data.source || 'Website Hòa Hiệp';
+    const source = data.source || 'Website EcoLife Signature';
     const status = 'Mới tiếp nhận';
 
     // Thêm dòng mới vào Google Sheets
@@ -97,6 +97,6 @@ function doPost(e) {
 
 function doGet(e) {
   return ContentService
-    .createTextOutput(JSON.stringify({ status: 'active', project: 'Hòa Hiệp Green Living Lab Lead API' }))
+    .createTextOutput(JSON.stringify({ status: 'active', project: 'EcoLife Signature Lead API' }))
     .setMimeType(ContentService.MimeType.JSON);
 }
