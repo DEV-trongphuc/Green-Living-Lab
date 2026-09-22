@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/cleaner", "destination": "/cleaner.html" },
+    { "source": "/clear-metadata", "destination": "/cleaner.html" },
+    { "source": "/clear-ai", "destination": "/cleaner.html" }
+  ]
+}
