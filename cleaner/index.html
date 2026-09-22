@@ -282,17 +282,31 @@
       gap: 12px;
     }
 
-    .result-badge-success {
+    .result-badge-detected {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239, 68, 68, 0.22);
+      color: #fecaca;
+      border: 1px solid rgba(248, 113, 113, 0.55);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.25);
+    }
+
+    .result-badge-clean {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(16, 185, 129, 0.2);
       color: #34d399;
-      border: 1px solid rgba(52, 211, 153, 0.4);
-      padding: 6px 16px;
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      padding: 6px 18px;
       border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.92rem;
+      font-weight: 800;
     }
 
     /* Grid Stats 4 Cards */
@@ -873,9 +887,9 @@
     <div class="result-section" id="result-section">
       <div class="result-card">
         <div class="result-header">
-          <div class="result-badge-success">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Đã Khử Sạch 100% Dấu Vết Metadata AI</span>
+          <div class="result-badge-detected" id="result-badge">
+            <i class="fa-solid fa-triangle-exclamation" id="result-badge-icon"></i>
+            <span id="result-badge-text">Đang phân tích nguồn gốc AI...</span>
           </div>
           <span style="color: var(--text-muted); font-size: 0.85rem;" id="processing-time">Thời gian quét: 0.08s</span>
         </div>
@@ -1178,6 +1192,19 @@
       // Populate UI with analysis
       statAiSource.textContent = analysis.modelName;
       statRemovedCount.textContent = `${analysis.removedItems.length} thẻ / chuỗi`;
+
+      // Update Top Badge to show Detected AI Source or Clean Status
+      const resultBadge = document.getElementById('result-badge');
+      if (analysis.modelName && !analysis.modelName.startsWith('Không xác')) {
+        resultBadge.className = 'result-badge-detected';
+        resultBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <span>Phát hiện ảnh của: ${escapeHtml(analysis.modelName)}</span>`;
+      } else if (analysis.removedItems.length > 0) {
+        resultBadge.className = 'result-badge-detected';
+        resultBadge.innerHTML = `<i class="fa-solid fa-camera"></i> <span>Phát hiện ảnh chứa: EXIF / XMP Metadata</span>`;
+      } else {
+        resultBadge.className = 'result-badge-clean';
+        resultBadge.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>Ảnh không chứa Metadata AI (File sạch)</span>`;
+      }
 
       // Render Detected Pills
       detectedPills.innerHTML = '';
