@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle & Dropdown Accordions
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('open');
@@ -78,12 +78,36 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close mobile menu on nav link click
-    navLinks.forEach(link => {
+    // Mobile Accordion Toggle on Dropdown Click
+    const dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024) {
+          e.preventDefault();
+          const parentItem = toggle.closest('.has-dropdown');
+          if (parentItem) {
+            const isCurrentlyOpen = parentItem.classList.contains('mobile-open');
+            // Close other open mobile dropdowns
+            navMenu.querySelectorAll('.has-dropdown.mobile-open').forEach(item => {
+              if (item !== parentItem) item.classList.remove('mobile-open');
+            });
+            parentItem.classList.toggle('mobile-open', !isCurrentlyOpen);
+            toggle.setAttribute('aria-expanded', !isCurrentlyOpen ? 'true' : 'false');
+          }
+        }
+      });
+    });
+
+    // Close mobile menu on regular link or dropdown link click
+    const menuLinks = navMenu.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-link');
+    menuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        mobileToggle.classList.remove('active');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+        if (window.innerWidth <= 1024) {
+          navMenu.classList.remove('open');
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          navMenu.querySelectorAll('.has-dropdown.mobile-open').forEach(item => item.classList.remove('mobile-open'));
+        }
       });
     });
 
@@ -93,15 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.remove('open');
         mobileToggle.classList.remove('active');
         mobileToggle.setAttribute('aria-expanded', 'false');
+        navMenu.querySelectorAll('.has-dropdown.mobile-open').forEach(item => item.classList.remove('mobile-open'));
       }
     });
   }
 
-  // Smooth Scroll for Internal Anchor Links with header offset
+  // Smooth Scroll for Internal Anchor Links with header offset & tab trigger support
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (targetId === '#' || targetId === '') return;
 
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
@@ -112,6 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
           top: targetPos,
           behavior: 'smooth'
         });
+
+        // If dropdown link triggers a specific tab
+        const tabTrigger = this.getAttribute('data-tab-trigger');
+        if (tabTrigger) {
+          setTimeout(() => {
+            const targetTabBtn = document.querySelector(`.com-tab-btn[data-apt="${tabTrigger}"]`);
+            if (targetTabBtn) {
+              targetTabBtn.click();
+            }
+          }, 350);
+        }
       }
     });
   });
@@ -126,16 +162,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Link Spy via IntersectionObserver
-  const sections = document.querySelectorAll('section[id]');
+  // Active Link Spy via IntersectionObserver (Mapped to Compact Dropdowns)
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const parentMenuMap = {
+    'hero': '#hero',
+    'commercial': '#commercial',
+    'metrics': '#commercial',
+    'concept': '#concept',
+    'four-pillars': '#concept',
+    'masterplan': '#concept',
+    'progress': '#progress',
+    'gallery': '#progress',
+    'video-showcase': '#progress',
+    'location': '#location'
+  };
+
   if ('IntersectionObserver' in window && sections.length > 0) {
     const navObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
+          const targetParentHref = parentMenuMap[currentId] || `#${currentId}`;
+          
+          document.querySelectorAll('.nav-link').forEach(link => {
             const href = link.getAttribute('href');
-            if (href === `#${currentId}`) {
+            if (href === targetParentHref) {
               link.classList.add('active');
             } else {
               link.classList.remove('active');
@@ -144,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      rootMargin: '-30% 0px -60% 0px'
+      rootMargin: '-25% 0px -55% 0px'
     });
 
     sections.forEach(sec => navObserver.observe(sec));
@@ -248,108 +299,372 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================================================
-  // 4. 4 Pillars Interactive Tab Switcher
+  // iOS-Style Segmented Control Engine (Physics Spring Animation)
   // ==========================================================================
-  const pillarBtns = document.querySelectorAll('.pillar-tab-btn');
-  const pillarPanels = document.querySelectorAll('.pillar-content-panel');
+  function setupIosSegmentedControl(container, options = {}) {
+    if (!container) return null;
+    const buttons = Array.from(container.querySelectorAll('.ios-tab-item, button'));
+    if (buttons.length === 0) return null;
 
-  pillarBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pillarKey = btn.getAttribute('data-pillar');
-      if (!pillarKey) return;
+    // Create or locate the sliding indicator pill
+    let indicator = container.querySelector('.ios-segmented-indicator');
+    if (!indicator) {
+      indicator = document.createElement('span');
+      indicator.className = 'ios-segmented-indicator';
+      container.prepend(indicator);
+    }
 
-      // Toggle button states
-      pillarBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    let currentIndex = buttons.findIndex(b => b.classList.contains('active'));
+    if (currentIndex === -1) {
+      currentIndex = 0;
+      buttons[0].classList.add('active');
+    }
 
-      // Toggle panel states
-      pillarPanels.forEach(panel => {
-        panel.classList.remove('active');
-        if (panel.id === `panel-${pillarKey}`) {
-          panel.classList.add('active');
+    const moveIndicator = (btn, animate = true) => {
+      if (!btn || !indicator) return;
+      if (!animate) {
+        indicator.style.transition = 'none';
+      } else {
+        indicator.style.transition = '';
+      }
+
+      const left = btn.offsetLeft;
+      const top = btn.offsetTop;
+      const width = btn.offsetWidth;
+      const height = btn.offsetHeight;
+
+      indicator.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+      indicator.style.width = `${width}px`;
+      indicator.style.height = `${height}px`;
+
+      if (!animate) {
+        // Trigger synchronous reflow then restore transition
+        indicator.offsetHeight;
+        indicator.style.transition = '';
+      }
+    };
+
+    // Position immediately and again on next frame
+    moveIndicator(buttons[currentIndex], false);
+    requestAnimationFrame(() => {
+      moveIndicator(buttons[currentIndex], false);
+    });
+
+    // Re-align on resize and font load
+    const handleResize = () => {
+      const activeBtn = container.querySelector('.ios-tab-item.active, button.active') || buttons[0];
+      moveIndicator(activeBtn, false);
+    };
+    window.addEventListener('resize', handleResize);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(handleResize);
+    }
+
+    // Attach click and iOS tactile bounce interactions
+    buttons.forEach((btn, index) => {
+      btn.addEventListener('click', (e) => {
+        const oldIndex = currentIndex;
+        const newIndex = index;
+        const direction = newIndex >= oldIndex ? 'right' : 'left';
+        currentIndex = newIndex;
+
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        moveIndicator(btn, true);
+
+        if (typeof options.onSwitch === 'function') {
+          options.onSwitch({ btn, index: newIndex, oldIndex, direction });
         }
       });
     });
+
+    return {
+      switchTo: (targetIndex) => {
+        if (buttons[targetIndex]) buttons[targetIndex].click();
+      },
+      refresh: () => {
+        const activeBtn = container.querySelector('.ios-tab-item.active, button.active') || buttons[0];
+        moveIndicator(activeBtn, false);
+      }
+    };
+  }
+
+  // ==========================================================================
+  // 1. Commercial Apartments (2PN / 3PN / Shophouse) Switcher & Image Swapper
+  // ==========================================================================
+  const comTabsContainer = document.querySelector('.commercial-tabs');
+  const comPanels = document.querySelectorAll('.commercial-panel');
+
+  if (comTabsContainer) {
+    setupIosSegmentedControl(comTabsContainer, {
+      onSwitch: ({ btn, direction }) => {
+        const apt = btn.getAttribute('data-apt');
+        comPanels.forEach(panel => {
+          panel.classList.remove('ios-slide-in-right', 'ios-slide-in-left');
+          if (panel.id === `panel-${apt}`) {
+            panel.classList.add('active');
+            panel.classList.add(direction === 'right' ? 'ios-slide-in-right' : 'ios-slide-in-left');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+
+  // Thumbnail Image Swap for Commercial Apartments
+  document.querySelectorAll('.thumb-swap').forEach(thumb => {
+    thumb.addEventListener('click', function() {
+      const panel = this.closest('.com-grid');
+      if (!panel) return;
+      const mainImg = panel.querySelector('.com-main-img');
+      const largeSrc = this.getAttribute('data-large');
+      if (mainImg && largeSrc) {
+        mainImg.style.opacity = '0.5';
+        setTimeout(() => {
+          mainImg.src = largeSrc;
+          mainImg.style.opacity = '1';
+        }, 150);
+      }
+      panel.querySelectorAll('.thumb-swap').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
   });
 
+  // ==========================================================================
+  // 2. 4 Pillars Interactive Tab Switcher
+  // ==========================================================================
+  const pillarTabsContainer = document.querySelector('.pillar-tabs');
+  const pillarPanels = document.querySelectorAll('.pillar-content-panel');
+
+  if (pillarTabsContainer) {
+    setupIosSegmentedControl(pillarTabsContainer, {
+      onSwitch: ({ btn, direction }) => {
+        const pillarKey = btn.getAttribute('data-pillar');
+        pillarPanels.forEach(panel => {
+          panel.classList.remove('ios-slide-in-right', 'ios-slide-in-left');
+          if (panel.id === `panel-${pillarKey}`) {
+            panel.classList.add('active');
+            panel.classList.add(direction === 'right' ? 'ios-slide-in-right' : 'ios-slide-in-left');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
 
   // ==========================================================================
-  // 5. Masterplan View Switcher (Ground vs Rooftop)
+  // 3. Interactive Green Savings Calculator Logic
   // ==========================================================================
-  const btnGround = document.getElementById('btn-view-ground');
-  const btnRooftop = document.getElementById('btn-view-rooftop');
+  const calcAptTypeContainer = document.getElementById('calc-apt-type');
+  const familySlider = document.getElementById('family-size-slider');
+  const familyVal = document.getElementById('family-size-val');
+  const resElec = document.getElementById('res-elec');
+  const resWater = document.getElementById('res-water');
+  const resTotal = document.getElementById('res-total');
+
+  let currentAptType = '2pn';
+
+  const updateSavings = () => {
+    if (!familySlider) return;
+    const members = parseInt(familySlider.value, 10);
+    if (familyVal) familyVal.textContent = `${members} người`;
+
+    // Calculation formulas based on APA technical benchmarks
+    let elecPerMonth, waterPerMonth;
+    if (currentAptType === '2pn') {
+      elecPerMonth = 350000 + (members - 2) * 80000;
+      waterPerMonth = 180000 + (members - 2) * 45000;
+    } else {
+      elecPerMonth = 480000 + (members - 2) * 110000;
+      waterPerMonth = 240000 + (members - 2) * 60000;
+    }
+
+    const totalYear = (elecPerMonth + waterPerMonth) * 12;
+    const formatVND = (num) => new Intl.NumberFormat('vi-VN').format(num) + ' đ';
+
+    if (resElec) resElec.textContent = formatVND(elecPerMonth);
+    if (resWater) resWater.textContent = formatVND(waterPerMonth);
+    if (resTotal) resTotal.textContent = formatVND(totalYear);
+  };
+
+  if (calcAptTypeContainer) {
+    setupIosSegmentedControl(calcAptTypeContainer, {
+      onSwitch: ({ btn }) => {
+        currentAptType = btn.getAttribute('data-type') || '2pn';
+        updateSavings();
+      }
+    });
+  }
+
+  if (familySlider) {
+    familySlider.addEventListener('input', updateSavings);
+    updateSavings();
+  }
+
+  // ==========================================================================
+  // 4. Masterplan View Switcher (Ground vs Rooftop)
+  // ==========================================================================
+  const darkToggleContainer = document.querySelector('.dark-toggle-container');
   const viewGround = document.getElementById('view-ground');
   const viewRooftop = document.getElementById('view-rooftop');
 
-  if (btnGround && btnRooftop && viewGround && viewRooftop) {
-    btnGround.addEventListener('click', () => {
-      btnGround.classList.add('active');
-      btnRooftop.classList.remove('active');
-      viewGround.classList.add('active');
-      viewRooftop.classList.remove('active');
-    });
+  if (darkToggleContainer && viewGround && viewRooftop) {
+    setupIosSegmentedControl(darkToggleContainer, {
+      onSwitch: ({ btn, direction }) => {
+        const viewMode = btn.getAttribute('data-view');
+        const activeView = viewMode === 'ground' ? viewGround : viewRooftop;
+        const inactiveView = viewMode === 'ground' ? viewRooftop : viewGround;
 
-    btnRooftop.addEventListener('click', () => {
-      btnRooftop.classList.add('active');
-      btnGround.classList.remove('active');
-      viewRooftop.classList.add('active');
-      viewGround.classList.remove('active');
+        activeView.classList.remove('ios-slide-in-right', 'ios-slide-in-left');
+        inactiveView.classList.remove('active', 'ios-slide-in-right', 'ios-slide-in-left');
+
+        activeView.classList.add('active');
+        activeView.classList.add(direction === 'right' ? 'ios-slide-in-right' : 'ios-slide-in-left');
+      }
+    });
+  }
+
+  // ==========================================================================
+  // 5. 3D Gallery Filter System (iOS Spring Animated Filter)
+  // ==========================================================================
+  const galleryFiltersContainer = document.querySelector('.gallery-filters');
+  const galleryCards = document.querySelectorAll('.gallery-card');
+
+  if (galleryFiltersContainer) {
+    setupIosSegmentedControl(galleryFiltersContainer, {
+      onSwitch: ({ btn }) => {
+        const filter = btn.getAttribute('data-filter');
+
+        galleryCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(14px) scale(0.96)';
+            setTimeout(() => {
+              if (card.style.opacity === '0') {
+                card.style.display = 'none';
+              }
+            }, 240);
+          }
+        });
+      }
     });
   }
 
 
   // ==========================================================================
-  // 6. 3D Gallery Filter System
-  // ==========================================================================
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const galleryCards = document.querySelectorAll('.gallery-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
-
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      galleryCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(15px) scale(0.96)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 250);
-        }
-      });
-    });
-  });
-
-
-  // ==========================================================================
-  // 7. Luxury Lightbox Modal
+  // 7. Luxury Lightbox Modal (Next/Prev Navigation & Mini Thumbnail Strip)
   // ==========================================================================
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
+  const lbPrev = document.getElementById('lightbox-prev');
+  const lbNext = document.getElementById('lightbox-next');
   const lbTitle = document.getElementById('lb-title');
   const lbDesc = document.getElementById('lb-desc');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbThumbsStrip = document.getElementById('lightbox-thumbs-strip');
 
-  const openLightbox = (imgSrc, title, desc) => {
+  let lightboxItems = [];
+  let currentLightboxIdx = 0;
+
+  // Build gallery items list from visible or all gallery cards
+  const buildGalleryItems = () => {
+    const items = [];
+    galleryCards.forEach(card => {
+      const src = card.getAttribute('data-img') || card.querySelector('img')?.src;
+      const title = card.getAttribute('data-title') || card.querySelector('h4')?.textContent || 'Phối Cảnh EcoLife Signature';
+      const desc = card.getAttribute('data-desc') || card.querySelector('p')?.textContent || 'Góc nhìn cảnh quan sinh thái.';
+      if (src) {
+        items.push({ src, title, desc, cardEl: card });
+      }
+    });
+    return items;
+  };
+
+  const renderThumbsStrip = () => {
+    if (!lbThumbsStrip) return;
+    lbThumbsStrip.innerHTML = '';
+    lightboxItems.forEach((item, idx) => {
+      const thumb = document.createElement('div');
+      thumb.className = `lb-thumb-dot ${idx === currentLightboxIdx ? 'active' : ''}`;
+      thumb.setAttribute('data-index', idx);
+      thumb.setAttribute('title', item.title);
+      thumb.innerHTML = `<img src="${item.src}" alt="${item.title}" loading="lazy">`;
+      thumb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showLightboxIndex(idx);
+      });
+      lbThumbsStrip.appendChild(thumb);
+    });
+  };
+
+  const updateThumbsActiveState = () => {
+    if (!lbThumbsStrip) return;
+    const dots = lbThumbsStrip.querySelectorAll('.lb-thumb-dot');
+    dots.forEach((dot, idx) => {
+      if (idx === currentLightboxIdx) {
+        dot.classList.add('active');
+        dot.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  };
+
+  const showLightboxIndex = (index) => {
+    if (!lightboxModal || !lightboxImg || lightboxItems.length === 0) return;
+    if (index < 0) index = lightboxItems.length - 1;
+    if (index >= lightboxItems.length) index = 0;
+    currentLightboxIdx = index;
+
+    const item = lightboxItems[currentLightboxIdx];
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.title;
+      lightboxImg.style.opacity = '1';
+    }, 120);
+
+    if (lbTitle) lbTitle.textContent = item.title;
+    if (lbDesc) lbDesc.textContent = item.desc;
+    if (lbCounter) lbCounter.textContent = `${currentLightboxIdx + 1} / ${lightboxItems.length}`;
+    updateThumbsActiveState();
+  };
+
+  const openLightboxWithItems = (items, startIndex = 0) => {
     if (!lightboxModal || !lightboxImg) return;
-    lightboxImg.src = imgSrc;
-    lightboxImg.alt = title || 'Phối cảnh dự án EcoLife Signature';
-    if (lbTitle) lbTitle.textContent = title || 'EcoLife Signature';
-    if (lbDesc) lbDesc.textContent = desc || 'Phối cảnh không gian sống sinh thái tuần hoàn.';
+    lightboxItems = items;
+    currentLightboxIdx = startIndex;
+    renderThumbsStrip();
+    showLightboxIndex(currentLightboxIdx);
 
     lightboxModal.classList.add('active');
     lightboxModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+  };
+
+  const openLightbox = (imgSrc, title, desc) => {
+    const allItems = buildGalleryItems();
+    let targetIdx = allItems.findIndex(item => item.src === imgSrc);
+    if (targetIdx === -1) {
+      allItems.unshift({ src: imgSrc, title: title || 'EcoLife Signature', desc: desc || '' });
+      targetIdx = 0;
+    }
+    openLightboxWithItems(allItems, targetIdx);
   };
 
   const closeLightbox = () => {
@@ -360,15 +675,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lightboxImg) lightboxImg.src = '';
   };
 
+  const nextLightboxImage = () => {
+    if (lightboxItems.length > 0) {
+      showLightboxIndex(currentLightboxIdx + 1);
+    }
+  };
+
+  const prevLightboxImage = () => {
+    if (lightboxItems.length > 0) {
+      showLightboxIndex(currentLightboxIdx - 1);
+    }
+  };
+
   // Attach lightbox to gallery cards
   galleryCards.forEach(card => {
     card.addEventListener('click', () => {
-      const imgSrc = card.getAttribute('data-img') || card.querySelector('img')?.src;
-      const title = card.getAttribute('data-title') || card.querySelector('h4')?.textContent;
-      const desc = card.getAttribute('data-desc') || card.querySelector('p')?.textContent;
-      if (imgSrc) {
-        openLightbox(imgSrc, title, desc);
-      }
+      const allItems = buildGalleryItems();
+      const cardSrc = card.getAttribute('data-img') || card.querySelector('img')?.src;
+      const targetIdx = allItems.findIndex(it => it.src === cardSrc);
+      openLightboxWithItems(allItems, targetIdx >= 0 ? targetIdx : 0);
     });
   });
 
@@ -383,9 +708,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
+  if (lbNext) lbNext.addEventListener('click', (e) => { e.stopPropagation(); nextLightboxImage(); });
+  if (lbPrev) lbPrev.addEventListener('click', (e) => { e.stopPropagation(); prevLightboxImage(); });
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
 
   if (lightboxModal) {
     lightboxModal.addEventListener('click', (e) => {
@@ -395,10 +720,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close on Escape key
+  // Keyboard navigation (Arrow keys + Escape)
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('active')) {
+    if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+    if (e.key === 'Escape') {
       closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      nextLightboxImage();
+    } else if (e.key === 'ArrowLeft') {
+      prevLightboxImage();
     }
   });
 

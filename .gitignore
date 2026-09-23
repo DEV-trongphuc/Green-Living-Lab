@@ -9,12 +9,19 @@ desktop.ini
 *.swp
 *.swo
 
-# Temporary Screenshots & Logs
+# Temporary Screenshots, Audits & Logs
 shot_*.png
 screenshot_*.png
 test_*.png
 *.log
+scratch/
 
-# Node & Python caches (if any)
+# Local raw unreferenced CAD/PDF image dumps (>900MB)
+images/NOXH1/
+images/NOXH2/
+images/NOTM/
+CONTEN PLAN.xlsx
+
+# Node & Python caches
 __pycache__/
 *.pyc
