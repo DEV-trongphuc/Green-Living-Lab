@@ -674,12 +674,20 @@ h1, h2, h3, h4, h5, h6,
   animation: heroEmblemFloat 22s ease-in-out infinite alternate;
 }
 
-.dark-parallax-section .section-emblem-decor-corner {
+.section-emblem-decor-corner.decor-left {
+  left: -60px;
+  right: auto;
+  animation: heroEmblemFloatLeft 22s ease-in-out infinite alternate;
+}
+
+.dark-parallax-section .section-emblem-decor-corner,
+.location-section .section-emblem-decor-corner {
   opacity: 0.18;
   filter: drop-shadow(0 0 35px rgba(223, 193, 123, 0.35));
 }
 
-.progress-section {
+.progress-section,
+.gallery-section {
   position: relative;
   overflow: hidden;
 }
@@ -698,6 +706,15 @@ h1, h2, h3, h4, h5, h6,
   }
   100% {
     transform: rotate(10deg) scale(1.05);
+  }
+}
+
+@keyframes heroEmblemFloatLeft {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(-10deg) scale(1.05);
   }
 }
 
@@ -3628,6 +3645,11 @@ h1, h2, h3, h4, h5, h6,
     top: -15px !important;
     right: -10px !important;
     opacity: 0.1 !important;
+  }
+
+  .section-emblem-decor-corner.decor-left {
+    left: -10px !important;
+    right: auto !important;
   }
 
   .hero-official-logo {
