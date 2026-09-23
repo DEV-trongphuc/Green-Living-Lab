@@ -660,7 +660,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .hero-emblem-decor-corner,
-.hero-emblem-watermark {
+.hero-emblem-watermark,
+.section-emblem-decor-corner {
   position: absolute;
   top: -60px;
   right: -60px;
@@ -674,8 +675,19 @@ h1, h2, h3, h4, h5, h6,
   animation: heroEmblemFloat 22s ease-in-out infinite alternate;
 }
 
+.dark-parallax-section .section-emblem-decor-corner {
+  opacity: 0.18;
+  filter: drop-shadow(0 0 35px rgba(223, 193, 123, 0.35));
+}
+
+.progress-section {
+  position: relative;
+  overflow: hidden;
+}
+
 .hero-emblem-decor-corner img,
-.hero-emblem-watermark img {
+.hero-emblem-watermark img,
+.section-emblem-decor-corner img {
   width: 100%;
   height: auto;
   display: block;
@@ -3610,7 +3622,8 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .hero-emblem-decor-corner,
-  .hero-emblem-watermark {
+  .hero-emblem-watermark,
+  .section-emblem-decor-corner {
     width: 240px !important;
     max-width: 55vw !important;
     top: -15px !important;
