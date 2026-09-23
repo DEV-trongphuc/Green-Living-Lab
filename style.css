@@ -656,7 +656,6 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 2px 12px rgba(197, 157, 63, 0.2));
 }
 
 .hero-emblem-decor-corner,
