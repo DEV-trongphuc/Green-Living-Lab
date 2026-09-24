@@ -1052,7 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Console Welcome Branding
   console.log(
-    '%c🌿 ECOLIFE SIGNATURE\n%cThiết kế Cảnh quan bởi APA Consultant | Chủ Đầu Tư: Capital House\n%cGoogle Sheet Connected: ' + GOOGLE_SHEET_ID,
+    '%c🌿 ECOLIFE SIGNATURE\n%cThiết kế Cảnh quan bởi APA Consultant | Chủ Đầu Tư: Ban Quản Lý Dự Án EcoLife Signature\n%cGoogle Sheet Connected: ' + GOOGLE_SHEET_ID,
     'color: #d4af37; font-size: 16px; font-weight: bold; background: #07130e; padding: 8px 14px; border-radius: 6px;',
     'color: #8fa89b; font-size: 12px; margin-top: 4px;',
     'color: #10b981; font-size: 11px; margin-top: 2px;'

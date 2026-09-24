@@ -22,6 +22,9 @@ images/NOXH2/
 images/NOTM/
 CONTEN PLAN.xlsx
 
+# Large PDF files
+*.pdf
+
 # Node & Python caches
 __pycache__/
 *.pyc
