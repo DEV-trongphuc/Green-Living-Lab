@@ -4,43 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoLife Signature Đà Nẵng — Biểu Tượng Sống Xanh Chuẩn Quốc Tế EDGE</title>
-  <meta name="description" content="Chung cư cao cấp EcoLife Signature tại mặt tiền Đại lộ Mê Linh, Tây Bắc Đà Nẵng. Bảo chứng xanh quốc tế EDGE, 04 hệ không gian tiện ích, 04 tầng vườn chân mây, pháp lý Sổ hồng lâu dài.">
+  <meta name="description" content="EcoLife Signature Đà Nẵng tại mặt tiền Đại lộ Mê Linh, Tây Bắc Đà Nẵng. 04 hệ không gian tiện ích, 04 tầng vườn chân mây, chuẩn xanh quốc tế EDGE, Sổ hồng lâu dài.">
   <link rel="icon" href="images/brand/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="v3-home.css?v=3.2">
+  <link rel="stylesheet" href="v3-home.css?v=4.0">
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body class="v3-luxury-body">
 
-  <!-- 1. SINGLE-LINE FROSTED WHITE HEADER (HEIGHT 64PX, ZERO WRAPPING) -->
-  <header class="v3-header" id="v3-header">
-    <div class="v3-header-inner">
-      <a href="#hero" class="v3-brand-logo" aria-label="EcoLife Signature Đà Nẵng">
+  <!-- LEFT-EDGE INTERACTIVE STORY SPINE (01 -> 07) -->
+  <nav class="v4-spine" aria-label="Tiến trình câu chuyện">
+    <a href="#hero" class="v4-spine-dot active" title="01 • Biểu Tượng">01</a>
+    <a href="#location" class="v4-spine-dot" title="02 • Vị Trí">02</a>
+    <a href="#realms" class="v4-spine-dot" title="03 • 04 Hệ Tiện Ích">03</a>
+    <a href="#architecture" class="v4-spine-dot" title="04 • Kiến Trúc & EDGE">04</a>
+    <a href="#residences" class="v4-spine-dot" title="05 • 06 Căn Hộ Mẫu">05</a>
+    <a href="#ownership" class="v4-spine-dot" title="06 • Chính Sách & Ngân Hàng">06</a>
+    <a href="#contact" class="v4-spine-dot" title="07 • Nhận Báo Giá">07</a>
+  </nav>
+
+  <!-- TOP FLOATING MINIMALIST HEADER -->
+  <header class="v4-header" id="v4-header">
+    <div class="v4-header-inner">
+      <a href="#hero" class="v4-logo" aria-label="EcoLife Signature Đà Nẵng">
         <img src="images/brand/ecolife_logo_header.webp" alt="EcoLife Signature Đà Nẵng">
       </a>
 
-      <nav class="v3-nav" id="v3-nav" aria-label="Điều hướng chính">
-        <a href="#hero" class="v3-nav-link">Tổng quan</a>
-        <a href="#location" class="v3-nav-link">Vị trí</a>
-        <a href="#realms" class="v3-nav-link">04 Hệ tiện ích</a>
-        <a href="#architecture" class="v3-nav-link">Kiến trúc &amp; EDGE</a>
-        <a href="#residences" class="v3-nav-link">Căn hộ mẫu</a>
-        <a href="#ownership" class="v3-nav-link">Chính sách</a>
-        <a href="/nha-dat-ban-ecolife-signature/" class="v3-nav-link v3-nav-link-highlight">Giỏ hàng 2026</a>
+      <nav class="v4-nav" id="v4-nav" aria-label="Điều hướng chính">
+        <a href="#hero" class="v4-nav-link active">Tổng Quan</a>
+        <a href="#location" class="v4-nav-link">Vị Trí</a>
+        <a href="#realms" class="v4-nav-link">04 Hệ Tiện Ích</a>
+        <a href="#architecture" class="v4-nav-link">Kiến Trúc &amp; EDGE</a>
+        <a href="#residences" class="v4-nav-link">Căn Hộ Mẫu</a>
+        <a href="#ownership" class="v4-nav-link">Chính Sách</a>
+        <a href="/nha-dat-ban-ecolife-signature/" class="v4-nav-link v4-nav-cart">Giỏ Hàng 2026</a>
       </nav>
 
-      <div class="v3-header-actions">
-        <a href="tel:0398055588" class="v3-phone-pill">
+      <div class="v4-header-right">
+        <a href="tel:0398055588" class="v4-btn v4-btn-glass">
           <i class="fa-solid fa-phone-volume"></i>
           <span>0398 055 588</span>
         </a>
-        <button type="button" class="v3-btn v3-btn-primary" data-open-quote>
+        <button type="button" class="v4-btn v4-btn-gold" data-open-quote>
           <span>Nhận Báo Giá</span>
         </button>
-        <button type="button" class="v3-mobile-toggle" id="v3-mobile-toggle" aria-label="Mở menu">
+        <button type="button" class="v4-mobile-btn" id="v4-mobile-btn" aria-label="Mở menu">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
@@ -48,234 +59,242 @@
   </header>
 
   <main>
-    <!-- 2. HERO SECTION — FULL-SCREEN BRIGHT 4K VIDEO -->
-    <section class="v3-hero" id="hero">
-      <video class="v3-hero-video" autoplay muted loop playsinline poster="images/architecture/persp_lake_view.webp">
-        <source src="videos/hero_trailer_15s.mp4" type="video/mp4">
-        <source src="videos/hero_facade_4k.mp4" type="video/mp4">
-      </video>
-      <div class="v3-hero-scrim"></div>
+    <!-- ======================================================================
+         MÀN 01: KHỞI NGUYÊN BIỂU TƯỢNG SỐNG XANH (100VH FULL-SCREEN VIDEO)
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-dark v4-hero-stage" id="hero">
+      <video class="v4-bg-video" id="v4-hero-video" src="videos/hero_trailer_15s.mp4" poster="images/architecture/persp_lake_view.webp" autoplay muted loop playsinline></video>
+      <div class="v4-bg-scrim"></div>
 
-      <div class="v3-hero-content">
-        <div class="v3-hero-glass">
-          <div class="v3-hero-kicker">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
-            <span>CAPITAL HOUSE GROUP • TÂM ĐIỂM ĐẠI LỘ MÊ LINH</span>
+      <div class="v4-hero-bottom">
+        <div class="v4-hero-top-row">
+          <div>
+            <div class="v4-hero-badge-line">
+              <img src="images/brand/ecolife_emblem_gold.webp" alt="">
+              <span>CAPITAL HOUSE GROUP • ĐẠI LỘ MÊ LINH, ĐÀ NẴNG</span>
+            </div>
+            <h1 class="v4-hero-headline">EcoLife Signature Đà Nẵng</h1>
+            <p class="v4-hero-tagline">Biểu tượng sống xanh chuẩn quốc tế EDGE tại tâm điểm Tây Bắc Đà Nẵng</p>
           </div>
-          <h1 class="v3-hero-title">Biểu Tượng Sống Xanh Chuẩn Quốc Tế EDGE Tại Tây Bắc Đà Nẵng</h1>
-          <p class="v3-hero-sub">Quần thể 03 tòa tháp kiến trúc giật cấp hòa quyện giữa Hồ sinh thái Bàu Tràm và Vịnh biển Đà Nẵng — sở hữu 04 hệ không gian tiện ích cùng pháp lý Sổ hồng lâu dài.</p>
-          <div class="v3-hero-btns">
-            <button type="button" class="v3-btn v3-btn-gold" data-open-quote>
-              <span>Nhận Bảng Giá &amp; Quỹ Căn Đẹp</span>
+
+          <!-- Live Camera Switcher on Hero -->
+          <div class="v4-cam-switcher" role="tablist" aria-label="Góc máy toàn cảnh">
+            <button type="button" class="v4-cam-btn active" data-hero-video="videos/hero_trailer_15s.mp4">
+              <i class="fa-solid fa-film"></i>
+              <span>Toàn Cảnh Dự Án</span>
+            </button>
+            <button type="button" class="v4-cam-btn" data-hero-video="videos/hero_facade_4k.mp4">
+              <i class="fa-solid fa-building"></i>
+              <span>Mặt Đứng 4K</span>
+            </button>
+            <button type="button" class="v4-cam-btn" data-hero-video="videos/melinh_aerial_complex.mp4">
+              <i class="fa-solid fa-road"></i>
+              <span>Đại Lộ Mê Linh</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Key Touchpoints + Basic Overview Table Trigger -->
+        <div class="v4-hero-dock">
+          <div class="v4-dock-stat">
+            <div class="v4-dock-val">17 Tầng &amp; 01 Hầm</div>
+            <div class="v4-dock-lbl">679 Căn hộ • 26 Shophouse • 06 Penthouse</div>
+          </div>
+          <div class="v4-dock-stat">
+            <div class="v4-dock-val">23+ Tiện Ích Xanh</div>
+            <div class="v4-dock-lbl">04 Hệ không gian &amp; 04 Vườn chân mây</div>
+          </div>
+          <div class="v4-dock-stat">
+            <div class="v4-dock-val">Chuẩn Xanh EDGE</div>
+            <div class="v4-dock-lbl">-24% Điện • -30% Nước (IFC – World Bank)</div>
+          </div>
+          <div class="v4-dock-stat">
+            <div class="v4-dock-val">Từ 2,60 Tỷ / Căn 2PN</div>
+            <div class="v4-dock-lbl">Sổ hồng lâu dài • Bàn giao 05/2027</div>
+          </div>
+          <div class="v4-dock-cta">
+            <button type="button" class="v4-btn v4-btn-glass" data-basic-table="overview">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Bảng Tổng Quan Basic</span>
+            </button>
+            <button type="button" class="v4-btn v4-btn-gold" data-open-quote>
+              <span>Nhận Bảng Giá</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <a href="#residences" class="v3-btn v3-btn-glass">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MÀN 02: TỌA ĐỘ GIAO THOA ĐẠI LỘ MÊ LINH (100VH INTERACTIVE RADAR)
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-light" id="location">
+      <div class="v4-inner">
+        <div class="v4-head-bar">
+          <div>
+            <h2 class="v4-main-title">Tâm Điểm Đại Lộ Mê Linh — Kề Hồ, Cận Biển</h2>
+            <p class="v4-sub-tagline">Đón đầu Siêu cảng Liên Chiểu, Khu Thương mại Tự do FTZ &amp; Vịnh Đà Nẵng</p>
+          </div>
+          <div class="v4-head-actions">
+            <button type="button" class="v4-btn v4-btn-basic" data-basic-table="location">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Mở Bảng Kết Nối Basic</span>
+            </button>
+            <button type="button" class="v4-btn v4-btn-emerald" data-lightbox-src="images/location/location_map.webp" data-lightbox-caption="Bản Đồ Kết Nối Chiến Lược Tây Bắc Đà Nẵng">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Bản Đồ 4K</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="v4-loc-stage-grid">
+          <!-- 3 Interactive Touchpoint Nodes -->
+          <div class="v4-loc-nodes">
+            <button type="button" class="v4-loc-node active" data-loc-video="videos/melinh_aerial_complex.mp4" data-loc-label="Trục Đại Lộ Mê Linh & Quần Thể 03 Tòa Tháp">
+              <div class="v4-node-time">02<small>Phút</small></div>
+              <div class="v4-node-info">
+                <h3 class="v4-node-title">Biển Xuân Thiều &amp; Hồ Bàu Tràm</h3>
+                <p class="v4-node-sub">Mặt tiền Đại lộ Mê Linh hưởng trọn gió biển &amp; hồ sinh thái</p>
+              </div>
               <i class="fa-solid fa-play"></i>
-              <span>Xem Căn Hộ Mẫu 3D</span>
-            </a>
-          </div>
-        </div>
+            </button>
 
-        <div class="v3-hero-stats">
-          <div class="v3-hero-stat-item">
-            <span class="v3-hero-stat-val">17 Tầng Nổi &amp; 01 Hầm</span>
-            <span class="v3-hero-stat-lbl">679 căn hộ • 26 Shophouse • 06 Penthouse</span>
-          </div>
-          <div class="v3-hero-stat-item">
-            <span class="v3-hero-stat-val">23+ Tiện Ích Nội Khu</span>
-            <span class="v3-hero-stat-lbl">04 hệ không gian &amp; 04 tầng vườn chân mây</span>
-          </div>
-          <div class="v3-hero-stat-item">
-            <span class="v3-hero-stat-val">Chứng Nhận EDGE</span>
-            <span class="v3-hero-stat-lbl">Tiết kiệm 24% điện • 30% nước (IFC – World Bank)</span>
-          </div>
-          <div class="v3-hero-stat-item">
-            <span class="v3-hero-stat-val">Từ 2,60 Tỷ / Căn 2PN</span>
-            <span class="v3-hero-stat-lbl">Bàn giao Tháng 05/2027 • Sổ hồng lâu dài</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. VỊ TRÍ TÂM ĐIỂM ĐẠI LỘ MÊ LINH (#location) -->
-    <section class="v3-section v3-section-alt" id="location">
-      <div class="v3-container">
-        <div class="v3-loc-grid">
-          <div>
-            <div class="v3-kicker">
-              <span class="v3-kicker-line"></span>
-              <span>TỌA ĐỘ CHIẾN LƯỢC TÂY BẮC ĐÀ NẴNG</span>
-            </div>
-            <h2 class="v3-sec-title">Tâm Điểm Giao Thoa: Đại Lộ Mê Linh — Hồ Bàu Tràm — Vịnh Đà Nẵng</h2>
-            <div class="v3-svg-divider">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
-            </div>
-            <p class="v3-sec-desc">Tọa lạc tại mặt tiền Đại lộ Mê Linh rộng thoáng (Khu đô thị sinh thái Golden Hills, Liên Chiểu), dự án đón trọn luồng gió mát từ Hồ Bàu Tràm và Vịnh biển Xuân Thiều, đồng thời kết nối trực tiếp Siêu cảng Liên Chiểu &amp; Khu Thương mại Tự do (FTZ).</p>
-
-            <div class="v3-loc-metrics">
-              <div class="v3-loc-metric-card">
-                <div class="v3-loc-time">02<span>Phút</span></div>
-                <p class="v3-loc-place">Bãi biển Xuân Thiều &amp; Công viên Hồ Bàu Tràm</p>
+            <button type="button" class="v4-loc-node" data-loc-video="videos/dragon_bridge_beach_flycam.mp4" data-loc-label="Tầm Nhìn Vịnh Đà Nẵng & Hồ Sinh Thái Bàu Tràm">
+              <div class="v4-node-time">05<small>Phút</small></div>
+              <div class="v4-node-info">
+                <h3 class="v4-node-title">Siêu Cảng Liên Chiểu &amp; Khu FTZ</h3>
+                <p class="v4-node-sub">Tâm điểm đón sóng chuyên gia &amp; kỹ sư quốc tế</p>
               </div>
-              <div class="v3-loc-metric-card">
-                <div class="v3-loc-time">05<span>Phút</span></div>
-                <p class="v3-loc-place">Siêu cảng Liên Chiểu &amp; Khu Thương mại Tự do FTZ</p>
-              </div>
-              <div class="v3-loc-metric-card">
-                <div class="v3-loc-time">15<span>Phút</span></div>
-                <p class="v3-loc-place">Sân bay Quốc tế &amp; Trung tâm Hành chính Đà Nẵng</p>
-              </div>
-            </div>
+              <i class="fa-solid fa-play"></i>
+            </button>
 
-            <div class="v3-segmented-bar" role="tablist" aria-label="Chuyển góc nhìn vị trí">
-              <button type="button" class="v3-tab-btn active" data-loc-tab="melinh">
-                <i class="fa-solid fa-road"></i>
-                <span>Đại Lộ Mê Linh &amp; Quần Thể</span>
+            <button type="button" class="v4-loc-node" data-loc-video="videos/map_zoom_melinh.mp4" data-loc-label="Bản Đồ Kết Nối Toàn Vùng Tây Bắc Đà Nẵng">
+              <div class="v4-node-time">15<small>Phút</small></div>
+              <div class="v4-node-info">
+                <h3 class="v4-node-title">Sân Bay Quốc Tế &amp; Trung Tâm Đà Nẵng</h3>
+                <p class="v4-node-sub">Kết nối xuyên suốt qua trục Nguyễn Tất Thành – Cầu Thuận Phước</p>
+              </div>
+              <i class="fa-solid fa-play"></i>
+            </button>
+          </div>
+
+          <!-- Giant Interactive Video Screen -->
+          <div class="v4-loc-screen">
+            <video id="v4-loc-video" src="videos/melinh_aerial_complex.mp4" poster="images/architecture/melinh_boulevard_shophouse.webp" autoplay muted loop playsinline></video>
+            <div class="v4-screen-bar">
+              <strong id="v4-loc-screen-label">Trục Đại Lộ Mê Linh &amp; Quần Thể 03 Tòa Tháp</strong>
+              <button type="button" class="v4-btn v4-btn-basic" data-lightbox-src="images/architecture/melinh_boulevard_shophouse.webp" data-lightbox-caption="Phối Cảnh Đại Lộ Mê Linh">
+                <i class="fa-solid fa-expand"></i>
+                <span>Phóng To Ảnh 4K</span>
               </button>
-              <button type="button" class="v3-tab-btn" data-loc-tab="bautram">
-                <i class="fa-solid fa-water"></i>
-                <span>Hồ Bàu Tràm &amp; Vịnh Biển</span>
-              </button>
-              <button type="button" class="v3-tab-btn" data-loc-tab="map">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <span>Bản Đồ Kết Nối</span>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <div class="v3-media-card">
-              <div class="v3-video-frame">
-                <video id="v3-loc-video" src="videos/melinh_aerial_complex.mp4" poster="images/architecture/melinh_boulevard_shophouse.webp" autoplay muted loop playsinline></video>
-              </div>
-              <div class="v3-media-footer">
-                <div class="v3-media-caption">
-                  <h3 id="v3-loc-caption-title">Trục Đại Lộ Mê Linh &amp; Quần Thể 03 Tòa Tháp</h3>
-                  <p id="v3-loc-caption-desc">Mặt tiền Đại lộ Mê Linh rộng thoáng kết nối trực tiếp Hồ Bàu Tràm và Vịnh Đà Nẵng.</p>
-                </div>
-                <button type="button" class="v3-btn v3-btn-outline" id="v3-loc-zoom-btn" data-lightbox-src="images/architecture/melinh_boulevard_shophouse.webp" data-lightbox-caption="Trục Đại Lộ Mê Linh & Quần Thể 03 Tòa Tháp">
-                  <i class="fa-solid fa-expand"></i>
-                  <span>Xem Ảnh Lớn</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. 04 HỆ KHÔNG GIAN TIỆN ÍCH CHUẨN SỐNG XANH — PLACED FIRST BEFORE ARCHITECTURE (#realms) -->
-    <section class="v3-section" id="realms">
-      <div class="v3-container">
-        <div class="v3-sec-head-split">
-          <div class="v3-sec-head-left">
-            <div class="v3-kicker">
-              <span class="v3-kicker-line"></span>
-              <span>TRIẾT LÝ QUY HOẠCH CẢNH QUAN ĐỘC BẢN</span>
-            </div>
-            <h2 class="v3-sec-title">04 Hệ Không Gian Tiện Ích Chuẩn Sống Xanh</h2>
-            <div class="v3-svg-divider">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
-            </div>
-            <p class="v3-sec-desc">Hơn 23+ tiện ích nội khu được quy hoạch bài bản thành 04 lớp không gian chuyên biệt từ tầng trệt lên tới tầng thượng, nuôi dưỡng trọn vẹn thể chất và tinh thần cho mọi thế hệ cư dân.</p>
+    <!-- ======================================================================
+         MÀN 03: 04 HỆ KHÔNG GIAN TIỆN ÍCH CHUẨN SỐNG XANH (ĐẶT TRƯỚC KIẾN TRÚC)
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-dark" id="realms">
+      <div class="v4-inner">
+        <div class="v4-head-bar">
+          <div>
+            <h2 class="v4-main-title">04 Hệ Không Gian Tiện Ích Chuẩn Sống Xanh</h2>
+            <p class="v4-sub-tagline">Hơn 23+ đặc quyền sống xanh quy hoạch từ tầng trệt lên tới đỉnh tầng thượng</p>
           </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="v3-btn v3-btn-outline" data-lightbox-src="images/masterplan/ground_fl_amenities.webp" data-lightbox-caption="Mặt Bằng Tổng Thể Tiện Ích Tầng 1">
+          <div class="v4-head-actions">
+            <button type="button" class="v4-btn v4-btn-glass" data-basic-table="amenities">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Bảng 23+ Tiện Ích Basic</span>
+            </button>
+            <button type="button" class="v4-btn v4-btn-glass" data-lightbox-src="images/masterplan/ground_fl_amenities.webp" data-lightbox-caption="Mặt Bằng Tiện Ích Tầng 1">
               <i class="fa-regular fa-map"></i>
-              <span>Mặt Bằng Tiện Ích Tầng 1</span>
+              <span>Mặt Bằng Tầng 1</span>
             </button>
-            <button type="button" class="v3-btn v3-btn-outline" data-lightbox-src="images/masterplan/rooftop_fl_amenities.webp" data-lightbox-caption="Mặt Bằng Tổng Thể Tiện Ích Tầng Thượng">
+            <button type="button" class="v4-btn v4-btn-gold" data-lightbox-src="images/masterplan/rooftop_fl_amenities.webp" data-lightbox-caption="Mặt Bằng Tiện Ích Tầng Thượng">
               <i class="fa-solid fa-layer-group"></i>
-              <span>Mặt Bằng Tiện Ích Tầng Thượng</span>
+              <span>Mặt Bằng Tầng Thượng</span>
             </button>
           </div>
         </div>
 
-        <!-- CLEAN 2x2 MULTI-SHOT VIDEO CARD GRID -->
-        <div class="v3-realms-grid">
-          <article class="v3-realm-card">
-            <div class="v3-realm-video-wrap">
-              <video src="videos/realms/realm_01_vitality_koi.mp4" poster="images/amenities/pool_overview.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-realm-body">
-              <div class="v3-realm-head">
-                <h3 class="v3-realm-title">SINH KHÍ | VITALITY HUB</h3>
-                <span class="v3-realm-num">01 / 04</span>
+        <!-- 2x2 Cinema Matrix (ONLY Main Highlight + 1-Line Sub-Tagline) -->
+        <div class="v4-realms-matrix">
+          <article class="v4-realm-tile">
+            <video src="videos/realms/realm_01_vitality_koi.mp4" poster="images/amenities/pool_overview.webp" autoplay muted loop playsinline></video>
+            <div class="v4-realm-bar">
+              <div>
+                <h3 class="v4-realm-main"><span>01</span> SINH KHÍ | VITALITY HUB</h3>
+                <p class="v4-realm-tag">Hồ bơi vô cực 365m² • Bể sục Jacuzzi • Hồ cá Koi • Đường dạo bộ</p>
               </div>
-              <p class="v3-realm-desc">Không gian tái tạo năng lượng thể chất mỗi ngày với hồ bơi vô cực 365m², hồ bơi trẻ em, bể sục Jacuzzi, hồ cá Koi sinh thái và đường dạo bộ nội khu rợp bóng cây xanh.</p>
             </div>
           </article>
 
-          <article class="v3-realm-card">
-            <div class="v3-realm-video-wrap">
-              <video src="videos/realms/realm_02_community_pickleball.mp4" poster="images/amenities/pickleball_sport_court.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-realm-body">
-              <div class="v3-realm-head">
-                <h3 class="v3-realm-title">CỘNG ĐỒNG | COMMUNITY</h3>
-                <span class="v3-realm-num">02 / 04</span>
+          <article class="v4-realm-tile">
+            <video src="videos/realms/realm_02_community_pickleball.mp4" poster="images/amenities/pickleball_sport_court.webp" autoplay muted loop playsinline></video>
+            <div class="v4-realm-bar">
+              <div>
+                <h3 class="v4-realm-main"><span>02</span> CỘNG ĐỒNG | COMMUNITY</h3>
+                <p class="v4-realm-tag">Quảng trường sự kiện • Sân Pickleball • Vườn BBQ • Phố Shophouse</p>
               </div>
-              <p class="v3-realm-desc">Tâm điểm gắn kết cư dân văn minh cùng quảng trường sự kiện trung tâm, sân Pickleball thời thượng, vườn nướng BBQ ngoài trời và dãy Shophouse thương mại sầm uất tại khối đế.</p>
             </div>
           </article>
 
-          <article class="v3-realm-card">
-            <div class="v3-realm-video-wrap">
-              <video src="videos/realms/realm_03_mindfulness_rooftop.mp4" poster="images/amenities/rooftop_yoga_garden.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-realm-body">
-              <div class="v3-realm-head">
-                <h3 class="v3-realm-title">THÂN TÂM TRÍ | MINDFULNESS</h3>
-                <span class="v3-realm-num">03 / 04</span>
+          <article class="v4-realm-tile">
+            <video src="videos/realms/realm_03_mindfulness_rooftop.mp4" poster="images/amenities/rooftop_yoga_garden.webp" autoplay muted loop playsinline></video>
+            <div class="v4-realm-bar">
+              <div>
+                <h3 class="v4-realm-main"><span>03</span> THÂN TÂM TRÍ | MINDFULNESS</h3>
+                <p class="v4-realm-tag">Sàn Yoga bình minh • Vườn dưỡng sinh • Đồi vọng cảnh tầng thượng</p>
               </div>
-              <p class="v3-realm-desc">Khoảng lặng cân bằng cảm xúc trên đỉnh tầng thượng với sàn tập Yoga đón bình minh, vườn dưỡng sinh cho người cao tuổi, vườn cờ và đồi vọng cảnh hướng trọn Vịnh Đà Nẵng.</p>
             </div>
           </article>
 
-          <article class="v3-realm-card">
-            <div class="v3-realm-video-wrap">
-              <video src="videos/realms/realm_04_eco_edu_kids.mp4" poster="images/amenities/kindergarten_courtyard.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-realm-body">
-              <div class="v3-realm-head">
-                <h3 class="v3-realm-title">SINH THÁI HỌC TẬP | ECO-EDU</h3>
-                <span class="v3-realm-num">04 / 04</span>
+          <article class="v4-realm-tile">
+            <video src="videos/realms/realm_04_eco_edu_kids.mp4" poster="images/amenities/kindergarten_courtyard.webp" autoplay muted loop playsinline></video>
+            <div class="v4-realm-bar">
+              <div>
+                <h3 class="v4-realm-main"><span>04</span> SINH THÁI HỌC TẬP | ECO-EDU</h3>
+                <p class="v4-realm-tag">Trường mầm non nội khu • Sân chơi liên hoàn • Vườn thực vật trẻ em</p>
               </div>
-              <p class="v3-realm-desc">Môi trường ươm mầm thế hệ tương lai an toàn ngay dưới chân tòa nhà với trường mầm non nội khu, sân chơi vận động liên hoàn và vườn khám phá thiên nhiên cho trẻ nhỏ.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 5. VƯỜN ATRIO, CỔNG OSTIA, 04 TẦNG VƯỜN CHÂN MÂY & CHUẨN XANH EDGE (#architecture) -->
-    <section class="v3-section v3-section-alt" id="architecture">
-      <div class="v3-container">
-        <div class="v3-sec-head">
-          <div class="v3-kicker">
-            <span class="v3-kicker-line"></span>
-            <span>KIẾN TRÚC SINH KHÍ HẬU &amp; BẢO CHỨNG QUỐC TẾ</span>
+    <!-- ======================================================================
+         MÀN 04: VƯỜN ATRIO, CỔNG OSTIA, 04 VƯỜN CHÂN MÂY & CHUẨN XANH EDGE
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-white" id="architecture">
+      <div class="v4-inner">
+        <div class="v4-head-bar">
+          <div>
+            <h2 class="v4-main-title">Vườn Atrio, Cổng Ostia, 04 Vườn Chân Mây &amp; Chuẩn Xanh EDGE</h2>
+            <p class="v4-sub-tagline">Kiến trúc giật cấp đón gió biển &amp; Giải pháp tuần hoàn nước tự nhiên (Phương pháp bọt biển)</p>
           </div>
-          <h2 class="v3-sec-title">Vườn Atrio, Cổng Ostia, 04 Tầng Vườn Chân Mây &amp; Chuẩn Xanh EDGE</h2>
-          <div class="v3-svg-divider">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
+          <div class="v4-head-actions">
+            <button type="button" class="v4-btn v4-btn-basic" data-basic-table="edge">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Bảng Tiêu Chuẩn Xanh EDGE Basic</span>
+            </button>
+            <button type="button" class="v4-btn v4-btn-emerald" data-open-3d-model>
+              <i class="fa-solid fa-cube"></i>
+              <span>Xoay Mô Hình 3D 360° (.GLB)</span>
+            </button>
           </div>
-          <p class="v3-sec-desc">Thiết kế thông tầng đón gió biển tự nhiên, khối tháp giật cấp mở rộng tầm nhìn Panorama và hệ thống tuần hoàn nước mưa theo phương pháp bọt biển giúp làm dịu nhiệt độ nội khu quanh năm.</p>
         </div>
 
-        <div class="v3-arch-grid">
-          <!-- Card 1: Atrio & Ostia -->
-          <article class="v3-arch-card">
-            <div class="v3-arch-media">
-              <video src="videos/amenities_aerodynamic_garden.mp4" poster="images/architecture/atrio_air_circulation.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-arch-body">
-              <span class="v3-arch-step">01 • ĐỐI LƯU KHÍ ĐỘNG HỌC</span>
-              <h3 class="v3-arch-title">Vườn Trung Tâm Atrio &amp; Cổng Vòm Ostia</h3>
-              <p class="v3-arch-desc">Cổng vòm Ostia hướng trực diện biển kết hợp lõi thông tầng Vườn Atrio tạo luồng đối lưu không khí tươi và ánh sáng tự nhiên xuyên suốt hành lang 03 tòa tháp.</p>
-              <div class="v3-arch-actions">
-                <button type="button" class="v3-link-action" data-lightbox-src="images/architecture/atrio_air_circulation.webp" data-lightbox-caption="Sơ Đồ Đối Lưu Không Khí Tự Nhiên Vườn Atrio & Cổng Ostia">
+        <div class="v4-arch-trio">
+          <article class="v4-arch-tile">
+            <video src="videos/amenities_aerodynamic_garden.mp4" poster="images/architecture/atrio_air_circulation.webp" autoplay muted loop playsinline></video>
+            <div class="v4-arch-foot">
+              <h3 class="v4-arch-headline">Vườn Trung Tâm Atrio &amp; Cổng Vòm Ostia</h3>
+              <p class="v4-arch-subline">Đối lưu khí tươi &amp; ánh sáng tự nhiên xuyên suốt 03 tòa tháp</p>
+              <div class="v4-arch-btns">
+                <button type="button" class="v4-btn v4-btn-basic" data-lightbox-src="images/architecture/atrio_air_circulation.webp" data-lightbox-caption="Sơ Đồ Đối Lưu Khí Động Học Vườn Atrio & Cổng Ostia">
                   <i class="fa-solid fa-wind"></i>
                   <span>Sơ Đồ Khí Động Học</span>
                 </button>
@@ -283,21 +302,17 @@
             </div>
           </article>
 
-          <!-- Card 2: Stepped Massing & 4 Sky Gardens -->
-          <article class="v3-arch-card">
-            <div class="v3-arch-media">
-              <video src="videos/amenities_4_sky_gardens.mp4" poster="images/amenities/rooftop_sky_garden.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-arch-body">
-              <span class="v3-arch-step">02 • KIẾN TRÚC GIẬT CẤP ĐỘC BẢN</span>
-              <h3 class="v3-arch-title">Khối Tháp Giật Cấp &amp; 04 Tầng Vườn Chân Mây</h3>
-              <p class="v3-arch-desc">Thiết kế giật cấp từ tầng 17 xuống tầng 6 giúp tối đa hóa số lượng căn góc tầm nhìn rộng mở, đồng thời kiến tạo 04 khu vườn chân mây liên hoàn trên mái.</p>
-              <div class="v3-arch-actions">
-                <button type="button" class="v3-link-action" data-open-3d-model>
+          <article class="v4-arch-tile">
+            <video src="videos/amenities_4_sky_gardens.mp4" poster="images/amenities/rooftop_sky_garden.webp" autoplay muted loop playsinline></video>
+            <div class="v4-arch-foot">
+              <h3 class="v4-arch-headline">Khối Tháp Giật Cấp &amp; 04 Tầng Vườn Chân Mây</h3>
+              <p class="v4-arch-subline">Giật cấp từ tầng 17 xuống tầng 6 mở rộng tầm nhìn Panorama</p>
+              <div class="v4-arch-btns">
+                <button type="button" class="v4-btn v4-btn-basic" data-open-3d-model>
                   <i class="fa-solid fa-cube"></i>
-                  <span>Mô Hình 3D 360° (.GLB)</span>
+                  <span>Mô Hình 3D (.GLB)</span>
                 </button>
-                <button type="button" class="v3-link-action" data-lightbox-src="images/masterplan/rooftop_fl_amenities.webp" data-lightbox-caption="Sơ Đồ 04 Tầng Vườn Chân Mây Trên Mái">
+                <button type="button" class="v4-btn v4-btn-basic" data-lightbox-src="images/masterplan/rooftop_fl_amenities.webp" data-lightbox-caption="Sơ Đồ 04 Tầng Vườn Chân Mây">
                   <i class="fa-regular fa-image"></i>
                   <span>Sơ Đồ Vườn Mái</span>
                 </button>
@@ -305,344 +320,301 @@
             </div>
           </article>
 
-          <!-- Card 3: Sponge Method Water Circulation (Never called "Thành phố bọt biển") -->
-          <article class="v3-arch-card">
-            <div class="v3-arch-media">
-              <video src="videos/sponge_city_loop.mp4" poster="images/amenities/sponge_city_rain_garden.webp" autoplay muted loop playsinline></video>
-            </div>
-            <div class="v3-arch-body">
-              <span class="v3-arch-step">03 • CẢNH QUAN BỀN VỮNG</span>
-              <h3 class="v3-arch-title">Giải Pháp Tuần Hoàn Nước Tự Nhiên (Phương Pháp Bọt Biển)</h3>
-              <p class="v3-arch-desc">Ứng dụng phương pháp bọt biển thu gom nước mưa qua lớp cảnh quan thẩm thấu, lọc sinh học tại bể ngầm và tái sử dụng cho hệ thống tưới cây tự động toàn dự án.</p>
-              <div class="v3-arch-actions">
-                <button type="button" class="v3-link-action" data-lightbox-src="images/amenities/sponge_city_rain_garden.webp" data-lightbox-caption="Giải Pháp Tuần Hoàn Nước Tự Nhiên Theo Phương Pháp Bọt Biển">
+          <article class="v4-arch-tile">
+            <video src="videos/sponge_city_loop.mp4" poster="images/amenities/sponge_city_rain_garden.webp" autoplay muted loop playsinline></video>
+            <div class="v4-arch-foot">
+              <h3 class="v4-arch-headline">Giải Pháp Tuần Hoàn Nước Tự Nhiên</h3>
+              <p class="v4-arch-subline">Ứng dụng phương pháp bọt biển lọc nước mưa &amp; tưới cây tự động</p>
+              <div class="v4-arch-btns">
+                <button type="button" class="v4-btn v4-btn-basic" data-lightbox-src="images/amenities/sponge_city_rain_garden.webp" data-lightbox-caption="Giải Pháp Tuần Hoàn Nước Tự Nhiên (Phương Pháp Bọt Biển)">
                   <i class="fa-solid fa-droplet"></i>
-                  <span>Xem Chi Tiết Cảnh Quan</span>
+                  <span>Xem Cảnh Quan Thẩm Thấu</span>
                 </button>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- EDGE INTERNATIONAL GREEN BUILDING CERTIFICATION BANNER -->
-        <div class="v3-edge-banner">
+        <!-- Minimalist EDGE International Banner -->
+        <div class="v4-edge-strip">
           <div>
-            <div class="v3-kicker" style="color:#e5c687;">
-              <span class="v3-kicker-line" style="background:#e5c687;"></span>
-              <span>IFC — WORLD BANK GROUP</span>
+            <h3>Chứng Nhận Công Trình Xanh Quốc Tế EDGE</h3>
+            <p>IFC — Thành viên Nhóm Ngân hàng Thế giới (World Bank Group)</p>
+          </div>
+
+          <div class="v4-edge-nums">
+            <div class="v4-edge-pill">
+              <strong>-24%</strong>
+              <span>Tiết kiệm điện năng</span>
             </div>
-            <h3 class="v3-edge-title">Bảo Chứng Công Trình Xanh Quốc Tế EDGE</h3>
-            <p class="v3-edge-desc">EcoLife Signature đáp ứng hệ tiêu chuẩn khắt khe của Tổ chức Tài chính Quốc tế (IFC) với kính hộp cản nhiệt Solar Control, vật liệu thân thiện môi trường và thiết bị vệ sinh tiết kiệm nước, giúp giảm trực tiếp chi phí vận hành hàng tháng cho cư dân.</p>
-            <div class="v3-edge-metrics">
-              <div class="v3-edge-stat">
-                <div class="v3-edge-val">-24%</div>
-                <div class="v3-edge-lbl">Tiết kiệm năng lượng điện tiêu thụ</div>
-              </div>
-              <div class="v3-edge-stat">
-                <div class="v3-edge-val">-30%</div>
-                <div class="v3-edge-lbl">Tiết kiệm lượng nước sinh hoạt</div>
-              </div>
-              <div class="v3-edge-stat">
-                <div class="v3-edge-val">-30%</div>
-                <div class="v3-edge-lbl">Giảm năng lượng hàm chứa vật liệu</div>
-              </div>
+            <div class="v4-edge-pill">
+              <strong>-30%</strong>
+              <span>Tiết kiệm nước</span>
+            </div>
+            <div class="v4-edge-pill">
+              <strong>-30%</strong>
+              <span>Năng lượng vật liệu</span>
             </div>
           </div>
 
-          <div>
-            <div class="v3-edge-cert-card" data-lightbox-src="images/brand/edge_certificate_official.webp" data-lightbox-caption="Chứng Nhận Công Trình Xanh Quốc Tế EDGE — EcoLife Signature">
-              <img src="images/brand/edge_certificate_official.webp" alt="Chứng nhận EDGE Quốc tế EcoLife Signature" loading="lazy">
-            </div>
+          <div class="v4-edge-cert-thumb" data-lightbox-src="images/brand/edge_certificate_official.webp" data-lightbox-caption="Chứng Nhận Công Trình Xanh Quốc Tế EDGE — EcoLife Signature">
+            <img src="images/brand/edge_certificate_official.webp" alt="Chứng nhận EDGE Quốc tế" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. BỘ SƯU TẬP 06 CĂN HỘ MẪU, 26 SHOPHOUSE & 06 PENTHOUSE (#residences) -->
-    <section class="v3-section" id="residences">
-      <div class="v3-container">
-        <div class="v3-sec-head-split">
-          <div class="v3-sec-head-left">
-            <div class="v3-kicker">
-              <span class="v3-kicker-line"></span>
-              <span>KHÔNG Gian SỐNG TINH TẾ &amp; TỐI ƯU CÔNG NĂNG</span>
-            </div>
-            <h2 class="v3-sec-title">Bộ Sưu Tập 06 Mẫu Căn Hộ, 26 Shophouse &amp; 06 Penthouse</h2>
-            <div class="v3-svg-divider">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
-            </div>
+    <!-- ======================================================================
+         MÀN 05: BỘ SƯU TẬP 06 CĂN HỘ MẪU, 26 SHOPHOUSE & 06 PENTHOUSE
+         (DUAL-SCREEN: VIDEO CAPCUT + MẶT BẰNG 3D CÓ SỐ M2 Ở GIỮA)
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-dark" id="residences">
+      <div class="v4-inner">
+        <div class="v4-head-bar">
+          <div>
+            <h2 class="v4-main-title">Bộ Sưu Tập 06 Mẫu Căn Hộ, 26 Shophouse &amp; 06 Penthouse</h2>
+            <p class="v4-sub-tagline">Thiết kế hệ tủ kịch trần phẳng phiu kết hợp đường bo cong mềm mại xử lý mọi góc cạnh</p>
           </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="v3-btn v3-btn-outline" data-lightbox-src="images/masterplan/typical_fl_03_15_clean.webp" data-lightbox-caption="Mặt Bằng Tầng Điển Hình 03 – 15">
+          <div class="v4-head-actions">
+            <button type="button" class="v4-btn v4-btn-glass" data-lightbox-src="images/masterplan/typical_fl_03_15_clean.webp" data-lightbox-caption="Mặt Bằng Tầng Điển Hình 03 – 15">
               <i class="fa-regular fa-building"></i>
               <span>Mặt Bằng Tầng 03–15</span>
             </button>
-            <button type="button" class="v3-btn v3-btn-outline" data-lightbox-src="images/masterplan/typical_fl_16_clean.webp" data-lightbox-caption="Mặt Bằng Tầng Điển Hình 16 – 17">
+            <button type="button" class="v4-btn v4-btn-glass" data-lightbox-src="images/masterplan/typical_fl_16_clean.webp" data-lightbox-caption="Mặt Bằng Tầng Điển Hình 16 – 17">
               <i class="fa-solid fa-building"></i>
               <span>Mặt Bằng Tầng 16–17</span>
             </button>
           </div>
         </div>
 
-        <!-- Overall Interior Craftsmanship Note -->
-        <div class="v3-craft-note">
-          <i class="fa-solid fa-compass-drafting"></i>
-          <span><strong>Ngôn ngữ hoàn thiện nội thất xuyên suốt dự án:</strong> Phần lớn căn hộ được thiết kế hệ tủ kịch trần phẳng phiu kết hợp các đường bo cong mềm mại xử lý khéo léo mọi góc cạnh, vừa mở rộng không gian lưu trữ vừa đảm bảo an toàn cho trẻ nhỏ và người lớn tuổi.</span>
-        </div>
-
-        <!-- 8-Unit Sliding Pill Bar (Zero Blue Selection Bug) -->
-        <div class="v3-unit-bar" role="tablist" aria-label="Chọn dòng sản phẩm">
-          <button type="button" class="v3-unit-pill active" data-unit-key="a1">
-            <span class="v3-unit-pill-name">Mẫu A1 • 66,0 m²</span>
-            <span class="v3-unit-pill-sub">2PN Chuẩn</span>
+        <!-- 8-Unit Sliding Pill Dock -->
+        <div class="v4-unit-dock" role="tablist" aria-label="Chọn dòng sản phẩm">
+          <button type="button" class="v4-unit-tab active" data-unit-tab="a1">
+            <strong>Mẫu A1 • 66,0 m²</strong>
+            <span>2PN Chuẩn</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="a2">
-            <span class="v3-unit-pill-name">Mẫu A2 • 68,9 m²</span>
-            <span class="v3-unit-pill-sub">2PN Gia Đình</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="a2">
+            <strong>Mẫu A2 • 68,9 m²</strong>
+            <span>2PN Gia Đình</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="b1">
-            <span class="v3-unit-pill-name">Căn Góc B1 • 77,8 m²</span>
-            <span class="v3-unit-pill-sub">2PN Góc Đôi</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="b1">
+            <strong>Góc B1 • 77,8 m²</strong>
+            <span>2PN Góc Đôi</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="b2">
-            <span class="v3-unit-pill-name">Mẫu B2 • 87,3 m²</span>
-            <span class="v3-unit-pill-sub">2PN+ Đa Năng</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="b2">
+            <strong>Mẫu B2 • 87,3 m²</strong>
+            <span>2PN+ Đa Năng</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="b6">
-            <span class="v3-unit-pill-name">Mẫu B6 • 87,1 m²</span>
-            <span class="v3-unit-pill-sub">3PN • 3WC Riêng Tư</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="b6">
+            <strong>Mẫu B6 • 87,1 m²</strong>
+            <span>3PN • 3WC Riêng</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="b3">
-            <span class="v3-unit-pill-name">Căn Góc B3 • 88,8 m²</span>
-            <span class="v3-unit-pill-sub">3PN Panorama</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="b3">
+            <strong>Góc B3 • 88,8 m²</strong>
+            <span>3PN Panorama</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="shophouse">
-            <span class="v3-unit-pill-name">26 Shophouse</span>
-            <span class="v3-unit-pill-sub">Khối Đế Tầng 1–2</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="shophouse">
+            <strong>26 Shophouse</strong>
+            <span>Khối Đế Tầng 1–2</span>
           </button>
-          <button type="button" class="v3-unit-pill" data-unit-key="penthouse">
-            <span class="v3-unit-pill-name">06 Penthouse</span>
-            <span class="v3-unit-pill-sub">Sân Vườn Tầng 16–17</span>
+          <button type="button" class="v4-unit-tab" data-unit-tab="penthouse">
+            <strong>06 Penthouse</strong>
+            <span>Sân Vườn 16–17</span>
           </button>
         </div>
 
-        <!-- Studio 2-Column Showcase -->
-        <div class="v3-studio-grid">
-          <div class="v3-studio-media-box">
-            <div class="v3-studio-mode-bar">
-              <div class="v3-mode-group">
-                <button type="button" class="v3-mode-btn active" data-studio-mode="video">
-                  <i class="fa-solid fa-film"></i>
-                  <span>Video Thiết Kế Tham Khảo</span>
-                </button>
-                <button type="button" class="v3-mode-btn" data-studio-mode="floorplan">
-                  <i class="fa-solid fa-vector-square"></i>
-                  <span>Mặt Bằng 3D Bóc Tách</span>
-                </button>
-                <button type="button" class="v3-mode-btn" data-studio-mode="gallery">
-                  <i class="fa-regular fa-images"></i>
-                  <span>Phối Cảnh 3D Chi Tiết</span>
-                </button>
-              </div>
+        <!-- Simultaneous Dual-Stage: Left CapCut Video + Right 3D Floorplan with m2 -->
+        <div class="v4-dual-showroom">
+          <!-- Left Stage: Video Thiết Kế Tham Khảo + Room Thumbnails -->
+          <div class="v4-showroom-left">
+            <div class="v4-panel-top">
+              <span><i class="fa-solid fa-film"></i> Video Thiết Kế Tham Khảo &amp; Phối Cảnh Từng Phòng</span>
+              <button type="button" class="v4-btn v4-btn-glass" id="v4-play-unit-video" style="padding:4px 12px; font-size:0.74rem;">
+                <i class="fa-solid fa-play"></i>
+                <span>Phát Video Đa Cảnh</span>
+              </button>
             </div>
-
-            <div class="v3-studio-stage" id="v3-studio-stage">
+            <div class="v4-video-canvas" id="v4-unit-video-stage">
               <video src="videos/units/walkthrough_a1.mp4" poster="images/apartments/a1_living_1.webp" autoplay muted loop playsinline controls></video>
             </div>
-
-            <div class="v3-studio-thumbs" id="v3-studio-thumbs"></div>
+            <div class="v4-thumb-strip" id="v4-unit-thumbs"></div>
           </div>
 
-          <div class="v3-studio-info-box">
-            <div>
-              <div class="v3-unit-meta-line" id="v3-unit-code">MẪU CĂN CH-A1 • TẦNG 03–17 • 196 CĂN</div>
-              <h3 class="v3-unit-title" id="v3-unit-title">Căn Hộ Mẫu A1 — 66,0 m² (2 Phòng Ngủ Chuẩn)</h3>
-              <p class="v3-unit-desc" id="v3-unit-desc">Thiết kế tối ưu cho gia đình trẻ với phòng khách nối liền bàn ăn thoáng rộng, hệ tủ kịch trần phẳng phiu và các góc bo cong tinh tế. Bếp chữ L bố trí tách biệt kết nối trực tiếp logia phụ, giữ không gian sinh hoạt luôn thông thoáng.</p>
-
-              <div class="v3-spec-table" id="v3-unit-specs"></div>
+          <!-- Right Stage: 3D Cutaway Floorplan with m2 in Center + Main Headline + 1-Line Tagline -->
+          <div class="v4-showroom-right">
+            <div class="v4-panel-top">
+              <span><i class="fa-solid fa-vector-square"></i> Mặt Bằng 3D Bóc Tách (Chạm Để Phóng To 4K)</span>
             </div>
-
-            <div class="v3-unit-cta-group">
-              <button type="button" class="v3-btn v3-btn-primary" style="width:100%;" data-open-quote>
-                <span>Nhận Bảng Giá &amp; Phiếu Tính Mã Căn Này</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <button type="button" class="v3-btn v3-btn-outline" style="width:100%;" id="v3-unit-fp-btn" data-lightbox-src="images/units/fp_2pn_a1_66m2.webp" data-lightbox-caption="Căn Hộ Mẫu A1 — Mặt Bằng Bóc Tách 3D">
-                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                <span>Phóng To Mặt Bằng Bóc Tách 3D</span>
-              </button>
+            <div class="v4-fp-stage" id="v4-unit-fp-wrap" data-lightbox-src="images/units/fp_2pn_a1_66m2.webp" data-lightbox-caption="Căn Hộ Mẫu A1 — Mặt Bằng 3D Bóc Tách">
+              <img id="v4-unit-fp-img" src="images/units/fp_2pn_a1_66m2.webp" alt="Mặt bằng 3D căn hộ A1 66m2">
+            </div>
+            <div class="v4-unit-summary">
+              <div>
+                <h3 class="v4-unit-headline" id="v4-unit-headline">Căn Hộ Mẫu A1 — 66,0 m² (2 Phòng Ngủ Chuẩn)</h3>
+                <p class="v4-unit-tagline" id="v4-unit-tagline">02 Phòng ngủ • 02 WC • Bếp tách biệt nối thẳng logia • Giá từ 2,60 Tỷ</p>
+              </div>
+              <div class="v4-unit-actions">
+                <button type="button" class="v4-btn v4-btn-glass" data-basic-table="current-unit">
+                  <i class="fa-solid fa-table-list"></i>
+                  <span>Mở Bảng Thông Số Basic</span>
+                </button>
+                <button type="button" class="v4-btn v4-btn-gold" data-open-quote>
+                  <span>Nhận Báo Giá Mã Này</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. CHÍNH SÁCH SỞ HỮU, TIẾN ĐỘ 5 ĐỢT, QUÀ TẶNG & NGÂN HÀNG ĐỒNG HÀNH (#ownership) -->
-    <section class="v3-section v3-section-alt" id="ownership">
-      <div class="v3-container">
-        <div class="v3-sec-head">
-          <div class="v3-kicker">
-            <span class="v3-kicker-line"></span>
-            <span>ĐÒN BẨY TÀI CHÍNH &amp; PHÁP LÝ MINH BẠCH</span>
+    <!-- ======================================================================
+         MÀN 06: CHÍNH SÁCH SỞ HỮU, LỘ TRÌNH 5 ĐỢT, QUÀ TẶNG & 5 NGÂN HÀNG
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-light" id="ownership">
+      <div class="v4-inner">
+        <div class="v4-head-bar">
+          <div>
+            <h2 class="v4-main-title">Chính Sách Sở Hữu, Tiến Độ 05 Đợt &amp; Ngân Hàng Bảo Lãnh</h2>
+            <p class="v4-sub-tagline">Bàn giao nhà dự kiến Tháng 05/2027 • Nhận Sổ hồng lâu dài dự kiến Tháng 11/2027</p>
           </div>
-          <h2 class="v3-sec-title">Chính Sách Sở Hữu, Tiến Độ 05 Đợt &amp; Ngân Hàng Bảo Lãnh</h2>
-          <div class="v3-svg-divider">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
+          <div class="v4-head-actions">
+            <button type="button" class="v4-btn v4-btn-basic" data-basic-table="payment">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Mở Bảng Chính Sách Basic</span>
+            </button>
+            <button type="button" class="v4-btn v4-btn-emerald" data-open-quote>
+              <span>Nhận Phiếu Tính Dòng Tiền</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
-          <p class="v3-sec-desc">Linh hoạt lựa chọn phương án thanh toán theo dòng tiền cá nhân hoặc sử dụng gói vay ưu đãi lãi suất 0% trong 18 tháng từ 05 ngân hàng thương mại hàng đầu.</p>
         </div>
 
-        <!-- 3 Payment Method Cards -->
-        <div class="v3-pay-grid">
-          <div class="v3-pay-card">
+        <!-- 3 Payment Highlights (Big Number + 1-Line Sub-Tagline) -->
+        <div class="v4-pay-trio">
+          <div class="v4-pay-box">
+            <span class="v4-pay-kicker">PHƯƠNG ÁN 01 • THANH TOÁN SỚM 95%</span>
+            <div class="v4-pay-big">Chiết Khấu 10%</div>
+            <p class="v4-pay-sub">Giá căn 2PN (66m²) chỉ từ 2,60 Tỷ</p>
+          </div>
+
+          <div class="v4-pay-box">
+            <span class="v4-pay-kicker">PHƯƠNG ÁN 02 • THANH TOÁN CHUẨN 05 ĐỢT</span>
+            <div class="v4-pay-big">Chiết Khấu 6%</div>
+            <p class="v4-pay-sub">Giá căn 2PN (66m²) chỉ từ 2,74 Tỷ</p>
+          </div>
+
+          <div class="v4-pay-box is-featured">
+            <span class="v4-pay-kicker">PHƯƠNG ÁN 03 • VAY NGÂN HÀNG 70%</span>
+            <div class="v4-pay-big">Lãi Suất 0% / 18 Tháng</div>
+            <p class="v4-pay-sub">Vốn tự có 30% ban đầu chỉ ~780 Triệu • Ân hạn gốc 18 tháng</p>
+          </div>
+        </div>
+
+        <!-- 5-Step Progress Strip -->
+        <div class="v4-steps-strip">
+          <div class="v4-step-pill">
+            <span class="v4-step-pct">30%</span>
+            <div class="v4-step-txt">
+              <strong>Đợt 1 • Ký HĐMB</strong>
+              <span>7 ngày từ khi cọc 50tr</span>
+            </div>
+          </div>
+          <div class="v4-step-pill">
+            <span class="v4-step-pct">20%</span>
+            <div class="v4-step-txt">
+              <strong>Đợt 2 • Xây dựng</strong>
+              <span>Sau 60 ngày từ Đợt 1</span>
+            </div>
+          </div>
+          <div class="v4-step-pill">
+            <span class="v4-step-pct">20%</span>
+            <div class="v4-step-txt">
+              <strong>Đợt 3 • Hoàn thiện</strong>
+              <span>Sau 120 ngày từ Đợt 2</span>
+            </div>
+          </div>
+          <div class="v4-step-pill">
+            <span class="v4-step-pct">25%</span>
+            <div class="v4-step-txt">
+              <strong>Đợt 4 • Bàn giao</strong>
+              <span>Dự kiến Tháng 05/2027</span>
+            </div>
+          </div>
+          <div class="v4-step-pill">
+            <span class="v4-step-pct">05%</span>
+            <div class="v4-step-txt">
+              <strong>Đợt 5 • Sổ hồng</strong>
+              <span>Dự kiến Tháng 11/2027</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Gold Gift Cards -->
+        <div class="v4-gifts-row">
+          <div class="v4-gift-tile">
+            <div class="v4-gift-icon"><i class="fa-solid fa-coins"></i></div>
             <div>
-              <div class="v3-pay-step-lbl">PHƯƠNG ÁN 01 • TỐI ƯU GIÁ VỐN</div>
-              <h3 class="v3-pay-title">Thanh Toán Sớm 95%</h3>
-              <div class="v3-pay-highlight">Chiết Khấu 10%</div>
-              <div class="v3-pay-price-note">Giá căn 2PN (66m²) chỉ từ 2,60 Tỷ</div>
-              <p class="v3-pay-desc">Khấu trừ trực tiếp 10% vào giá bán HĐMB (chưa VAT &amp; KPBT), mang lại mức giá sở hữu tốt nhất cho nhà đầu tư có sẵn nguồn vốn nhàn rỗi.</p>
+              <strong>Tặng 01 Chỉ Vàng Lộc Phát</strong>
+              <span>Khách giao dịch căn 2PN (A1, A2, B1)</span>
             </div>
           </div>
-
-          <div class="v3-pay-card">
+          <div class="v4-gift-tile">
+            <div class="v4-gift-icon"><i class="fa-solid fa-gem"></i></div>
             <div>
-              <div class="v3-pay-step-lbl">PHƯƠNG ÁN 02 • GIÃN DÒNG TIỀN</div>
-              <h3 class="v3-pay-title">Thanh Toán Chuẩn 05 Đợt</h3>
-              <div class="v3-pay-highlight">Chiết Khấu 6%</div>
-              <div class="v3-pay-price-note">Giá căn 2PN (66m²) chỉ từ 2,74 Tỷ</div>
-              <p class="v3-pay-desc">Chia nhỏ dòng tiền thành 05 đợt linh hoạt theo tiến độ xây dựng thực tế cho đến khi nhận bàn giao nhà vào Tháng 05/2027.</p>
+              <strong>Tặng 02 Chỉ Vàng Thịnh Vượng</strong>
+              <span>Khách giao dịch căn 2PN+ &amp; 3PN (B2, B6, B3)</span>
             </div>
           </div>
-
-          <div class="v3-pay-card is-featured">
+          <div class="v4-gift-tile">
+            <div class="v4-gift-icon"><i class="fa-solid fa-percent"></i></div>
             <div>
-              <div class="v3-pay-step-lbl">PHƯƠNG ÁN 03 • ĐÒN BẨY TÀI CHÍNH</div>
-              <h3 class="v3-pay-title">Vay Ngân Hàng Lên Tới 70%</h3>
-              <div class="v3-pay-highlight">Lãi Suất 0% / 18 Tháng</div>
-              <div class="v3-pay-price-note">Vốn tự có 30% ban đầu chỉ ~780 Triệu</div>
-              <p class="v3-pay-desc">Chủ đầu tư hỗ trợ 100% lãi suất và ân hạn nợ gốc trong suốt 18 tháng — khách hàng nhận nhà khai thác vận hành trước khi bắt đầu trả lãi.</p>
+              <strong>Chiết Khấu Đặc Quyền +1%</strong>
+              <span>Khách mua sỉ từ 02 căn / Hộ khẩu Đà Nẵng – Huế</span>
             </div>
           </div>
         </div>
 
-        <!-- 5-Step Payment & Handover Timeline -->
-        <div class="v3-schedule-box">
-          <div class="v3-schedule-head">
-            <h3>Lộ Trình Thanh Toán Chuẩn 05 Đợt &amp; Cột Mốc Bàn Giao</h3>
-            <span style="font-size:0.82rem; color:var(--v3-text-muted);">Đặt cọc giữ chỗ thiện chí: <strong>50.000.000 VNĐ / căn</strong></span>
-          </div>
-          <div class="v3-schedule-steps">
-            <div class="v3-step-item">
-              <div class="v3-step-pct">30%</div>
-              <div class="v3-step-name">Đợt 1 • Ký HĐMB</div>
-              <div class="v3-step-sub">Trong 07 ngày từ khi cọc</div>
-            </div>
-            <div class="v3-step-item">
-              <div class="v3-step-pct">20%</div>
-              <div class="v3-step-name">Đợt 2 • Xây dựng</div>
-              <div class="v3-step-sub">Sau 60 ngày kể từ Đợt 1</div>
-            </div>
-            <div class="v3-step-item">
-              <div class="v3-step-pct">20%</div>
-              <div class="v3-step-name">Đợt 3 • Hoàn thiện</div>
-              <div class="v3-step-sub">Sau 120 ngày kể từ Đợt 2</div>
-            </div>
-            <div class="v3-step-item">
-              <div class="v3-step-pct">25%</div>
-              <div class="v3-step-name">Đợt 4 • Bàn giao nhà</div>
-              <div class="v3-step-sub">Dự kiến Tháng 05/2027</div>
-            </div>
-            <div class="v3-step-item">
-              <div class="v3-step-pct">05%</div>
-              <div class="v3-step-name">Đợt 5 • Nhận Sổ hồng</div>
-              <div class="v3-step-sub">Dự kiến Tháng 11/2027</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 Luxury Gift Cards -->
-        <div class="v3-perks-grid">
-          <div class="v3-perk-card">
-            <div class="v3-perk-icon">
-              <i class="fa-solid fa-coins"></i>
-            </div>
-            <div class="v3-perk-info">
-              <h4>Quà Tặng Lộc Phát — 01 Chỉ Vàng</h4>
-              <p>Dành cho khách hàng giao dịch thành công các mã căn hộ 02 Phòng ngủ (A1, A2, B1).</p>
-            </div>
-          </div>
-
-          <div class="v3-perk-card">
-            <div class="v3-perk-icon">
-              <i class="fa-solid fa-gem"></i>
-            </div>
-            <div class="v3-perk-info">
-              <h4>Quà Tặng Thịnh Vượng — 02 Chỉ Vàng</h4>
-              <p>Dành cho khách hàng giao dịch thành công các mã căn hộ 2PN+ &amp; 3PN (B2, B6, B3).</p>
-            </div>
-          </div>
-
-          <div class="v3-perk-card">
-            <div class="v3-perk-icon">
-              <i class="fa-solid fa-percent"></i>
-            </div>
-            <div class="v3-perk-info">
-              <h4>Chiết Khấu Đặc Quyền +1%</h4>
-              <p>Áp dụng cho khách hàng mua sỉ từ 02 căn hoặc khách có hộ khẩu Đà Nẵng – Huế.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Official Partner Bank Visual Logos Showcase -->
-        <div class="v3-banks-bar">
-          <div class="v3-banks-label">
+        <!-- 5 Official Partner Bank Logos -->
+        <div class="v4-banks-dock">
+          <div class="v4-banks-title">
             <strong>05 Ngân Hàng Đồng Hành Bảo Lãnh &amp; Tài Trợ Vốn</strong>
-            <span>Hỗ trợ vay tối đa 70% giá trị căn hộ • Thời hạn vay lên đến 20–25 năm</span>
+            <span>Hỗ trợ vay tới 70% giá trị căn hộ • Thời hạn vay tới 20–25 năm</span>
           </div>
-
-          <div class="v3-banks-logos">
-            <!-- VietinBank Official Vector Logo -->
-            <div class="v3-bank-logo-card" title="Ngân hàng TMCP Công Thương Việt Nam (VietinBank)">
+          <div class="v4-bank-grid">
+            <div class="v4-bank-item" title="VietinBank">
               <svg viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="22" cy="22" r="14" fill="#005993"/>
                 <path d="M14 17H30L22 9L14 17Z" fill="#DA251D"/>
-                <text x="44" y="28" fill="#005993" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="18" letter-spacing="-0.4">VietinBank</text>
+                <text x="44" y="28" fill="#005993" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="18">VietinBank</text>
               </svg>
             </div>
-
-            <!-- BIDV Official Vector Logo -->
-            <div class="v3-bank-logo-card" title="Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV)">
+            <div class="v4-bank-item" title="BIDV">
               <svg viewBox="0 0 150 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 8L32 22L22 36L12 22L22 8Z" fill="#006B68"/>
                 <circle cx="22" cy="22" r="5" fill="#FFC627"/>
-                <text x="42" y="29" fill="#006B68" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="21" letter-spacing="0.5">BIDV</text>
+                <text x="42" y="29" fill="#006B68" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="21">BIDV</text>
               </svg>
             </div>
-
-            <!-- Vietcombank Official Vector Logo -->
-            <div class="v3-bank-logo-card" title="Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank)">
+            <div class="v4-bank-item" title="Vietcombank">
               <svg viewBox="0 0 190 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 9L31 28H9L20 9Z" fill="#007A33"/>
                 <path d="M16 17L20 24L24 17H16Z" fill="#78BE20"/>
-                <text x="38" y="28" fill="#007A33" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="17.5" letter-spacing="-0.4">Vietcombank</text>
+                <text x="38" y="28" fill="#007A33" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="17.5">Vietcombank</text>
               </svg>
             </div>
-
-            <!-- MB Bank Official Vector Logo -->
-            <div class="v3-bank-logo-card" title="Ngân hàng TMCP Quân Đội (MB Bank)">
+            <div class="v4-bank-item" title="MB Bank">
               <svg viewBox="0 0 160 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="20,9 23,18 32,18 25,23 28,32 20,26 12,32 15,23 8,18 17,18" fill="#E30613"/>
-                <text x="38" y="29" fill="#141ED2" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="20" letter-spacing="-0.3">MB Bank</text>
+                <text x="38" y="29" fill="#141ED2" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="20">MB Bank</text>
               </svg>
             </div>
-
-            <!-- VPBank Official Vector Logo -->
-            <div class="v3-bank-logo-card" title="Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)">
+            <div class="v4-bank-item" title="VPBank">
               <svg viewBox="0 0 165 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 10C27 15 31 19 31 26C31 31 27 34 22 34C17 34 13 31 13 26C13 19 17 15 22 10Z" fill="#008345"/>
                 <path d="M22 14L27 25H17L22 14Z" fill="#ED1C24"/>
-                <text x="39" y="29" fill="#008345" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="19.5" letter-spacing="-0.3">VPBank</text>
+                <text x="39" y="29" fill="#008345" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="19.5">VPBank</text>
               </svg>
             </div>
           </div>
@@ -650,112 +622,55 @@
       </div>
     </section>
 
-    <!-- 8. TIN TỨC & SỰ KIỆN (#news) -->
-    <section class="v3-section" id="news">
-      <div class="v3-container">
-        <div class="v3-sec-head-split">
-          <div class="v3-sec-head-left">
-            <div class="v3-kicker">
-              <span class="v3-kicker-line"></span>
-              <span>THÔNG TIN CHÍNH THỨC CHỦ ĐẦU TƯ</span>
-            </div>
-            <h2 class="v3-sec-title">Tiêu Điểm Thị Trường &amp; Tiến Độ Dự Án</h2>
-            <div class="v3-svg-divider">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 22 12 12 22 2 12"/></svg>
-            </div>
-          </div>
-          <a href="/nha-dat-ban-ecolife-signature/" class="v3-btn v3-btn-outline">
-            <span>Xem Toàn Bộ Giỏ Hàng &amp; Bảng Giá</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="v3-news-grid">
-          <a href="/nha-dat-ban-ecolife-signature/" class="v3-news-card">
-            <div class="v3-news-img">
-              <img src="images/architecture/melinh_boulevard_shophouse.webp" alt="Đại lộ Mê Linh Tây Bắc Đà Nẵng" loading="lazy">
-            </div>
-            <div class="v3-news-body">
-              <span class="v3-news-date">Hạ tầng Tây Bắc Đà Nẵng</span>
-              <h3 class="v3-news-title">Siêu Cảng Liên Chiểu &amp; Khu Thương Mại Tự Do FTZ Thúc Đẩy Nhu Cầu Căn Hộ Cao Cấp</h3>
-              <p class="v3-news-excerpt">Tọa lạc tại tâm điểm Đại lộ Mê Linh, EcoLife Signature đón đầu làn sóng chuyên gia quốc tế và kỹ sư công nghệ cao về làm việc tại Tây Bắc Đà Nẵng.</p>
-            </div>
-          </a>
-
-          <a href="/can-ho-2pn-view-bien/" class="v3-news-card">
-            <div class="v3-news-img">
-              <img src="images/apartments/a1_living_1.webp" alt="Căn hộ mẫu EcoLife Signature" loading="lazy">
-            </div>
-            <div class="v3-news-body">
-              <span class="v3-news-date">Phân tích sản phẩm</span>
-              <h3 class="v3-news-title">Giải Mã Sức Hút Dòng Căn Hộ 2PN (66m² – 68,9m²) Tối Ưu Công Năng Gia Đình Trẻ</h3>
-              <p class="v3-news-excerpt">Với mức vốn tự có ban đầu chỉ khoảng 780 triệu đồng cùng gói vay 0% lãi suất 18 tháng, dòng căn 2PN đang dẫn đầu thanh khoản tại dự án.</p>
-            </div>
-          </a>
-
-          <a href="#architecture" class="v3-news-card">
-            <div class="v3-news-img">
-              <img src="images/amenities/rooftop_sky_garden.webp" alt="Vườn chân mây EcoLife Signature" loading="lazy">
-            </div>
-            <div class="v3-news-body">
-              <span class="v3-news-date">Bảo chứng công trình xanh</span>
-              <h3 class="v3-news-title">Giá Trị Bền Vững Từ Chứng Nhận Xanh Quốc Tế EDGE &amp; 04 Tầng Vườn Chân Mây</h3>
-              <p class="v3-news-excerpt">Tiết kiệm 24% điện năng, 30% lượng nước tiêu thụ và tận hưởng vi khí hậu mát lành từ hệ thống cảnh quan tuần hoàn nước tự nhiên.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. ĐĂNG KÝ TƯ VẤN & NHẬN BẢNG GIÁ (#contact) -->
-    <section class="v3-section v3-section-alt" id="contact">
-      <div class="v3-container">
-        <div class="v3-contact-box">
-          <div class="v3-contact-info">
-            <div class="v3-kicker" style="color:#e5c687;">
-              <span class="v3-kicker-line" style="background:#e5c687;"></span>
+    <!-- ======================================================================
+         MÀN 07: ĐIỂM CHẠM ĐĂNG KÝ NHẬN BẢNG GIÁ & CHUYÊN TRANG (#contact)
+         ====================================================================== -->
+    <section class="v4-stage v4-stage-dark" id="contact">
+      <div class="v4-inner">
+        <div class="v4-finale-grid">
+          <div>
+            <div class="v4-hero-badge-line">
+              <img src="images/brand/ecolife_emblem_gold.webp" alt="">
               <span>PHÒNG KINH DOANH CHỦ ĐẦU TƯ</span>
             </div>
-            <h2>Đăng Ký Nhận Bảng Giá Chi Tiết &amp; Tham Quan Căn Hộ Mẫu</h2>
-            <p>Quý khách vui lòng để lại thông tin bên cạnh để nhận trọn bộ tài liệu Pháp lý, Mặt bằng 3D độ phân giải cao và Phiếu tính dòng tiền chi tiết từng mã căn.</p>
-            <div class="v3-contact-list">
-              <div class="v3-contact-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Vị trí dự án: Mặt tiền Đại lộ Mê Linh, Khu đô thị sinh thái Golden Hills, Liên Chiểu, TP. Đà Nẵng</span>
-              </div>
-              <div class="v3-contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <span>Hotline tư vấn 24/7: <strong>0398 055 588</strong></span>
-              </div>
-              <div class="v3-contact-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <span>Cam kết bảo mật thông tin tuyệt đối • Hỗ trợ chọn căn trực tiếp từ giỏ hàng Chủ đầu tư</span>
-              </div>
+            <h2 class="v4-main-title" style="margin-bottom:8px;">Nhận Trọn Bộ Bảng Giá &amp; Mặt Bằng 3D Chuẩn Nét</h2>
+            <p class="v4-sub-tagline" style="margin-bottom:24px;">Mặt tiền Đại lộ Mê Linh, Liên Chiểu, Đà Nẵng • Hotline 0398 055 588</p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;">
+              <a href="/nha-dat-ban-ecolife-signature/" class="v4-btn v4-btn-gold">
+                <span>Mở Giỏ Hàng &amp; Quỹ Căn 2026</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="/can-ho-2pn-view-bien/" class="v4-btn v4-btn-glass">
+                <span>Chuyên Trang Căn Hộ 2PN View Biển</span>
+              </a>
             </div>
           </div>
 
-          <div class="v3-contact-form-card">
-            <form class="v3-lead-form">
-              <div class="v3-form-grid">
-                <input type="text" name="fullname" class="v3-input" placeholder="Họ và tên Quý khách *" required>
-                <input type="tel" name="phone" class="v3-input" placeholder="Số điện thoại (Zalo) *" required>
+          <div class="v4-form-card">
+            <h3 style="font-size:1.15rem; font-weight:700; color:var(--v4-emerald); margin:0 0 4px 0;">Đăng Ký Nhận Báo Giá &amp; Phiếu Tính Dòng Tiền</h3>
+            <p style="font-size:0.82rem; color:var(--v4-text-muted); margin:0 0 16px 0;">Gửi trực tiếp qua Zalo trong 02 phút • Bảo mật tuyệt đối</p>
+            <form class="v4-lead-form">
+              <div class="v4-form-row">
+                <input type="text" name="fullname" class="v4-input" placeholder="Họ và tên Quý khách *" required>
+                <input type="tel" name="phone" class="v4-input" placeholder="Số điện thoại Zalo *" required>
               </div>
-              <div class="v3-form-grid">
-                <select name="unit_interest" class="v3-select">
-                  <option value="2PN A1 - A2 (66m2 - 68.9m2)">Quan tâm: Căn 2PN A1 – A2 (66m² – 68,9m²)</option>
-                  <option value="Can goc 2PN B1 (77.8m2)">Quan tâm: Căn góc 2PN B1 (77,8m²)</option>
-                  <option value="Can 2PN+ B2 (87.3m2)">Quan tâm: Căn 2PN+ Đa năng B2 (87,3m²)</option>
-                  <option value="Can 3PN B6 - B3 (87.1m2 - 88.8m2)">Quan tâm: Căn 3PN B6 – Căn góc B3 (87,1m² – 88,8m²)</option>
-                  <option value="Shophouse / Penthouse">Quan tâm: Shophouse khối đế / Penthouse</option>
+              <div class="v4-form-row">
+                <select name="unit_interest" class="v4-select">
+                  <option value="2PN A1 - A2 (66m2 - 68.9m2)">Căn 2PN A1 – A2 (66m² – 68,9m² • Từ 2,60 Tỷ)</option>
+                  <option value="Can goc 2PN B1 (77.8m2)">Căn góc 2PN B1 (77,8m² • 2 Mặt thoáng)</option>
+                  <option value="Can 2PN+ B2 (87.3m2)">Căn 2PN+ Đa năng B2 (87,3m²)</option>
+                  <option value="Can 3PN B6 - B3 (87.1m2 - 88.8m2)">Căn 3PN B6 – Căn góc B3 (87,1m² – 88,8m²)</option>
+                  <option value="Shophouse / Penthouse">Shophouse khối đế / Penthouse sân vườn</option>
                 </select>
-                <select name="payment_method" class="v3-select">
-                  <option value="Vay 70% HTLS 0% 18 thang">Phương án: Vay 70% (Lãi suất 0% / 18 tháng)</option>
-                  <option value="Thanh toan som 95% CK 10%">Phương án: Thanh toán sớm 95% (Chiết khấu 10%)</option>
-                  <option value="Thanh toan chuan 5 dot CK 6%">Phương án: Thanh toán chuẩn 05 đợt (Chiết khấu 6%)</option>
+                <select name="payment_method" class="v4-select">
+                  <option value="Vay 70% LS 0% 18 thang">Vay 70% (Lãi suất 0% / 18 tháng)</option>
+                  <option value="TT som 95% CK 10%">Thanh toán sớm 95% (Chiết khấu 10%)</option>
+                  <option value="TT chuan 5 dot CK 6%">Thanh toán chuẩn 05 đợt (Chiết khấu 6%)</option>
                 </select>
               </div>
-              <button type="submit" class="v3-btn v3-btn-primary" style="width:100%; padding:14px 20px; font-size:0.9rem;">
-                <span>Tải Bảng Giá &amp; Phiếu Tính Dòng Tiền Ngay</span>
+              <button type="submit" class="v4-btn v4-btn-emerald" style="width:100%; padding:13px;">
+                <span>Tải Bảng Giá &amp; Mặt Bằng 3D Ngay</span>
                 <i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
@@ -765,109 +680,85 @@
     </section>
   </main>
 
-  <!-- 10. FOOTER -->
-  <footer class="v3-footer">
-    <div class="v3-container">
-      <div class="v3-footer-grid">
-        <div>
-          <h4>ECOLIFE SIGNATURE ĐÀ NẴNG</h4>
-          <p style="margin:0 0 12px 0; line-height:1.6;">Biểu tượng sống xanh chuẩn quốc tế EDGE tại tâm điểm Đại lộ Mê Linh, Tây Bắc TP. Đà Nẵng — Phát triển bởi Tập đoàn Capital House.</p>
-          <p style="margin:0;">Hotline Phòng Kinh Doanh: <strong style="color:#e5c687;">0398 055 588</strong></p>
-        </div>
-
-        <div>
-          <h4>ĐIỀU HƯỚNG NHANH</h4>
-          <ul class="v3-footer-links">
-            <li><a href="#location">Vị trí Đại lộ Mê Linh</a></li>
-            <li><a href="#realms">04 Hệ không gian tiện ích</a></li>
-            <li><a href="#architecture">Kiến trúc &amp; Chứng nhận EDGE</a></li>
-            <li><a href="#residences">Bộ sưu tập căn hộ mẫu 3D</a></li>
-            <li><a href="#ownership">Chính sách &amp; Ngân hàng bảo lãnh</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>CHUYÊN TRANG SẢN PHẨM</h4>
-          <ul class="v3-footer-links">
-            <li><a href="/nha-dat-ban-ecolife-signature/">Giỏ hàng &amp; Quỹ căn EcoLife Signature 2026</a></li>
-            <li><a href="/can-ho-2pn-view-bien/">Chi tiết dòng căn hộ 2PN View Biển &amp; Hồ Bàu Tràm</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="v3-footer-bottom">
-        <span>© 2026 EcoLife Signature Đà Nẵng. Bảo lưu mọi quyền.</span>
-        <span>Thông tin, hình ảnh và video phối cảnh mang tính chất tham khảo theo tài liệu chính thức của Chủ đầu tư.</span>
-      </div>
-    </div>
-  </footer>
-
   <!-- FLOATING QUICK ACTIONS -->
-  <div class="v3-fab-group">
-    <a href="https://zalo.me/0398055588" target="_blank" rel="noopener" class="v3-fab-btn is-zalo">
+  <div class="v4-fab-stack">
+    <a href="https://zalo.me/0398055588" target="_blank" rel="noopener" class="v4-btn v4-btn-gold">
       <i class="fa-solid fa-comment-dots"></i>
-      <span>Chat Zalo</span>
-    </a>
-    <a href="tel:0398055588" class="v3-fab-btn">
-      <i class="fa-solid fa-phone-volume"></i>
-      <span>0398 055 588</span>
+      <span>Zalo 24/7</span>
     </a>
   </div>
 
-  <!-- MODAL 1: QUOTE & LEAD MODAL -->
-  <div class="v3-modal-backdrop" id="v3-quote-modal" aria-hidden="true">
-    <div class="v3-modal-dialog">
-      <button type="button" class="v3-modal-close" data-close-modal aria-label="Đóng">
+  <!-- MODAL 1: BASIC SPECIFICATION TABLE DRAWER ("MỞ BẢNG BASIC") -->
+  <div class="v4-modal-backdrop" id="v4-basic-modal" aria-hidden="true">
+    <div class="v4-modal-box">
+      <button type="button" class="v4-modal-close" data-close-modal aria-label="Đóng">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div class="v3-kicker">
-        <span class="v3-kicker-line"></span>
-        <span>BẢNG GIÁ TRỰC TIẾP CHỦ ĐẦU TƯ</span>
+      <h3 id="v4-basic-title" style="font-size:1.2rem; font-weight:700; color:var(--v4-emerald); margin:0 0 4px 0;">Bảng Thông Số Chi Tiết</h3>
+      <p id="v4-basic-sub" style="font-size:0.82rem; color:var(--v4-gold); font-weight:600; margin:0 0 12px 0;"></p>
+      <table class="v4-basic-table">
+        <tbody id="v4-basic-tbody"></tbody>
+      </table>
+      <div style="margin-top:18px; display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="v4-btn v4-btn-basic" data-close-modal>Đóng Bảng</button>
+        <button type="button" class="v4-btn v4-btn-emerald" data-close-modal data-open-quote>
+          <span>Nhận Báo Giá Chi Tiết</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
-      <h3 style="font-size:1.25rem; font-weight:600; color:var(--v3-emerald); margin:4px 0 8px;">Nhận Báo Giá &amp; Quỹ Căn Đẹp Nhất</h3>
-      <p style="font-size:0.85rem; color:var(--v3-text-body); margin:0 0 18px;">Chuyên viên tư vấn sẽ gửi ngay Bảng giá chi tiết, Mặt bằng 3D bóc tách và Phiếu tính dòng tiền qua Zalo của Quý khách trong 2 phút.</p>
-      <form class="v3-lead-form" style="display:flex; flex-direction:column; gap:12px;">
-        <input type="text" name="fullname" class="v3-input" placeholder="Họ và tên Quý khách *" required>
-        <input type="tel" name="phone" class="v3-input" placeholder="Số điện thoại nhận Zalo *" required>
-        <select name="unit_interest" class="v3-select">
+    </div>
+  </div>
+
+  <!-- MODAL 2: QUOTE MODAL -->
+  <div class="v4-modal-backdrop" id="v4-quote-modal" aria-hidden="true">
+    <div class="v4-modal-box" style="max-width:480px;">
+      <button type="button" class="v4-modal-close" data-close-modal aria-label="Đóng">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 style="font-size:1.2rem; font-weight:700; color:var(--v4-emerald); margin:0 0 4px 0;">Nhận Bảng Giá &amp; Quỹ Căn Đẹp Nhất</h3>
+      <p style="font-size:0.82rem; color:var(--v4-text-muted); margin:0 0 16px 0;">Gửi trực tiếp Bảng giá &amp; Mặt bằng 3D qua Zalo trong 02 phút</p>
+      <form class="v4-lead-form" style="display:flex; flex-direction:column; gap:12px;">
+        <input type="text" name="fullname" class="v4-input" placeholder="Họ và tên Quý khách *" required>
+        <input type="tel" name="phone" class="v4-input" placeholder="Số điện thoại nhận Zalo *" required>
+        <select name="unit_interest" class="v4-select">
           <option value="2PN A1 - A2 (Tu 2.60 Ty)">Căn 2PN A1 – A2 (66m² – 68,9m² • Từ 2,60 Tỷ)</option>
-          <option value="Can goc 2PN B1 (77.8m2)">Căn góc 2PN B1 (77,8m² • 2 mặt thoáng)</option>
+          <option value="Can goc 2PN B1 (77.8m2)">Căn góc 2PN B1 (77,8m² • 2 Mặt thoáng)</option>
           <option value="Can 2PN+ B2 (87.3m2)">Căn 2PN+ Đa năng B2 (87,3m²)</option>
           <option value="Can 3PN B6 - B3 (87.1m2 - 88.8m2)">Căn 3PN B6 – Căn góc B3 (87,1m² – 88,8m²)</option>
           <option value="Shophouse / Penthouse">Shophouse khối đế / Penthouse sân vườn</option>
         </select>
-        <button type="submit" class="v3-btn v3-btn-primary" style="width:100%; padding:13px;">
-          <span>Gửi Yêu Cầu Nhận Bảng Giá</span>
+        <button type="submit" class="v4-btn v4-btn-emerald" style="width:100%; padding:13px;">
+          <span>Gửi Yêu Cầu Ngay</span>
           <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- MODAL 2: HIGH-RES LIGHTBOX MODAL -->
-  <div class="v3-modal-backdrop" id="v3-lightbox-modal" aria-hidden="true">
-    <div class="v3-modal-dialog is-wide" style="background:#0b241a; color:#ffffff;">
-      <button type="button" class="v3-modal-close" data-close-modal aria-label="Đóng">
+  <!-- MODAL 3: HIGH-RES LIGHTBOX -->
+  <div class="v4-modal-backdrop" id="v4-lightbox-modal" aria-hidden="true">
+    <div class="v4-modal-box is-wide" style="background:#071d15; color:#ffffff;">
+      <button type="button" class="v4-modal-close" data-close-modal aria-label="Đóng">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <img id="v3-lightbox-img" src="" alt="" style="width:100%; max-height:78vh; object-fit:contain; display:block; border-radius:10px; background:#ffffff;">
-      <div id="v3-lightbox-caption" style="padding:12px 8px 4px; font-size:0.88rem; font-weight:500; text-align:center; color:#e5c687;"></div>
+      <img id="v4-lightbox-img" src="" alt="" style="width:100%; max-height:78vh; object-fit:contain; display:block; border-radius:10px; background:#ffffff;">
+      <div id="v4-lightbox-cap" style="padding:10px 6px 2px; font-size:0.86rem; font-weight:600; text-align:center; color:var(--v4-gold-bright);"></div>
     </div>
   </div>
 
-  <!-- MODAL 3: 3D GLB ARCHITECTURAL MODEL MODAL -->
-  <div class="v3-modal-backdrop" id="v3-model-modal" aria-hidden="true">
-    <div class="v3-modal-dialog is-wide" style="background:#0b241a; color:#ffffff;">
-      <button type="button" class="v3-modal-close" data-close-modal aria-label="Đóng">
+  <!-- MODAL 4: 3D GLB ARCHITECTURAL MODEL -->
+  <div class="v4-modal-backdrop" id="v4-model-modal" aria-hidden="true">
+    <div class="v4-modal-box is-wide" style="background:#071d15; color:#ffffff;">
+      <button type="button" class="v4-modal-close" data-close-modal aria-label="Đóng">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div id="v3-model-container" style="width:100%; min-height:65vh;"></div>
-      <div style="padding:10px 8px 2px; font-size:0.84rem; text-align:center; color:rgba(255,255,255,0.85);">
+      <div id="v4-model-wrap" style="width:100%; min-height:68vh;"></div>
+      <div style="padding:8px; font-size:0.82rem; text-align:center; color:var(--v4-gold-bright);">
         Giữ chuột trái / chạm để xoay 360° • Cuộn chuột để phóng to khối tháp giật cấp &amp; 04 tầng vườn chân mây
       </div>
     </div>
   </div>
 
-  <script src="script.js?v=3.2"></script>
+  <script src="script.js?v=4.0"></script>
 </body>
 </html>
