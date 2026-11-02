@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link: 'can-ho-2pn-view-bien.html?layout=3pn-b6',
             thumbs: [
                 { src: 'images/noi_that/layouts/can_b6_01.webp', alt: 'Phòng khách Organic Modern Căn 3PN Mẫu B6 (87,1m²)' },
-                { src: 'images/noi_that/layouts/can_b6_07.webp', alt: 'Khu bàn ăn & sofa da Cognac Mẫu B6' },
+                { src: 'images/noi_that/layouts/can_b6_07.webp', alt: 'Không gian khách – ăn bo cong mềm mại xử lý tinh tế góc cạnh (Mẫu B6)' },
                 { src: 'images/noi_that/layouts/can_b6_03.webp', alt: 'Phòng ngủ Master có WC khép kín Mẫu B6' },
                 { src: 'images/noi_that/layouts/can_b6_06.webp', alt: 'Phòng ngủ phụ bàn học đôi Mẫu B6' }
             ]
@@ -765,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         b6: [
             buildModelItem('images/noi_that/layouts/can_b6_01.webp', 'Phòng khách Căn 3PN 3WC Riêng Tư (Mẫu B6 - 87,1m²)', 'Căn 3PN Mẫu B6 (87,1m² – 3PN, 3WC riêng tư, ban công thoáng rộng): Tông kem gỗ sáng cùng nội thất bo cong mềm mại (Organic Modern)'),
-            buildModelItem('images/noi_that/layouts/can_b6_07.webp', 'Cận cảnh phòng khách & bàn ăn tròn (Mẫu B6)', 'Căn 3PN Mẫu B6 (87,1m²): Phòng khách sofa da bò Ý màu Cognac & bàn ăn gia đình ấm cúng'),
+            buildModelItem('images/noi_that/layouts/can_b6_07.webp', 'Cận cảnh phòng khách & bàn ăn tròn (Mẫu B6)', 'Căn 3PN Mẫu B6 (87,1m²): Tông kem gỗ sáng với hình thức nội thất bo cong mềm mại, xử lý khéo léo mọi góc cạnh không gian'),
             buildModelItem('images/noi_that/layouts/can_b6_09.webp', 'Cửa kính ban công rộng mở từ sofa (Mẫu B6)', 'Căn 3PN Mẫu B6 (87,1m²): Cửa kính ban công rộng mở đón trọn tầm nhìn từ sofa phòng khách'),
             buildModelItem('images/noi_that/layouts/can_b6_02.webp', 'Bàn ăn gia đình ghế bọc da Cognac (Mẫu B6)', 'Căn 3PN Mẫu B6 (87,1m²): Khu vực bàn ăn gia đình ấm cúng đồng bộ phong cách Organic Modern'),
             buildModelItem('images/noi_that/layouts/can_b6_08.webp', 'Hệ tủ lưu trữ âm tường tinh tế (Mẫu B6)', 'Căn 3PN Mẫu B6 (87,1m²): Hệ tủ lưu trữ âm tường tinh tế dọc hành lang căn hộ'),
