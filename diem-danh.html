@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điểm Danh Sự Kiện Kick-off 04/11 | EcoLife Signature</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0; background: #082519;">
+<style>
+  /* 1. TRIỆT TIÊU TOÀN BỘ BOTTOM BARS, FLOATING WIDGETS & MARKETING FOOTER */
+  .mobile-bottom-bar,
+  .floating-actions,
+  .site-footer,
+  .mobile-sticky-cta,
+  #float-call,
+  #float-register,
+  #float-backtop {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .checkin-page {
+    min-height: 100vh;
+    background: #082519 linear-gradient(135deg, #061c13 0%, #0d3b29 50%, #061f15 100%);
+    padding: clamp(88px, 12vw, 105px) 12px 20px 12px !important;
+    font-family: var(--font-sans, 'Montserrat', sans-serif);
+    color: #ffffff;
+    position: relative;
+    overflow-x: clip;
+  }
+
+  /* 2. DROPDOWN SELECT GỌN GÀNG CHO MOBILE - KHÔNG RỚT DÒNG */
+  .checkin-select-dropdown {
+    width: 100%;
+    padding: 10px 32px 10px 12px;
+    border-radius: 8px;
+    border: 1.5px solid #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0d3b29;
+    background-color: #f8fafc;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230d3b29' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .checkin-select-dropdown:focus {
+    border-color: #0d3b29;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(13, 59, 41, 0.12);
+  }
+
+  .unit-group-btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .unit-group-btn.active {
+    background: #0d3b29 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(13, 59, 41, 0.25);
+  }
+</style>
+
+<main class="checkin-page">
+  
+  <div class="container" style="max-width: 520px; margin: 0 auto; position: relative; z-index: 2;">
+
+    <!-- Event Header (Gọn gàng, chữ ít, không rớt dòng) -->
+    <header class="text-center" style="margin-bottom: 12px;">
+      <h1 style="font-family: var(--font-serif, 'Playfair Display', serif); font-size: clamp(1.2rem, 3.6vw, 1.55rem); color: #ffffff; line-height: 1.25; margin: 0 0 4px 0; font-weight: 700; white-space: nowrap;">
+        ĐIỂM DANH KICK-OFF 04/11
+      </h1>
+      <p style="font-size: 12.5px; color: #dfc17b; margin: 0; font-weight: 600; white-space: nowrap;">
+        EcoLife Signature • Royal Lotus Danang
+      </p>
+    </header>
+
+    <!-- Main Card (Padding siêu gọn) -->
+    <div id="checkin-card-wrap" style="background: rgba(255, 255, 255, 0.98); color: #0d3b29; border-radius: 16px; padding: clamp(14px, 3.5vw, 22px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35); border: 1px solid rgba(197, 157, 63, 0.35);">
+      
+      <!-- FORM VIEW -->
+      <form id="event-checkin-form" autocomplete="off">
+
+        <!-- 1. Họ và tên -->
+        <div style="margin-bottom: 11px;">
+          <label for="checkin-name" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px; color: #0d3b29; white-space: nowrap;">
+            <i class="fa-solid fa-user" style="color: #c59d3f; margin-right: 5px; font-size: 12px;"></i> Họ Và Tên <span style="color: #dc2626;">*</span>
+          </label>
+          <input type="text" id="checkin-name" name="fullname" required placeholder="Nhập họ và tên..." style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 14px; color: #0f172a; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#0d3b29';" onblur="this.style.borderColor='#cbd5e1';">
+        </div>
+
+        <!-- 2. Số điện thoại -->
+        <div style="margin-bottom: 11px;">
+          <label for="checkin-phone" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px; color: #0d3b29; white-space: nowrap;">
+            <i class="fa-solid fa-phone" style="color: #c59d3f; margin-right: 5px; font-size: 12px;"></i> Số Điện Thoại <span style="color: #dc2626;">*</span>
+          </label>
+          <input type="tel" id="checkin-phone" name="phone" required placeholder="Ví dụ: 0905 xxx xxx" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 14px; color: #0f172a; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#0d3b29';" onblur="this.style.borderColor='#cbd5e1';">
+        </div>
+
+        <!-- 3. Đơn Vị (3 Tabs Nút Nhỏ 1 Hàng + Dropdown) -->
+        <div style="margin-bottom: 11px;">
+          <label style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 5px; color: #0d3b29; white-space: nowrap;">
+            <i class="fa-solid fa-building" style="color: #c59d3f; margin-right: 5px; font-size: 12px;"></i> Đơn Vị Của Bạn <span style="color: #dc2626;">*</span>
+          </label>
+
+          <!-- 3 Tabs phân nhóm - Đảm bảo luôn nằm trên 1 hàng duy nhất -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: #eef4f0; padding: 3px; border-radius: 8px; margin-bottom: 7px;">
+            <button type="button" class="unit-group-btn active" data-group="agency" style="padding: 7px 2px; border: none; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: #0d3b29; color: #ffffff; text-align: center;">
+              Đại lý F1
+            </button>
+            <button type="button" class="unit-group-btn" data-group="bank" style="padding: 7px 2px; border: none; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: #475569; text-align: center;">
+              Ngân hàng
+            </button>
+            <button type="button" class="unit-group-btn" data-group="other" style="padding: 7px 2px; border: none; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: #475569; text-align: center;">
+              Khác / CĐT
+            </button>
+          </div>
+          <input type="hidden" id="checkin-unit-group" name="unit_group" value="Đại lý F1">
+
+          <!-- Dropdown Nhóm 1: 3 Đại Lý F1 -->
+          <div id="unit-select-agency" class="unit-box">
+            <select id="select-agency" class="checkin-select-dropdown">
+              <option value="IHD (IHD Land)">IHD Land</option>
+              <option value="Tùng Long">Tùng Long</option>
+              <option value="Hợp Nhất Land">Hợp Nhất Land</option>
+            </select>
+          </div>
+
+          <!-- Dropdown Nhóm 2: 5 Ngân Hàng Đối Tác -->
+          <div id="unit-select-bank" class="unit-box" style="display: none;">
+            <select id="select-bank" class="checkin-select-dropdown">
+              <option value="PGBank">PGBank</option>
+              <option value="SeABank">SeABank</option>
+              <option value="VietinBank">VietinBank</option>
+              <option value="Vietcombank">Vietcombank</option>
+              <option value="VIB">VIB</option>
+            </select>
+          </div>
+
+          <!-- Dropdown Nhóm 3: Khác / CĐT -->
+          <div id="unit-select-other" class="unit-box" style="display: none;">
+            <select id="select-other" class="checkin-select-dropdown" style="margin-bottom: 6px;">
+              <option value="Chủ đầu tư Capital House">CĐT Capital House</option>
+              <option value="CHG Homes">CHG Homes</option>
+              <option value="Ban Tổ Chức">Ban Tổ Chức</option>
+              <option value="Khách mời VIP">Khách mời VIP</option>
+              <option value="custom">-- Đơn vị khác (Nhập tay) --</option>
+            </select>
+            <input type="text" id="checkin-custom-unit" placeholder="Nhập tên đơn vị của bạn..." style="display: none; width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13.5px; color: #0f172a; outline: none; background: #ffffff;">
+          </div>
+          
+          <input type="hidden" id="checkin-unit-name" name="unit_name" value="IHD (IHD Land)">
+        </div>
+
+        <!-- 4. Chức vụ / Vị trí -->
+        <div style="margin-bottom: 11px;">
+          <label for="checkin-position" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px; color: #0d3b29; white-space: nowrap;">
+            <i class="fa-solid fa-id-badge" style="color: #c59d3f; margin-right: 5px; font-size: 12px;"></i> Chức Vụ / Vị Trí
+          </label>
+          <select id="checkin-position" name="position" class="checkin-select-dropdown">
+            <option value="Chuyên viên Sales" selected>Chuyên viên Sales</option>
+            <option value="Trưởng phòng KD">Trưởng phòng KD</option>
+            <option value="Giám đốc Sàn / GĐKD">Giám đốc Sàn / GĐKD</option>
+            <option value="Chuyên viên Ngân hàng">Chuyên viên Ngân hàng</option>
+            <option value="Lãnh đạo / Khách VIP">Lãnh đạo / Khách VIP</option>
+            <option value="Khác">Khác</option>
+          </select>
+        </div>
+
+        <!-- 5. Lời chúc / Ghi chú (Nhãn không rớt dòng) -->
+        <div style="margin-bottom: 16px;">
+          <label for="checkin-note" style="display: block; font-weight: 700; font-size: 13px; margin-bottom: 4px; color: #0d3b29; white-space: nowrap;">
+            <i class="fa-solid fa-comment-dots" style="color: #c59d3f; margin-right: 5px; font-size: 12px;"></i> Lời Chúc <span style="font-weight: 400; color: #64748b; font-size: 12px;">(Tùy chọn)</span>
+          </label>
+          <input type="text" id="checkin-note" name="note" placeholder="Chúc sự kiện thành công rực rỡ!" style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-size: 13.5px; color: #0f172a; outline: none;">
+        </div>
+
+        <!-- Nút Submit (1 hàng duy nhất - Không rớt dòng) -->
+        <button type="submit" id="btn-submit-checkin" style="width: 100%; background: linear-gradient(135deg, #0d3b29 0%, #15573d 100%); color: #ffffff; border: 1px solid #dfc17b; padding: 13px 16px; border-radius: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(13, 59, 41, 0.25); white-space: nowrap;">
+          <i class="fa-solid fa-qrcode" style="font-size: 16px; color: #dfc17b;"></i>
+          <span>XÁC NHẬN ĐIỂM DANH</span>
+        </button>
+
+      </form>
+
+      <!-- SUCCESS PASS VIEW (Initially Hidden) -->
+      <div id="checkin-success-view" style="display: none; text-align: center; padding: 6px 0;">
+        
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #e6f7ef; color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 8px; border: 2px solid #a7f3d0;">
+          <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h3 style="font-size: 18px; font-weight: 700; color: #0d3b29; margin: 0 0 4px 0; white-space: nowrap;">
+          ĐIỂM DANH THÀNH CÔNG!
+        </h3>
+        <p style="font-size: 12.5px; color: #64748b; margin: 0 0 14px 0;">
+          Chào mừng quý đối tác đến với Lễ Kick-off <strong>EcoLife Signature</strong>.
+        </p>
+
+        <!-- VIP PASS TICKET -->
+        <div style="background: linear-gradient(135deg, #061c13 0%, #0d3b29 100%); color: #ffffff; border-radius: 14px; padding: 18px 16px; border: 1.5px solid #dfc17b; margin-bottom: 16px; text-align: left; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(13, 59, 41, 0.35);">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(223, 193, 123, 0.4); padding-bottom: 10px; margin-bottom: 12px;">
+            <div>
+              <span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.8px; color: #dfc17b; font-weight: 700;">THẺ KHÁCH MỜI</span>
+              <h4 style="font-size: 15px; margin: 1px 0 0 0; color: #ffffff; font-weight: 700;">VIP GUEST PASS</h4>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 10.5px; color: rgba(255,255,255,0.7);">MÃ CHECK-IN</span>
+              <div id="pass-code" style="font-size: 16px; font-weight: 800; color: #dfc17b; letter-spacing: 0.5px;">ELS-0411-001</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 13px;">
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <span style="color: rgba(255,255,255,0.65); font-size: 11.5px;">Họ tên:</span>
+              <strong id="pass-name" style="color: #ffffff; margin-left: 6px; font-size: 14.5px;">--</strong>
+            </div>
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <span style="color: rgba(255,255,255,0.65); font-size: 11.5px;">Đơn vị:</span>
+              <strong id="pass-unit" style="color: #dfc17b; margin-left: 6px;">--</strong>
+            </div>
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <span style="color: rgba(255,255,255,0.65); font-size: 11.5px;">Chức vụ:</span>
+              <span id="pass-pos" style="color: #ffffff; margin-left: 6px;">--</span>
+            </div>
+            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <span style="color: rgba(255,255,255,0.65); font-size: 11.5px;">Thời gian:</span>
+              <span id="pass-time" style="color: #94a3b8; margin-left: 6px; font-size: 12px;">--</span>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 12px; color: #64748b; line-height: 1.4; margin-bottom: 14px;">
+          <i class="fa-solid fa-gift" style="color: #c59d3f; margin-right: 4px;"></i> Tiến vào sảnh hội trường để nhận <strong>Tài liệu & Quà tặng</strong>.
+        </p>
+
+        <button type="button" id="btn-reset-checkin" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 9px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;">
+          <i class="fa-solid fa-user-plus" style="margin-right: 5px;"></i> Điểm Danh Người Tiếp Theo
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Minimal, 1-line footer note (Không rớt dòng) -->
+    <div style="margin-top: 14px; text-align: center; font-size: 11px; color: rgba(255, 255, 255, 0.5); white-space: nowrap;">
+      © 2026 EcoLife Signature • Kick-off 04/11
+    </div>
+
+  </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('event-checkin-form');
+  const groupBtns = document.querySelectorAll('.unit-group-btn');
+  const unitBoxes = {
+    agency: document.getElementById('unit-select-agency'),
+    bank: document.getElementById('unit-select-bank'),
+    other: document.getElementById('unit-select-other')
+  };
+  const unitGroupInput = document.getElementById('checkin-unit-group');
+  const unitNameInput = document.getElementById('checkin-unit-name');
+  
+  const selectAgency = document.getElementById('select-agency');
+  const selectBank = document.getElementById('select-bank');
+  const selectOther = document.getElementById('select-other');
+  const customUnitInput = document.getElementById('checkin-custom-unit');
+
+  // Handle Tab Switch (Đại lý vs Ngân hàng vs Khác)
+  groupBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      groupBtns.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = '#475569';
+        b.classList.remove('active');
+      });
+      this.style.background = '#0d3b29';
+      this.style.color = '#ffffff';
+      this.classList.add('active');
+
+      const targetGroup = this.getAttribute('data-group');
+      unitGroupInput.value = targetGroup === 'agency' ? 'Đại lý F1' : (targetGroup === 'bank' ? 'Ngân hàng liên kết' : 'Khác / CĐT');
+
+      // Hide all unit boxes
+      Object.values(unitBoxes).forEach(box => { if (box) box.style.display = 'none'; });
+      
+      // Show active box & sync value
+      if (targetGroup === 'agency') {
+        unitBoxes.agency.style.display = 'block';
+        unitNameInput.value = selectAgency.value;
+      } else if (targetGroup === 'bank') {
+        unitBoxes.bank.style.display = 'block';
+        unitNameInput.value = selectBank.value;
+      } else {
+        unitBoxes.other.style.display = 'block';
+        if (selectOther.value === 'custom') {
+          customUnitInput.style.display = 'block';
+          unitNameInput.value = customUnitInput.value.trim() || 'Khách mời / CĐT';
+        } else {
+          customUnitInput.style.display = 'none';
+          unitNameInput.value = selectOther.value;
+        }
+      }
+    });
+  });
+
+  // Dropdown change listeners
+  selectAgency.addEventListener('change', function () {
+    unitNameInput.value = this.value;
+  });
+
+  selectBank.addEventListener('change', function () {
+    unitNameInput.value = this.value;
+  });
+
+  selectOther.addEventListener('change', function () {
+    if (this.value === 'custom') {
+      customUnitInput.style.display = 'block';
+      customUnitInput.focus();
+      unitNameInput.value = customUnitInput.value.trim() || 'Khách mời / CĐT';
+    } else {
+      customUnitInput.style.display = 'none';
+      unitNameInput.value = this.value;
+    }
+  });
+
+  if (customUnitInput) {
+    customUnitInput.addEventListener('input', function () {
+      unitNameInput.value = this.value.trim() || 'Khách mời / CĐT';
+    });
+  }
+
+  // Handle Form Submission
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('btn-submit-checkin');
+    const origBtnHtml = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang xác nhận...</span>';
+
+    const payload = {
+      fullname: document.getElementById('checkin-name').value.trim(),
+      phone: document.getElementById('checkin-phone').value.trim(),
+      unit_group: unitGroupInput.value,
+      unit_name: unitNameInput.value,
+      position: document.getElementById('checkin-position').value,
+      note: document.getElementById('checkin-note').value.trim()
+    };
+
+    try {
+      // 1. Submit to WordPress Backend API
+      const apiUrl = 'https://ecolifesignature.vn/wp-content/themes/ecolife-signature/api/checkin-api.php?action=submit';
+      const resp = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const res = await resp.json();
+
+      if (res.success) {
+        // Display VIP Pass
+        document.getElementById('pass-code').innerText = res.checkin_code || 'ELS-0411';
+        document.getElementById('pass-name').innerText = res.fullname || payload.fullname;
+        document.getElementById('pass-unit').innerText = res.unit_name || payload.unit_name;
+        document.getElementById('pass-pos').innerText = res.position || payload.position;
+        document.getElementById('pass-time').innerText = res.created_at || '08:30 - 04/11/2026';
+
+        form.style.display = 'none';
+        document.getElementById('checkin-success-view').style.display = 'block';
+
+        // Scroll to pass smoothly
+        document.getElementById('checkin-card-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Trigger Google Sheets Webhook sync in background if configured
+        syncToGoogleSheets(payload, res.checkin_code, res.created_at);
+      } else {
+        alert(res.message || 'Có lỗi xảy ra, vui lòng thử lại!');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origBtnHtml;
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng!');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origBtnHtml;
+    }
+  });
+
+  // Reset form to check in another person
+  document.getElementById('btn-reset-checkin').addEventListener('click', function () {
+    form.reset();
+    document.getElementById('checkin-name').value = '';
+    document.getElementById('checkin-phone').value = '';
+    document.getElementById('checkin-note').value = '';
+    document.getElementById('btn-submit-checkin').disabled = false;
+    document.getElementById('btn-submit-checkin').innerHTML = '<i class="fa-solid fa-qrcode" style="font-size: 16px; color: #dfc17b;"></i> <span>XÁC NHẬN ĐIỂM DANH</span>';
+    
+    document.getElementById('checkin-success-view').style.display = 'none';
+    form.style.display = 'block';
+  });
+
+  // Background Google Sheets sync function
+  function syncToGoogleSheets(payload, code, timeStr) {
+    const sheetsWebhookUrl = window.ECOLIFE_SHEETS_WEBHOOK_URL || '';
+    if (sheetsWebhookUrl) {
+      fetch(sheetsWebhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'checkin',
+          checkin_code: code,
+          created_at: timeStr,
+          fullname: payload.fullname,
+          phone: payload.phone,
+          unit_group: payload.unit_group,
+          unit_name: payload.unit_name,
+          position: payload.position,
+          note: payload.note
+        })
+      }).catch(e => console.log('Sheets sync note:', e));
+    }
+  }
+});
+</script>
+
+</body>
+</html>

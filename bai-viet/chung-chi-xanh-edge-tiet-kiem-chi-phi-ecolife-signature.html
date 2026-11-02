@@ -13,14 +13,14 @@
   <meta property="og:url" content="https://ecolifesignature.vn/chung-chi-xanh-edge-tiet-kiem-chi-phi-ecolife-signature/">
   <meta property="og:title" content="Tiêu Chuẩn Công Trình Xanh EDGE Là Gì? Bài Toán Tiết Kiệm 15 Triệu/Năm Cho Cư Dân EcoLife Signature">
   <meta property="og:description" content="Chứng chỉ xanh quốc tế EDGE tại EcoLife Signature giúp cư dân tiết kiệm 25% điện, 32% nước và giảm 10-15 triệu tiền sinh hoạt mỗi năm như thế nào?">
-  <meta property="og:image" content="https://ecolifesignature.vn/wp-content/themes/ecolife-signature/wp-content/themes/ecolife-signature/images/brand/mindfulness_wellness.webp">
+  <meta property="og:image" content="https://ecolifesignature.vn/wp-content/themes/ecolife-signature../images/brand/mindfulness_wellness.webp">
   <meta property="og:locale" content="vi_VN">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tiêu Chuẩn Công Trình Xanh EDGE Là Gì? Bài Toán Tiết Kiệm 15 Triệu/Năm Cho Cư Dân EcoLife Signature">
   <meta name="twitter:description" content="Chứng chỉ xanh quốc tế EDGE tại EcoLife Signature giúp cư dân tiết kiệm 25% điện, 32% nước và giảm 10-15 triệu tiền sinh hoạt mỗi năm như thế nào?">
-  <meta name="twitter:image" content="https://ecolifesignature.vn/wp-content/themes/ecolife-signature/wp-content/themes/ecolife-signature/images/brand/mindfulness_wellness.webp">
+  <meta name="twitter:image" content="https://ecolifesignature.vn/wp-content/themes/ecolife-signature../images/brand/mindfulness_wellness.webp">
 
   <link rel="icon" type="image/webp" href="../ecolife.webp">
   <link rel="shortcut icon" href="../favicon.ico">
@@ -51,7 +51,7 @@
     "@type": "Article",
     "headline": "Tiêu Chuẩn Công Trình Xanh EDGE Là Gì? Bài Toán Tiết Kiệm 15 Triệu/Năm Cho Cư Dân EcoLife Signature",
     "description": "Chứng chỉ xanh quốc tế EDGE tại EcoLife Signature giúp cư dân tiết kiệm 25% điện, 32% nước và giảm 10-15 triệu tiền sinh hoạt mỗi năm như thế nào?",
-    "image": "https://ecolifesignature.vn/wp-content/themes/ecolife-signature/wp-content/themes/ecolife-signature/images/brand/mindfulness_wellness.webp",
+    "image": "https://ecolifesignature.vn/wp-content/themes/ecolife-signature../images/brand/mindfulness_wellness.webp",
     "datePublished": "2026-10-12T08:00:00+07:00",
     "dateModified": "2026-10-12T11:00:00+07:00",
     "author": {
@@ -64,7 +64,7 @@
       "name": "EcoLife Signature Đà Nẵng",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://ecolifesignature.vn/wp-content/themes/ecolife-signature/images/brand/ecolife_signature_logo.webp"
+        "url": "https://ecolifesignature.vn../images/brand/ecolife_signature_logo.webp"
       }
     }
   }
@@ -158,6 +158,66 @@
         padding: 24px;
       }
     }
+  
+  /* === CTA BOX COMPACT & 2-BUTTON SINGLE ROW FIX === */
+  .cta-box {
+    padding: 20px 22px !important;
+    margin: 28px 0 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px 12px !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  .cta-box h3 {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    font-size: clamp(1.08rem, 1.75vw, 1.24rem) !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+  }
+  .cta-box p {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    font-size: 13.8px !important;
+    line-height: 1.55 !important;
+    margin: 0 auto 4px auto !important;
+    max-width: 600px !important;
+  }
+  .cta-box a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 9px 18px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    box-sizing: border-box !important;
+  }
+  @media (max-width: 640px) {
+    .cta-box {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8px !important;
+      padding: 18px 14px !important;
+    }
+    .cta-box h3,
+    .cta-box p {
+      grid-column: 1 / -1 !important;
+    }
+    .cta-box a {
+      width: 100% !important;
+      padding: 9px 8px !important;
+      font-size: 12.5px !important;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -224,7 +284,16 @@
   </ul>
 </div>
 
-<h2>1. Chứng Chỉ Xanh EDGE Là Gì & Các Tiêu Chí Đánh Giá Khắt Khe</h2>
+
+        <div style="margin: 26px 0; padding: 22px; background: linear-gradient(135deg, #071f16, #0d3b29); color: #fff; border-radius: 14px; border: 1.5px solid #d4af37;">
+          <h3 style="color: #f3d47c; margin-top: 0;">Chứng Nhận Công Trình Xanh EDGE Quốc Tế (SGS &amp; IFC World Bank)</h3>
+          <p style="color: #e2e8f0; line-height: 1.65;">
+            Theo chứng nhận thiết kế công trình xanh quốc tế EDGE (Mã số <strong>LP1-VNM-25121810257936-376-P</strong>) do Tổ chức <strong>SGS</strong> và <strong>IFC – Ngân hàng Thế giới (World Bank Group)</strong> cấp, dự án EcoLife Signature đạt mức tiết kiệm định lượng vượt trội: <strong>-24% Điện năng tiêu thụ</strong>, <strong>-28% Lượng nước sinh hoạt</strong> và <strong>-42% Năng lượng hàm chứa trong vật liệu</strong>.
+          </p>
+          <img src="../images/brand/edge_certificate_official.webp" alt="Chứng nhận EDGE Quốc tế dự án EcoLife Signature" style="max-height: 360px; width: auto; display: block; margin: 14px auto 0; border-radius: 8px; border: 2px solid #f3d47c;">
+        </div>
+        
+        <h2>1. Chứng Chỉ Xanh EDGE Là Gì & Các Tiêu Chí Đánh Giá Khắt Khe</h2>
 <p>
   <strong>EDGE (Excellence in Design for Greater Efficiencies)</strong> là tiêu chuẩn công trình xanh có phạm vi toàn cầu của IFC (Tổ chức Tài chính Quốc tế). Để đạt được chứng nhận EDGE, một dự án bất động sản phải chứng minh được việc giảm thiểu tối thiểu <strong>20% mức tiêu thụ năng lượng</strong>, <strong>20% mức tiêu thụ nước</strong> và <strong>20% năng lượng hàm chứa trong vật liệu xây dựng</strong> so với các công trình thông thường.
 </p>
@@ -265,7 +334,7 @@
       <tr style="background: #f7faf8;">
         <td style="padding: 12px 16px; border: 1px solid #dce8e1; font-weight: 600;">Tiền nước sạch sinh hoạt</td>
         <td style="padding: 12px 16px; border: 1px solid #dce8e1;">450.000 đ/tháng</td>
-        <td style="padding: 12px 16px; border: 1px solid #dce8e1; color: #0d3b29; font-weight: 700;">306.000 đ/tháng (-32%)</td>
+        <td style="padding: 12px 16px; border: 1px solid #dce8e1; color: #0d3b29; font-weight: 700;">306.000 đ/tháng (-28%)</td>
         <td style="padding: 12px 16px; border: 1px solid #dce8e1; color: #c59d3f; font-weight: 700;">1.728.000 đ</td>
       </tr>
       <tr style="background: #ffffff;">
@@ -286,9 +355,9 @@
 <div class="cta-box" style="background: linear-gradient(135deg, #0d3b29, #134e35); color: #ffffff; padding: 28px; border-radius: 12px; margin: 36px 0; text-align: center;">
   <h3 style="color: #c59d3f; margin-top: 0; font-size: 1.4rem;">Chọn Chuẩn Sống Xanh – Chạm Giá Trị Sống Chuẩn</h3>
   <p style="font-size: 15.5px; line-height: 1.6; max-width: 650px; margin: 12px auto 20px auto;">
-    Sở hữu căn hộ thương mại đạt chuẩn xanh quốc tế EDGE đầu tiên tại Liên Chiểu Đà Nẵng với mức giá chỉ từ 2.495 Tỷ đồng.
+    Sở hữu căn hộ thương mại đạt chuẩn xanh quốc tế EDGE đầu tiên tại Liên Chiểu Đà Nẵng với mức giá chỉ từ 2.730 Tỷ đồng.
   </p>
-  <a href="tel:0398055588" style="display: inline-block; background: #c59d3f; color: #0d3b29; padding: 12px 28px; font-weight: 700; border-radius: 30px; text-decoration: none; font-size: 15px; margin-right: 12px;">Hotline CĐT: 0398 055 588</a>
+  <a href="tel:0398055588" style="display: inline-block; background: #c59d3f; color: #0d3b29; padding: 12px 28px; font-weight: 700; border-radius: 30px; text-decoration: none; font-size: 15px; margin-right: 12px;">Hotline: 0398 055 588</a>
   <a href="/nha-dat-ban-ecolife-signature/" style="display: inline-block; border: 2px solid #ffffff; color: #ffffff; padding: 10px 24px; font-weight: 600; border-radius: 30px; text-decoration: none; font-size: 15px;">Xem Bảng Giá Căn Hộ</a>
 </div>
 
@@ -301,7 +370,7 @@
         <div class="sidebar-widget" style="background: linear-gradient(135deg, #0d3b29, #134e35); color: #ffffff;">
           <h3 class="widget-title" style="color: #c59d3f; border-color: #c59d3f;">Tư Vấn Trực Tiếp CĐT</h3>
           <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
-            Nhận trọn bộ bảng giá chi tiết đợt 1, chính sách chiết khấu 8% và hỗ trợ lãi suất 0% trong 18 tháng.
+            Nhận trọn bộ bảng giá chi tiết đợt 1, chính sách chiết khấu lên tới 10% và hỗ trợ lãi suất 0% trong 18 tháng.
           </p>
           <a href="tel:0398055588" style="display: block; background: #c59d3f; color: #0d3b29; text-align: center; padding: 12px; font-weight: 700; border-radius: 8px; text-decoration: none; margin-bottom: 10px;">
             <i class="fa-solid fa-phone"></i> Hotline: 0398 055 588
