@@ -1,873 +1,539 @@
 /**
- * ECOLIFE SIGNATURE V2 — QUIET LUXURY LIVING JOURNEY ENGINE
- * 7-Chapter Full-Screen Interactive Architecture, 3D GLB, Studio Showcase & Lead Capture
+ * ECOLIFE SIGNATURE — V3 CLEAN BASIC LUXURY INTERACTIVE CONTROLLER
+ * - Location Segmented Video & 4K Image Switcher
+ * - Apartment Studio 8-Unit Multi-Shot CapCut Video & 3D Floorplan Controller
+ * - 3D GLB Architectural Model Modal & High-Res Lightbox
+ * - Subpage Mobile Navigation & Lead Form Handler
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
   'use strict';
 
-  const THEME_BASE = (window.ecolifeData && window.ecolifeData.themeUrl)
-    ? window.ecolifeData.themeUrl.replace(/\/$/, '') + '/'
-    : '';
+  const TPL_URI = (typeof window.ECOLIFE_THEME_URI !== 'undefined' && window.ECOLIFE_THEME_URI)
+    ? window.ECOLIFE_THEME_URI.replace(/\/$/, '')
+    : '.';
 
-  const resolveAsset = (relPath) => {
+  function assetUrl(relPath) {
     if (!relPath) return '';
-    if (relPath.startsWith('http://') || relPath.startsWith('https://') || relPath.startsWith('/')) {
-      return relPath;
+    if (/^(https?:)?\/\//i.test(relPath) || relPath.startsWith('data:')) return relPath;
+    const clean = relPath.replace(/^\.?\//, '');
+    return `${TPL_URI}/${clean}`;
+  }
+
+  /* ==========================================================================
+     1. LOCATION MEDIA DATA
+     ========================================================================== */
+  const LOCATION_VIEWS = {
+    melinh: {
+      video: 'videos/melinh_aerial_complex.mp4',
+      poster: 'images/architecture/melinh_boulevard_shophouse.webp',
+      fullImg: 'images/architecture/melinh_boulevard_shophouse.webp',
+      title: 'Trục Đại Lộ Mê Linh & Quần Thể 03 Tòa Tháp',
+      desc: 'Mặt tiền Đại lộ Mê Linh rộng thoáng kết nối trực tiếp Hồ Bàu Tràm và Vịnh Đà Nẵng.'
+    },
+    bautram: {
+      video: 'videos/dragon_bridge_beach_flycam.mp4',
+      poster: 'images/architecture/persp_lake_view.webp',
+      fullImg: 'images/architecture/persp_lake_view.webp',
+      title: 'Tầm Nhìn Hồ Sinh Thái Bàu Tràm & Vịnh Đà Nẵng',
+      desc: 'Thừa hưởng luồng gió biển tươi mát và hệ sinh thái mặt nước tự nhiên quy mô lớn.'
+    },
+    map: {
+      video: 'videos/map_zoom_melinh.mp4',
+      poster: 'images/location/location_map.webp',
+      fullImg: 'images/location/location_map.webp',
+      title: 'Bản Đồ Kết Nối Chiến Lược Tây Bắc Đà Nẵng',
+      desc: '02 phút ra biển Xuân Thiều • 05 phút đến Cảng Liên Chiểu & FTZ • 15 phút về sân bay.'
     }
-    return THEME_BASE + relPath;
   };
 
-  // ==========================================================================
-  // 1. HEADER GLASSMORPHISM, MOBILE MENU & CHAPTER PROGRESS RAIL
-  // ==========================================================================
-  const header = document.getElementById('main-header');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  const backToTopBtn = document.getElementById('float-backtop');
-
-  const onScroll = () => {
-    const y = window.scrollY || window.pageYOffset;
-    if (header) {
-      header.classList.toggle('scrolled', y > 40);
-    }
-    if (backToTopBtn) {
-      backToTopBtn.classList.toggle('visible', y > 500);
-    }
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const open = navMenu.classList.toggle('open');
-      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        const offset = header ? header.offsetHeight - 4 : 64;
-        const top = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Scroll Reveal (.reveal-up)
-  const revealEls = document.querySelectorAll('.reveal-up');
-  if ('IntersectionObserver' in window && revealEls.length > 0) {
-    const revealObs = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px 40px 0px' });
-    revealEls.forEach(el => revealObs.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('is-visible'));
-  }
-
-  // Chapter Progress Rail Spy
-  const chapters = document.querySelectorAll('section[data-chapter]');
-  const railDots = document.querySelectorAll('.rail-dot');
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-
-  if ('IntersectionObserver' in window && chapters.length > 0) {
-    const chapterObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = '#' + entry.target.id;
-          railDots.forEach(d => d.classList.toggle('active', d.getAttribute('href') === id));
-          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-        }
-      });
-    }, { rootMargin: '-35% 0px -45% 0px' });
-    chapters.forEach(ch => chapterObs.observe(ch));
-  }
-
-  // ==========================================================================
-  // 2. CHAPTER 01: HERO VIDEO SCENE SWITCHER & FULL VIDEO MODAL
-  // ==========================================================================
-  const heroBgVideo = document.getElementById('hero-bg-video');
-  const heroScenePills = document.querySelectorAll('.hero-scene-pill');
-
-  heroScenePills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const videoSrc = pill.getAttribute('data-video');
-      if (!heroBgVideo || !videoSrc) return;
-      heroScenePills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      heroBgVideo.style.opacity = '0.3';
-      setTimeout(() => {
-        heroBgVideo.src = resolveAsset(videoSrc);
-        heroBgVideo.play().catch(() => {});
-        heroBgVideo.style.opacity = '1';
-      }, 180);
-    });
-  });
-
-  // ==========================================================================
-  // 3. CHAPTER 02: THE CONVERGENCE (ĐẠI LỘ MÊ LINH • HỒ BÀU TRÀM • BẢN ĐỒ)
-  // ==========================================================================
-  const convTabBtns = document.querySelectorAll('.conv-tab-btn');
-  const convPanes = document.querySelectorAll('.conv-media-pane');
-  const convTitleEl = document.getElementById('conv-caption-title');
-  const convDescEl = document.getElementById('conv-caption-desc');
-
-  convTabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetPaneId = btn.getAttribute('data-pane');
-      const title = btn.getAttribute('data-title');
-      const desc = btn.getAttribute('data-desc');
-
-      convTabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      convPanes.forEach(pane => {
-        const isMatch = pane.id === targetPaneId;
-        pane.classList.toggle('active', isMatch);
-        const vid = pane.querySelector('video');
-        if (vid) {
-          if (isMatch) vid.play().catch(() => {});
-          else vid.pause();
-        }
-      });
-
-      if (convTitleEl && title) convTitleEl.textContent = title;
-      if (convDescEl && desc) convDescEl.textContent = desc;
-    });
-  });
-
-  // ==========================================================================
-  // 4. CHAPTER 03: INTERACTIVE 3D .GLB VIEWER TOGGLE
-  // ==========================================================================
-  const btnToggleGlb = document.getElementById('btn-toggle-3d-glb');
-  const glbContainer = document.getElementById('arch-glb-container');
-  const archSteppedVideo = document.getElementById('arch-stepped-video');
-  let glbLoaded = false;
-  let glbActive = false;
-
-  if (btnToggleGlb && glbContainer) {
-    btnToggleGlb.addEventListener('click', () => {
-      glbActive = !glbActive;
-      if (glbActive) {
-        if (!glbLoaded) {
-          const script = document.createElement('script');
-          script.type = 'module';
-          script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js';
-          document.head.appendChild(script);
-          glbContainer.innerHTML = `
-            <model-viewer
-              src="${resolveAsset('assets/models/ecolife_tower_3d.glb')}"
-              alt="Mô hình 3D Tòa tháp EcoLife Signature 17 tầng nổi & 04 vườn chân mây"
-              camera-controls
-              auto-rotate
-              shadow-intensity="1"
-              exposure="1.05"
-              style="width:100%;height:100%;background:#0d261c;">
-            </model-viewer>
-          `;
-          glbLoaded = true;
-        }
-        glbContainer.style.display = 'block';
-        if (archSteppedVideo) archSteppedVideo.style.display = 'none';
-        btnToggleGlb.innerHTML = '<i class="fa-solid fa-video"></i> <span>Xem Video Phối Cảnh</span>';
-      } else {
-        glbContainer.style.display = 'none';
-        if (archSteppedVideo) archSteppedVideo.style.display = 'block';
-        btnToggleGlb.innerHTML = '<i class="fa-solid fa-cube"></i> <span>Xoay Mô Hình 3D 360°</span>';
-      }
-    });
-  }
-
-  // ==========================================================================
-  // 5. LIGHTBOX GALLERY ENGINE (IMAGES, DIAGRAMS, CERTIFICATES, MASTERPLANS)
-  // ==========================================================================
-  const lightboxModal = document.getElementById('lightbox-modal');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lbTitle = document.getElementById('lb-title');
-  const lbDesc = document.getElementById('lb-desc');
-  const lbCounter = document.getElementById('lb-counter');
-  const lbClose = document.getElementById('lightbox-close');
-  const lbPrev = document.getElementById('lightbox-prev');
-  const lbNext = document.getElementById('lightbox-next');
-
-  let lbItems = [];
-  let lbIndex = 0;
-
-  const renderLightboxSlide = () => {
-    if (!lbItems.length || !lightboxImg) return;
-    const item = lbItems[lbIndex];
-    lightboxImg.src = resolveAsset(item.src);
-    lightboxImg.alt = item.title || 'EcoLife Signature';
-    if (lbTitle) lbTitle.textContent = item.title || 'EcoLife Signature';
-    if (lbDesc) lbDesc.textContent = item.desc || '';
-    if (lbCounter) lbCounter.textContent = `${lbIndex + 1} / ${lbItems.length}`;
-  };
-
-  window.openLightboxWithItems = (items, startIndex = 0) => {
-    if (!items || !items.length || !lightboxModal) return;
-    lbItems = items;
-    lbIndex = Math.max(0, Math.min(startIndex, items.length - 1));
-    renderLightboxSlide();
-    lightboxModal.classList.add('active');
-    lightboxModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    if (!lightboxModal) return;
-    lightboxModal.classList.remove('active');
-    lightboxModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-
-  if (lbClose) lbClose.addEventListener('click', closeLightbox);
-  if (lightboxModal) {
-    lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) closeLightbox();
-    });
-  }
-  if (lbPrev) {
-    lbPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!lbItems.length) return;
-      lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
-      renderLightboxSlide();
-    });
-  }
-  if (lbNext) {
-    lbNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!lbItems.length) return;
-      lbIndex = (lbIndex + 1) % lbItems.length;
-      renderLightboxSlide();
-    });
-  }
-
-  // Bind single-image or group lightbox triggers
-  document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const src = trigger.getAttribute('data-lightbox-src');
-      const title = trigger.getAttribute('data-lightbox-title') || 'EcoLife Signature';
-      const desc = trigger.getAttribute('data-lightbox-desc') || '';
-      window.openLightboxWithItems([{ src, title, desc }], 0);
-    });
-  });
-
-  // Realm Gallery Triggers (Chapter 04: 4 Lớp Không Gian Tiện Ích Chuẩn CĐT)
-  const realmGalleries = {
-    vitality: [
-      { src: 'images/tien_ich/ho_boi_resort_01.webp', title: 'SINH KHÍ | VITALITY HUB — Hồ Bơi 32m & Jacuzzi', desc: 'Đặt tại các vị trí dễ tiếp cận: mang lại thẩm mỹ, sinh khí, năng lượng và kết nối với thiên nhiên.' },
-      { src: 'images/tien_ich/ho_ca_koi_01.webp', title: 'SINH KHÍ | VITALITY HUB — Hồ Cá Koi Sinh Thái', desc: 'Không gian mặt nước tuần hoàn điều hòa vi khí hậu nội khu.' },
-      { src: 'images/tien_ich/duong_chay_bo.webp', title: 'SINH KHÍ | VITALITY HUB — Đường Dạo Bộ & Chạy Bộ', desc: 'Tuyến đường dạo bộ xanh mát bao quanh nội khu.' }
-    ],
-    community: [
-      { src: 'images/tien_ich/shophouse_26_can_dao_pho.webp', title: 'CỘNG ĐỒNG | COMMUNITY — Phố Shophouse Khối Đế 26 Căn', desc: 'Các không gian được thiết kế để kết nối, tăng cường tương tác giữa các cư dân/hàng xóm.' },
-      { src: 'images/tien_ich/quang_truong_su_kien.webp', title: 'CỘNG ĐỒNG | COMMUNITY — Quảng Trường Sự Kiện', desc: 'Tâm điểm giao lưu văn hóa và gắn kết cộng đồng cư dân văn minh.' },
-      { src: 'images/tien_ich/san_pickleball_01.webp', title: 'CỘNG ĐỒNG | COMMUNITY — Cụm Sân Pickleball & Thể Thao', desc: 'Tiện ích thể thao thời thượng kết nối năng lượng mỗi ngày.' },
-      { src: 'images/noi_that/layouts/sanh_01.webp', title: 'CỘNG ĐỒNG | COMMUNITY — Sảnh Đón 5 Sao Atrio', desc: 'Sảnh lễ tân sang trọng đón gió tự nhiên từ Vườn Atrio.' }
-    ],
-    mindfulness: [
-      { src: 'images/tien_ich/vuon_mai_duong_sinh_atrio.webp', title: 'THÂN TÂM TRÍ | MINDFULNESS — Vườn Dưỡng Sinh & Thiền Định', desc: 'Các không gian yên tĩnh, tách biệt khỏi ồn ào. Không gian mở hoặc bán mái, giúp cân bằng cảm xúc, phát triển cá nhân, kết nối bản thân.' },
-      { src: 'images/perspectives/rooftop_bbq_details.webp', title: 'THÂN TÂM TRÍ | MINDFULNESS — 04 Tầng Vườn Chân Mây & BBQ', desc: 'Tầng vườn chân mây giật cấp từ tầng 17 xuống tầng 6.' },
-      { src: 'images/perspectives/booklet_astronomy_deck.jpg', title: 'THÂN TÂM TRÍ | MINDFULNESS — Đài Thiên Văn & Cafe Tầng Thượng', desc: 'Không gian tĩnh tại ngắm trọn Vịnh Đà Nẵng và bầu trời đêm.' }
-    ],
-    eco_edu: [
-      { src: 'images/tien_ich/mam_non_gca_chuan_toa_trang_xanh.webp', title: 'SINH THÁI HỌC TẬP | ECO-EDU — Trường Mầm Non Chuẩn Công Trình Xanh GCA', desc: 'Các khu vườn giáo dục - thực hành nhỏ gọn, tích hợp vào sân trong hoặc khu vực sân thượng.' },
-      { src: 'images/tien_ich/eco_edu_vuon_thuc_nghiem_san_thuong.webp', title: 'SINH THÁI HỌC TẬP | ECO-EDU — Vườn Thực Nghiệm Sân Thượng', desc: 'Vườn ươm thực hành nông nghiệp xanh cho cư dân nhí.' },
-      { src: 'images/tien_ich/eco_edu_san_choi_sinh_thai.webp', title: 'SINH THÁI HỌC TẬP | ECO-EDU — Sân Chơi Khám Phá Tự Nhiên', desc: 'Không gian tuổi thơ gắn liền với hệ sinh thái xanh an lành.' }
-    ]
-  };
-
-  document.querySelectorAll('[data-realm-gallery]').forEach(card => {
-    card.addEventListener('click', () => {
-      const key = card.getAttribute('data-realm-gallery');
-      if (realmGalleries[key]) {
-        window.openLightboxWithItems(realmGalleries[key], 0);
-      }
-    });
-  });
-
-  // ==========================================================================
-  // 6. CHAPTER 05: STUDIO SHOWCASE ENGINE (06 CĂN MẪU + SHOPHOUSE + PENTHOUSE)
-  // ==========================================================================
+  /* ==========================================================================
+     2. 08 PRODUCT LINES (6 APARTMENT MODELS + SHOPHOUSE + PENTHOUSE)
+        Multi-shot 12s CapCut Videos + 3D Floorplans + 3D Interior Galleries
+     ========================================================================== */
   const STUDIO_UNITS = {
     a1: {
-      badge: 'Mẫu Điển Hình A1 • 2 Phòng Ngủ • Tầng 03–15',
-      title: 'Căn Hộ Mẫu CH-A1 (66,0 m² Thông Thủy)',
-      desc: 'Thiết kế phong cách Nhật Bản tối giản (Japandi) với tông gỗ sồi sáng ấm cúng. Xử lý khéo léo mọi góc cạnh bằng hệ tủ kịch trần liền mạch, trục phòng khách – bàn ăn nối thẳng ra ban công đón gió biển.',
-      area: '66,0 m² (Tim tường 71,2 m²)',
-      layout: '2 Phòng Ngủ • 2 WC • Ban công & Lô gia',
-      priceEarly: 'Từ 2,60 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'MẪU CĂN CH-A1 • TẦNG 03–17 • 196 CĂN',
+      title: 'Căn Hộ Mẫu A1 — 66,0 m² (2 Phòng Ngủ Chuẩn)',
+      desc: 'Thiết kế tối ưu cho gia đình trẻ với phòng khách nối liền bàn ăn thoáng rộng, hệ tủ kịch trần phẳng phiu và các góc bo cong tinh tế. Bếp chữ L bố trí tách biệt kết nối trực tiếp logia phụ, giữ không gian sinh hoạt luôn thông thoáng.',
       video: 'videos/units/walkthrough_a1.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_a1_66m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Mẫu A1 (66,0 m²)' },
-        { src: 'images/floorplans_3d/slide_a1.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Mẫu A1' }
+      poster: 'images/apartments/a1_living_1.webp',
+      floorplan: 'images/units/fp_2pn_a1_66m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '66,0 m² (Tim tường: 70,5 m²)'],
+        ['Cấu trúc công năng', '02 Phòng ngủ • 02 WC • 02 Logia'],
+        ['Điểm nhấn thiết kế', 'Bếp tách biệt nối thẳng logia • Tủ kịch trần bo cong'],
+        ['Giá tham chiếu (TT Sớm)', 'Từ 2,60 Tỷ / căn (Quà tặng 01 Chỉ Vàng)']
       ],
-      photos: [
-        'images/noi_that/layouts/can_a1_01.webp',
-        'images/noi_that/layouts/can_a1_02.webp',
-        'images/noi_that/layouts/can_a1_03.webp',
-        'images/noi_that/layouts/can_a1_04.webp',
-        'images/noi_that/layouts/can_a1_05.webp',
-        'images/noi_that/layouts/can_a1_06.webp',
-        'images/noi_that/layouts/can_a1_07.webp'
+      gallery: [
+        'images/units/fp_2pn_a1_66m2.webp',
+        'images/apartments/a1_living_1.webp',
+        'images/apartments/a1_living_2.webp',
+        'images/apartments/a1_dining.webp',
+        'images/apartments/a1_kitchen.webp',
+        'images/apartments/a1_master_1.webp',
+        'images/apartments/a1_bed2_1.webp',
+        'images/apartments/a1_wc.webp'
       ]
     },
     a2: {
-      badge: 'Mẫu Điển Hình A2 • 2 Phòng Ngủ • Tầng 03–15',
-      title: 'Căn Hộ Mẫu CH-A2 (68,9 m² Thông Thủy)',
-      desc: 'Nổi bật với cá tính hiện đại: tông đen nhám tương phản đá trắng vân mây. Phòng ngủ phụ được thiết kế thông minh với giường tầng đôi liền bàn học kép, tối ưu từng ngóc ngách cho gia đình trẻ có 2 con.',
-      area: '68,9 m² (Tim tường 74,5 m²)',
-      layout: '2 Phòng Ngủ • 2 WC • Giường tầng đôi thông minh',
-      priceEarly: 'Từ 2,68 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'MẪU CĂN CH-A2 • TẦNG 03–17 • 290 CĂN',
+      title: 'Căn Hộ Mẫu A2 — 68,9 m² (2 Phòng Ngủ Gia Đình)',
+      desc: 'Dòng căn hộ chủ đạo chiếm số lượng lớn nhất dự án. Không gian phòng khách – bàn ăn liên thông ra ban công đón sáng tự nhiên; phòng ngủ phụ thiết kế thông minh với hệ giường tầng đôi tối ưu cho gia đình có 2 trẻ nhỏ.',
       video: 'videos/units/walkthrough_a2.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_a2_68p9m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Mẫu A2 (68,9 m²)' },
-        { src: 'images/floorplans_3d/slide_a2.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Mẫu A2' }
+      poster: 'images/apartments/a2_living_1.webp',
+      floorplan: 'images/units/fp_2pn_a2_68_9m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '68,9 m² (Tim tường: 73,6 m²)'],
+        ['Cấu trúc công năng', '02 Phòng ngủ • 02 WC • 02 Logia'],
+        ['Điểm nhấn thiết kế', 'Phòng ngủ trẻ em giường tầng đôi • Ban công rộng'],
+        ['Giá tham chiếu (TT Sớm)', 'Từ 2,72 Tỷ / căn (Quà tặng 01 Chỉ Vàng)']
       ],
-      photos: [
-        'images/noi_that/layouts/can_a2_01.webp',
-        'images/noi_that/layouts/can_a2_02.webp',
-        'images/noi_that/layouts/can_a2_03.webp',
-        'images/noi_that/layouts/can_a2_04.webp',
-        'images/noi_that/layouts/can_a2_05.webp',
-        'images/noi_that/layouts/can_a2_06.webp',
-        'images/noi_that/layouts/can_a2_07.webp',
-        'images/noi_that/layouts/can_a2_08.webp'
+      gallery: [
+        'images/units/fp_2pn_a2_68_9m2.webp',
+        'images/apartments/a2_living_1.webp',
+        'images/apartments/a2_living_2.webp',
+        'images/apartments/a2_kitchen.webp',
+        'images/apartments/a2_master_1.webp',
+        'images/apartments/a2_kids_1.webp',
+        'images/apartments/a2_kids_2.webp',
+        'images/apartments/a2_wc_1.webp'
       ]
     },
     b1: {
-      badge: 'Căn Góc B1 • 2 Phòng Ngủ Góc • Tầng 03–15',
-      title: 'Căn Hộ Góc CH-B1 (77,8 m² Thông Thủy)',
-      desc: 'Sở hữu vị trí góc 2 mặt thoáng đắt giá cùng hệ cửa kính hộp Solar Control rộng mở. Thiết kế bếp chữ L kết hợp bàn đảo mặt đá sang trọng, hóa giải hoàn toàn các góc chết kiến trúc.',
-      area: '77,8 m² (Căn góc 2 mặt thoáng)',
-      layout: '2 Phòng Ngủ Lớn • 2 WC • Bàn đảo bếp',
-      priceEarly: 'Từ 2,85 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'CĂN GÓC CH-B1 • TẦNG 03–16 • 76 CĂN',
+      title: 'Căn Góc B1 — 77,8 m² (2 Phòng Ngủ Góc 2 Mặt Thoáng)',
+      desc: 'Sở hữu vị trí góc đắt giá với 2 mặt thoáng đón gió biển và ánh sáng tự nhiên vào mọi phòng chức năng. Khu vực bếp mở kết hợp bàn đảo hiện đại cùng phòng ngủ Master có cửa sổ lớn hướng hồ sinh thái và nội khu.',
       video: 'videos/units/walkthrough_b1.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_b1_77p8m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Góc B1 (77,8 m²)' },
-        { src: 'images/floorplans_3d/slide_b1.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Góc B1' }
+      poster: 'images/apartments/b1_living_1.webp',
+      floorplan: 'images/units/fp_2pn_b1_77_8m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '77,8 m² (Tim tường: 83,2 m²)'],
+        ['Cấu trúc công năng', '02 Phòng ngủ góc • 02 WC • Bàn đảo bếp'],
+        ['Điểm nhấn thiết kế', 'Vị trí căn góc 2 mặt thoáng • 100% phòng đón sáng'],
+        ['Chính sách ưu đãi', 'Tặng 01 Chỉ Vàng • Hỗ trợ lãi suất 0% / 18 tháng']
       ],
-      photos: [
-        'images/noi_that/layouts/can_b1_01.webp',
-        'images/noi_that/layouts/can_b1_02.webp',
-        'images/noi_that/layouts/can_b1_03.webp',
-        'images/noi_that/layouts/can_b1_04.webp',
-        'images/noi_that/layouts/can_b1_05.webp',
-        'images/noi_that/layouts/can_b1_06.webp',
-        'images/noi_that/layouts/can_b1_07.webp',
-        'images/noi_that/layouts/can_b1_08.webp'
+      gallery: [
+        'images/units/fp_2pn_b1_77_8m2.webp',
+        'images/apartments/b1_living_1.webp',
+        'images/apartments/b1_living_2.webp',
+        'images/apartments/b1_kitchen_1.webp',
+        'images/apartments/b1_master_1.webp',
+        'images/apartments/b1_master_2.webp',
+        'images/apartments/b1_bed2_1.webp',
+        'images/apartments/b1_wc_1.webp'
       ]
     },
     b2: {
-      badge: 'Mẫu Điển Hình B2 • 2PN+ / 3PN Linh Hoạt • Tầng 03–15',
-      title: 'Căn Hộ Mẫu CH-B2 (87,3 m² Thông Thủy)',
-      desc: 'Không gian 87,3 m² rộng rãi với khu vực đa năng (+1) linh hoạt làm phòng làm việc, phòng đọc sách hoặc phòng ngủ thứ 3. Hệ tủ âm tường và vách gỗ bo cong tạo cảm giác sang trọng như khách sạn 5 sao.',
-      area: '87,3 m² (Không gian đa năng)',
-      layout: '2PN+ (3PN Linh hoạt) • 2 WC • Ban công dài',
-      priceEarly: 'Từ 2,95 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'MẪU CĂN CH-B2 • TẦNG 03–15 • 13 CĂN GIỚI HẠN',
+      title: 'Căn Hộ Mẫu B2 — 87,3 m² (2PN+ Đa Năng Linh Hoạt)',
+      desc: 'Phiên bản giới hạn chỉ 13 căn toàn dự án với không gian cộng thêm (+1) linh hoạt: dễ dàng tùy biến thành phòng làm việc riêng tư, phòng đọc sách hoặc phòng ngủ thứ 3 khi gia đình đón thêm thành viên.',
       video: 'videos/units/walkthrough_b2.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_b2_87p3m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Mẫu B2 (87,3 m²)' },
-        { src: 'images/floorplans_3d/slide_b2.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Mẫu B2' }
+      poster: 'images/apartments/b2_living_1.webp',
+      floorplan: 'images/units/fp_3pn_b2_87_3m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '87,3 m² (Tim tường: 93,4 m²)'],
+        ['Cấu trúc công năng', '02 Phòng ngủ lớn + 01 Phòng đa năng • 02 WC'],
+        ['Điểm nhấn thiết kế', 'Không gian +1 tùy biến linh hoạt • Phòng khách rộng'],
+        ['Chính sách ưu đãi', 'Tặng 02 Chỉ Vàng • Chiết khấu thanh toán sớm 10%']
       ],
-      photos: [
-        'images/noi_that/layouts/can_b2_01.webp',
-        'images/noi_that/layouts/can_b2_02.webp',
-        'images/noi_that/layouts/can_b2_03.webp',
-        'images/noi_that/layouts/can_b2_04.webp',
-        'images/noi_that/layouts/can_b2_05.webp',
-        'images/noi_that/layouts/can_b2_06.webp',
-        'images/noi_that/layouts/can_b2_07.webp',
-        'images/noi_that/layouts/can_b2_08.webp'
+      gallery: [
+        'images/units/fp_3pn_b2_87_3m2.webp',
+        'images/apartments/b2_living_1.webp',
+        'images/apartments/b2_living_2.webp',
+        'images/apartments/b2_dining_1.webp',
+        'images/apartments/b2_kitchen.webp',
+        'images/apartments/b2_master_1.webp',
+        'images/apartments/b2_bed2_1.webp',
+        'images/apartments/b2_study_1.webp'
       ]
     },
     b6: {
-      badge: 'Mẫu Đặc Quyền B6 • 3PN & 3WC Riêng Tư • Tầng 06–15',
-      title: 'Căn Hộ Mẫu CH-B6 (87,1 m² • 3PN – 3WC)',
-      desc: 'Thiết kế 3 phòng ngủ đi kèm 3 phòng tắm riêng tư hiếm có. Tông màu kem gỗ sáng chủ đạo kết hợp ngôn ngữ nội thất bo cong mềm mại giúp xử lý triệt để mọi góc cạnh, nâng tầm trải nghiệm sống đa thế hệ.',
-      area: '87,1 m² (Thiết kế 3WC độc bản)',
-      layout: '3 Phòng Ngủ • 3 WC Riêng Tư • Ban công thoáng',
-      priceEarly: 'Từ 3,05 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'MẪU CĂN CH-B6 • TẦNG 03–17 • 55 CĂN',
+      title: 'Căn Hộ Mẫu B6 — 87,1 m² (3 Phòng Ngủ • 3 WC Khép Kín)',
+      desc: 'Thiết kế chuyên biệt cho gia đình đa thế hệ (Ông bà – Cha mẹ – Con cái) hoặc khai thác cho thuê dòng tiền cao với 03 phòng ngủ rộng rãi và 03 phòng vệ sinh độc lập, đảm bảo sự riêng tư tuyệt đối cho từng thành viên.',
       video: 'videos/units/walkthrough_b6.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_b6_87p1m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Mẫu B6 (87,1 m² • 3PN-3WC)' },
-        { src: 'images/floorplans_3d/slide_b6.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Mẫu B6' }
+      poster: 'images/apartments/b6_living_1.webp',
+      floorplan: 'images/units/fp_3pn_b6_87_1m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '87,1 m² (Tim tường: 93,1 m²)'],
+        ['Cấu trúc công năng', '03 Phòng ngủ • 03 WC riêng biệt • 02 Logia'],
+        ['Điểm nhấn thiết kế', '2 Phòng ngủ Master khép kín • Chuẩn gia đình 3 thế hệ'],
+        ['Chính sách ưu đãi', 'Tặng 02 Chỉ Vàng • Ân hạn nợ gốc 18 tháng']
       ],
-      photos: [
-        'images/noi_that/layouts/can_b6_01.webp',
-        'images/noi_that/layouts/can_b6_02.webp',
-        'images/noi_that/layouts/can_b6_03.webp',
-        'images/noi_that/layouts/can_b6_04.webp',
-        'images/noi_that/layouts/can_b6_05.webp',
-        'images/noi_that/layouts/can_b6_06.webp',
-        'images/noi_that/layouts/can_b6_07.webp',
-        'images/noi_that/layouts/can_b6_08.webp',
-        'images/noi_that/layouts/can_b6_09.webp'
+      gallery: [
+        'images/units/fp_3pn_b6_87_1m2.webp',
+        'images/apartments/b6_living_1.webp',
+        'images/apartments/b6_living_2.webp',
+        'images/apartments/b6_dining_1.webp',
+        'images/apartments/b6_master_1.webp',
+        'images/apartments/b6_bed2_1.webp',
+        'images/apartments/b6_bed3_1.webp',
+        'images/apartments/b6_wc_1.webp'
       ]
     },
     b3: {
-      badge: 'Căn Góc Hoa Hậu B3 • 3 Phòng Ngủ Panorama • Tầng 03–15',
-      title: 'Căn Hộ Góc CH-B3 (88,8 m² Thông Thủy)',
-      desc: 'Dòng căn góc 3 phòng ngủ diện tích lớn nhất khối căn hộ tiêu chuẩn, thu trọn tầm nhìn Panorama kép ra Vịnh Đà Nẵng và Hồ Bàu Tràm. Phòng khách nối liền bàn ăn 6 ghế và hệ tủ trưng bày sang trọng.',
-      area: '88,8 m² (Căn góc Panorama)',
-      layout: '3 Phòng Ngủ • 2 WC • 2 Mặt thoáng hướng biển & hồ',
-      priceEarly: 'Từ 3,18 Tỷ (CK 10%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
+      code: 'CĂN GÓC HOA HẬU CH-B3 • TẦNG 03–15 • 13 CĂN',
+      title: 'Căn Góc B3 — 88,8 m² (3 Phòng Ngủ Góc Panorama)',
+      desc: 'Tuyệt phẩm căn góc đẹp nhất dự án với tầm nhìn Panorama ôm trọn Đại lộ Mê Linh, Hồ Bàu Tràm và Vịnh Đà Nẵng. Phòng khách bề thế kết hợp bàn ăn 6 ghế sang trọng và hệ kính lớn đón trọn ánh sáng tự nhiên.',
       video: 'videos/units/walkthrough_b3.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/fp3d_b3_88p8m2.webp', title: 'Mặt Bằng Bóc Tách 3D Góc — Căn Góc B3 (88,8 m²)' },
-        { src: 'images/floorplans_3d/slide_b3.webp', title: 'Thông Số Kỹ Thuật & Mặt Bằng Chi Tiết — Căn Góc B3' }
+      poster: 'images/apartments/b3_living_1.webp',
+      floorplan: 'images/units/fp_3pn_b3_88_8m2.webp',
+      specs: [
+        ['Diện tích thông thủy', '88,8 m² (Tim tường: 95,0 m²)'],
+        ['Cấu trúc công năng', '03 Phòng ngủ góc Panorama • 02 WC • 02 Logia'],
+        ['Điểm nhấn thiết kế', 'Tầm nhìn kép Đại lộ Mê Linh & Hồ Bàu Tràm'],
+        ['Chính sách ưu đãi', 'Tặng 02 Chỉ Vàng • Chiết khấu thêm 1% khách mua sỉ']
       ],
-      photos: [
-        'images/noi_that/layouts/can_b3_01.webp',
-        'images/noi_that/layouts/can_b3_02.webp',
-        'images/noi_that/layouts/can_b3_03.webp',
-        'images/noi_that/layouts/can_b3_04.webp',
-        'images/noi_that/layouts/can_b3_05.webp',
-        'images/noi_that/layouts/can_b3_06.webp',
-        'images/noi_that/layouts/can_b3_07.webp',
-        'images/noi_that/layouts/can_b3_08.webp'
+      gallery: [
+        'images/units/fp_3pn_b3_88_8m2.webp',
+        'images/apartments/b3_living_1.webp',
+        'images/apartments/b3_living_2.webp',
+        'images/apartments/b3_dining_1.webp',
+        'images/apartments/b3_kitchen.webp',
+        'images/apartments/b3_master_1.webp',
+        'images/apartments/b3_bed2_1.webp',
+        'images/apartments/b3_bed3_1.webp'
       ]
     },
     shophouse: {
-      badge: 'Phiên Bản Giới Hạn • 26 Căn Shophouse Khối Đế • Tầng 01–02',
-      title: 'Shophouse Thương Mại Khối Đế (129 – 219 m²)',
-      desc: 'Chỉ 26 căn Shophouse thông tầng tại khối đế Tầng 1–2 mặt tiền Đại lộ Mê Linh và quảng trường nội khu, đón trọn nhu cầu mua sắm – ẩm thực – dịch vụ của hơn 4.000 cư dân toàn quần thể dự án.',
-      area: '129,0 – 219,0 m² (Thông tầng T1–T2)',
-      layout: '26 Căn Giới Hạn • Mặt tiền kinh doanh sầm uất',
-      priceEarly: 'Từ 5,80 Tỷ (TT Sớm 95%)',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
-      video: 'videos/shophouse_podium.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/mat_bang_tang_tret_chuan.webp', title: 'Mặt Bằng Tổng Thể Khối Đế Thương Mại & 26 Căn Shophouse' },
-        { src: 'images/tien_ich/shophouse_26_can_dao_pho.webp', title: 'Phối Cảnh Phố Thương Mại 26 Căn Shophouse Khối Đế' }
+      code: 'KHỐI ĐẾ THƯƠNG MẠI • TẦNG 01–02 • 26 CĂN',
+      title: 'Shophouse Khối Đế Đại Lộ Mê Linh (26 Căn Giới Hạn)',
+      desc: 'Tọa lạc tại mặt tiền Đại lộ Mê Linh và quảng trường nội khu, đón trọn nguồn khách từ hơn 679 hộ gia đình tại dự án cùng cư dân toàn khu đô thị sinh thái Tây Bắc Đà Nẵng.',
+      video: 'videos/melinh_aerial_complex.mp4',
+      poster: 'images/architecture/melinh_boulevard_shophouse.webp',
+      floorplan: 'images/masterplan/ground_fl_amenities.webp',
+      specs: [
+        ['Số lượng giới hạn', '26 Căn Shophouse khối đế (Tầng 1 – Tầng 2)'],
+        ['Vị trí khai thác', 'Mặt tiền Đại lộ Mê Linh & Quảng trường sự kiện'],
+        ['Công năng gợi ý', 'Café, nhà hàng, siêu thị tiện lợi, showroom, văn phòng'],
+        ['Pháp lý & Bàn giao', 'Bàn giao Tháng 05/2027 • Sổ hồng theo quy định']
       ],
-      photos: [
-        'images/tien_ich/shophouse_26_can_dao_pho.webp',
-        'images/architecture/shophouse_podium_26can.webp',
-        'images/tien_ich/pho_cafe_am_thuc_01.webp',
-        'images/tien_ich/pho_cafe_am_thuc_02.webp'
+      gallery: [
+        'images/architecture/melinh_boulevard_shophouse.webp',
+        'images/architecture/ostia_arch_shophouse.webp',
+        'images/masterplan/ground_fl_amenities.webp',
+        'images/masterplan/typical_fl_01_clean.webp'
       ]
     },
     penthouse: {
-      badge: 'Bộ Sưu Tập Độc Bản • 06 Căn Penthouse Tầng Đỉnh 16–17',
-      title: 'Penthouse Sân Vườn Chân Mây (192 – 211 m²)',
-      desc: 'Chỉ 06 tuyệt tác Penthouse tại tầng 16–17 sở hữu sân vườn riêng biệt trên không, kết nối trực tiếp với hệ vườn chân mây và tầm nhìn độc tôn bao quát trọn Vịnh Đà Nẵng – Bán đảo Sơn Trà – Hồ Bàu Tràm.',
-      area: '192,0 – 211,0 m² + Sân vườn riêng',
-      layout: '06 Căn Độc Bản • Tầng 16–17 • Sân vườn chân mây',
-      priceEarly: 'Suất Ngoại Giao Đặc Quyền',
-      bankPolicy: 'Vay 70% • HTLS 0% / 18 tháng',
-      video: 'videos/penthouse_sky_garden.mp4',
-      floorplans: [
-        { src: 'images/floorplans_3d/mat_bang_tang_mai_chuan.webp', title: 'Mặt Bằng Tầng Đỉnh & Không Gian Vườn Chân Mây' },
-        { src: 'images/architecture/penthouse_san_vuon_rieng.webp', title: 'Phối Cảnh Penthouse Sân Vườn Riêng Tầng 16–17' }
+      code: 'DINH THỰ TRÊN KHÔNG • TẦNG 16–17 • 06 CĂN ĐỘC BẢN',
+      title: 'Penthouse Sân Vườn Chân Mây (06 Căn Độc Bản)',
+      desc: 'Chỉ 06 chủ nhân danh giá sở hữu không gian sống đỉnh cao tại tầng 16–17, kết nối trực tiếp hệ thống 04 khu vườn chân mây và tầm nhìn 360 độ hướng Vịnh biển Đà Nẵng – Hồ Bàu Tràm.',
+      video: 'videos/amenities_4_sky_gardens.mp4',
+      poster: 'images/amenities/rooftop_sky_garden.webp',
+      floorplan: 'images/masterplan/typical_fl_17_clean.webp',
+      specs: [
+        ['Số lượng độc bản', 'Chỉ 06 Căn Penthouse toàn dự án (Tầng 16–17)'],
+        ['Đặc quyền không gian', 'Sân vườn riêng kết nối 04 tầng vườn chân mây'],
+        ['Tầm nhìn độc tôn', '360° Vịnh Đà Nẵng • Hồ Bàu Tràm • Núi Hải Vân'],
+        ['Tư vấn riêng biệt', 'Làm việc trực tiếp phòng Kinh doanh Chủ đầu tư']
       ],
-      photos: [
-        'images/architecture/penthouse_san_vuon_rieng.webp',
-        'images/perspectives/rooftop_bbq_details.webp',
-        'images/tien_ich/vuon_mai_duong_sinh_atrio.webp'
+      gallery: [
+        'images/amenities/rooftop_sky_garden.webp',
+        'images/masterplan/typical_fl_16_clean.webp',
+        'images/masterplan/typical_fl_17_clean.webp',
+        'images/masterplan/rooftop_fl_amenities.webp'
       ]
     }
   };
 
   let currentUnitKey = 'a1';
   let currentStudioMode = 'video'; // 'video' | 'floorplan' | 'gallery'
-  let currentThumbIndex = 0;
 
-  const studioViewport = document.getElementById('studio-viewport');
-  const studioThumbsBar = document.getElementById('studio-thumbs-bar');
-  const unitBadgeEl = document.getElementById('studio-unit-badge');
-  const unitTitleEl = document.getElementById('studio-unit-title');
-  const unitDescEl = document.getElementById('studio-unit-desc');
-  const unitAreaEl = document.getElementById('studio-kpi-area');
-  const unitLayoutEl = document.getElementById('studio-kpi-layout');
-  const unitPriceEl = document.getElementById('studio-kpi-price');
-  const unitBankEl = document.getElementById('studio-kpi-bank');
-  const unitDockBtns = document.querySelectorAll('.unit-dock-btn');
-  const studioModeBtns = document.querySelectorAll('.studio-mode-btn');
-  const btnStudioOpenLb = document.getElementById('btn-studio-open-lightbox');
+  /* ==========================================================================
+     3. INITIALIZATION ON DOM READY
+     ========================================================================== */
+  document.addEventListener('DOMContentLoaded', function () {
+    initHeaderScroll();
+    initLocationSwitcher();
+    initStudioController();
+    initModalsAndLightbox();
+    initLeadForms();
+  });
 
-  const renderStudioStage = () => {
-    const unit = STUDIO_UNITS[currentUnitKey];
-    if (!unit || !studioViewport) return;
+  /* Header Scroll & Mobile Menu */
+  function initHeaderScroll() {
+    const header = document.getElementById('v3-header');
+    const toggle = document.getElementById('v3-mobile-toggle');
+    const nav = document.getElementById('v3-nav');
 
-    // Update right spec panel
-    if (unitBadgeEl) unitBadgeEl.textContent = unit.badge;
-    if (unitTitleEl) unitTitleEl.textContent = unit.title;
-    if (unitDescEl) unitDescEl.textContent = unit.desc;
-    if (unitAreaEl) unitAreaEl.textContent = unit.area;
-    if (unitLayoutEl) unitLayoutEl.textContent = unit.layout;
-    if (unitPriceEl) unitPriceEl.textContent = unit.priceEarly;
-    if (unitBankEl) unitBankEl.textContent = unit.bankPolicy;
+    if (header) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 20) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }, { passive: true });
+    }
 
-    // Update mode buttons
-    studioModeBtns.forEach(b => {
-      b.classList.toggle('active', b.getAttribute('data-mode') === currentStudioMode);
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('is-open');
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('is-open');
+        });
+      });
+    }
+  }
+
+  /* Location Segmented Switcher */
+  function initLocationSwitcher() {
+    const tabs = document.querySelectorAll('[data-loc-tab]');
+    const videoEl = document.getElementById('v3-loc-video');
+    const titleEl = document.getElementById('v3-loc-caption-title');
+    const descEl = document.getElementById('v3-loc-caption-desc');
+    const zoomBtn = document.getElementById('v3-loc-zoom-btn');
+
+    if (!tabs.length || !videoEl) return;
+
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const key = btn.getAttribute('data-loc-tab');
+        const data = LOCATION_VIEWS[key];
+        if (!data) return;
+
+        tabs.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        const nextSrc = assetUrl(data.video);
+        if (videoEl.getAttribute('src') !== nextSrc) {
+          videoEl.setAttribute('src', nextSrc);
+          videoEl.setAttribute('poster', assetUrl(data.poster));
+          videoEl.load();
+          videoEl.play().catch(function () {});
+        }
+
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+        if (zoomBtn) {
+          zoomBtn.setAttribute('data-lightbox-src', assetUrl(data.fullImg));
+          zoomBtn.setAttribute('data-lightbox-caption', data.title);
+        }
+      });
     });
+  }
+
+  /* Apartment Studio Controller */
+  function initStudioController() {
+    const unitBtns = document.querySelectorAll('[data-unit-key]');
+    const modeBtns = document.querySelectorAll('[data-studio-mode]');
+
+    unitBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const key = btn.getAttribute('data-unit-key');
+        if (!STUDIO_UNITS[key]) return;
+        currentUnitKey = key;
+        unitBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        // Default to video mode when switching unit so user immediately sees the CapCut multi-shot clip
+        currentStudioMode = 'video';
+        modeBtns.forEach(function (m) {
+          m.classList.toggle('active', m.getAttribute('data-studio-mode') === 'video');
+        });
+        renderStudioUnit();
+      });
+    });
+
+    modeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const mode = btn.getAttribute('data-studio-mode');
+        currentStudioMode = mode;
+        modeBtns.forEach(function (m) { m.classList.remove('active'); });
+        btn.classList.add('active');
+        renderStudioStageOnly();
+      });
+    });
+
+    renderStudioUnit();
+  }
+
+  function renderStudioUnit() {
+    const unit = STUDIO_UNITS[currentUnitKey];
+    if (!unit) return;
+
+    const codeEl = document.getElementById('v3-unit-code');
+    const titleEl = document.getElementById('v3-unit-title');
+    const descEl = document.getElementById('v3-unit-desc');
+    const specTableEl = document.getElementById('v3-unit-specs');
+    const fpBtn = document.getElementById('v3-unit-fp-btn');
+    const thumbsEl = document.getElementById('v3-studio-thumbs');
+
+    if (codeEl) codeEl.textContent = unit.code;
+    if (titleEl) titleEl.textContent = unit.title;
+    if (descEl) descEl.textContent = unit.desc;
+
+    if (specTableEl) {
+      specTableEl.innerHTML = unit.specs.map(function (row) {
+        return '<div class="v3-spec-row">' +
+          '<span class="v3-spec-lbl">' + row[0] + '</span>' +
+          '<span class="v3-spec-val">' + row[1] + '</span>' +
+          '</div>';
+      }).join('');
+    }
+
+    if (fpBtn) {
+      fpBtn.setAttribute('data-lightbox-src', assetUrl(unit.floorplan));
+      fpBtn.setAttribute('data-lightbox-caption', unit.title + ' — Mặt Bằng Bóc Tách 3D');
+    }
+
+    if (thumbsEl) {
+      thumbsEl.innerHTML = unit.gallery.map(function (imgPath, idx) {
+        const fullUrl = assetUrl(imgPath);
+        return '<button type="button" class="v3-studio-thumb' + (idx === 0 ? ' active' : '') + '" data-thumb-src="' + fullUrl + '" data-thumb-is-fp="' + (idx === 0 ? '1' : '0') + '">' +
+          '<img src="' + fullUrl + '" alt="' + unit.title + '" loading="lazy">' +
+          '</button>';
+      }).join('');
+
+      thumbsEl.querySelectorAll('.v3-studio-thumb').forEach(function (tBtn) {
+        tBtn.addEventListener('click', function () {
+          thumbsEl.querySelectorAll('.v3-studio-thumb').forEach(function (b) { b.classList.remove('active'); });
+          tBtn.classList.add('active');
+          const imgSrc = tBtn.getAttribute('data-thumb-src');
+          const isFp = tBtn.getAttribute('data-thumb-is-fp') === '1';
+          showStaticImageInStage(imgSrc, isFp, unit.title);
+          const modeBtns = document.querySelectorAll('[data-studio-mode]');
+          modeBtns.forEach(function (m) {
+            m.classList.toggle('active', m.getAttribute('data-studio-mode') === (isFp ? 'floorplan' : 'gallery'));
+          });
+        });
+      });
+    }
+
+    renderStudioStageOnly();
+  }
+
+  function renderStudioStageOnly() {
+    const unit = STUDIO_UNITS[currentUnitKey];
+    const stageEl = document.getElementById('v3-studio-stage');
+    if (!unit || !stageEl) return;
 
     if (currentStudioMode === 'video') {
-      studioViewport.innerHTML = `
-        <video src="${resolveAsset(unit.video)}" autoplay muted loop playsinline controls style="width:100%;height:100%;object-fit:cover;"></video>
-      `;
-      if (studioThumbsBar) {
-        studioThumbsBar.innerHTML = unit.photos.map((p, idx) => `
-          <div class="studio-thumb" data-photo-idx="${idx}" title="Xem phối cảnh 3D #${idx + 1}">
-            <img src="${resolveAsset(p)}" alt="${unit.title}" loading="lazy">
-          </div>
-        `).join('');
-        studioThumbsBar.querySelectorAll('.studio-thumb').forEach(th => {
-          th.addEventListener('click', () => {
-            currentStudioMode = 'gallery';
-            currentThumbIndex = parseInt(th.getAttribute('data-photo-idx') || '0', 10);
-            renderStudioStage();
-          });
-        });
+      const vUrl = assetUrl(unit.video);
+      const pUrl = assetUrl(unit.poster);
+      stageEl.innerHTML = '<video src="' + vUrl + '" poster="' + pUrl + '" autoplay muted loop playsinline controls></video>';
+      const vid = stageEl.querySelector('video');
+      if (vid) {
+        vid.play().catch(function () {});
       }
     } else if (currentStudioMode === 'floorplan') {
-      const fpList = unit.floorplans || [];
-      const activeFp = fpList[currentThumbIndex] || fpList[0];
-      studioViewport.innerHTML = `
-        <img src="${resolveAsset(activeFp.src)}" alt="${activeFp.title}" class="is-floorplan" style="cursor:zoom-in;" id="studio-active-img">
-      `;
-      if (studioThumbsBar) {
-        studioThumbsBar.innerHTML = fpList.map((fp, idx) => `
-          <div class="studio-thumb ${idx === currentThumbIndex ? 'active' : ''}" data-fp-idx="${idx}">
-            <img src="${resolveAsset(fp.src)}" alt="${fp.title}">
-          </div>
-        `).join('');
-        studioThumbsBar.querySelectorAll('.studio-thumb').forEach(th => {
-          th.addEventListener('click', () => {
-            currentThumbIndex = parseInt(th.getAttribute('data-fp-idx') || '0', 10);
-            renderStudioStage();
-          });
-        });
-      }
-      const activeImg = document.getElementById('studio-active-img');
-      if (activeImg) {
-        activeImg.addEventListener('click', () => {
-          window.openLightboxWithItems(fpList.map(f => ({ src: f.src, title: f.title, desc: unit.title })), currentThumbIndex);
-        });
-      }
+      showStaticImageInStage(assetUrl(unit.floorplan), true, unit.title + ' — Mặt Bằng 3D');
     } else {
-      // gallery mode
-      const photos = unit.photos || [];
-      const activePhoto = photos[currentThumbIndex] || photos[0];
-      studioViewport.innerHTML = `
-        <img src="${resolveAsset(activePhoto)}" alt="${unit.title}" style="cursor:zoom-in;" id="studio-active-img">
-      `;
-      if (studioThumbsBar) {
-        studioThumbsBar.innerHTML = photos.map((p, idx) => `
-          <div class="studio-thumb ${idx === currentThumbIndex ? 'active' : ''}" data-photo-idx="${idx}">
-            <img src="${resolveAsset(p)}" alt="${unit.title}" loading="lazy">
-          </div>
-        `).join('');
-        studioThumbsBar.querySelectorAll('.studio-thumb').forEach(th => {
-          th.addEventListener('click', () => {
-            currentThumbIndex = parseInt(th.getAttribute('data-photo-idx') || '0', 10);
-            renderStudioStage();
-          });
-        });
-      }
-      const activeImg = document.getElementById('studio-active-img');
-      if (activeImg) {
-        activeImg.addEventListener('click', () => {
-          window.openLightboxWithItems(photos.map((p, i) => ({
-            src: p,
-            title: `${unit.title} — Góc nhìn #${i + 1}`,
-            desc: unit.desc
-          })), currentThumbIndex);
-        });
-      }
+      const firstRender = unit.gallery.length > 1 ? unit.gallery[1] : unit.poster;
+      showStaticImageInStage(assetUrl(firstRender), false, unit.title + ' — Phối Cảnh Nội Thất');
     }
-  };
+  }
 
-  unitDockBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.getAttribute('data-unit');
-      if (!key || !STUDIO_UNITS[key]) return;
-      currentUnitKey = key;
-      currentThumbIndex = 0;
-      unitDockBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderStudioStage();
+  function showStaticImageInStage(src, isFloorplan, caption) {
+    const stageEl = document.getElementById('v3-studio-stage');
+    if (!stageEl) return;
+    stageEl.innerHTML = '<img src="' + src + '" alt="' + caption + '" class="' + (isFloorplan ? 'is-floorplan' : '') + '" style="cursor: zoom-in;" data-lightbox-src="' + src + '" data-lightbox-caption="' + caption + '">';
+  }
+
+  /* ==========================================================================
+     4. MODALS & HIGH-RES LIGHTBOX CONTROLLER
+     ========================================================================== */
+  function initModalsAndLightbox() {
+    const quoteModal = document.getElementById('v3-quote-modal');
+    const lightboxModal = document.getElementById('v3-lightbox-modal');
+    const lightboxImg = document.getElementById('v3-lightbox-img');
+    const lightboxCap = document.getElementById('v3-lightbox-caption');
+    const modelModal = document.getElementById('v3-model-modal');
+    const modelContainer = document.getElementById('v3-model-container');
+
+    // Delegate clicks for opening modals
+    document.addEventListener('click', function (e) {
+      const quoteTrigger = e.target.closest('[data-open-quote]');
+      if (quoteTrigger && quoteModal) {
+        e.preventDefault();
+        quoteModal.classList.add('is-open');
+        return;
+      }
+
+      const lbTrigger = e.target.closest('[data-lightbox-src]');
+      if (lbTrigger && lightboxModal && lightboxImg) {
+        e.preventDefault();
+        const src = assetUrl(lbTrigger.getAttribute('data-lightbox-src'));
+        const cap = lbTrigger.getAttribute('data-lightbox-caption') || '';
+        lightboxImg.setAttribute('src', src);
+        if (lightboxCap) lightboxCap.textContent = cap;
+        lightboxModal.classList.add('is-open');
+        return;
+      }
+
+      const modelTrigger = e.target.closest('[data-open-3d-model]');
+      if (modelTrigger && modelModal && modelContainer) {
+        e.preventDefault();
+        modelModal.classList.add('is-open');
+        if (!modelContainer.querySelector('model-viewer')) {
+          const glbUrl = assetUrl('models/building.glb');
+          modelContainer.innerHTML = '<model-viewer src="' + glbUrl + '" camera-controls auto-rotate shadow-intensity="1" style="width:100%;height:72vh;background:#0b291e;border-radius:12px;"></model-viewer>';
+        }
+        return;
+      }
+
+      const closeBtn = e.target.closest('[data-close-modal]');
+      if (closeBtn) {
+        const backdrop = closeBtn.closest('.v3-modal-backdrop');
+        if (backdrop) backdrop.classList.remove('is-open');
+        return;
+      }
+
+      if (e.target.classList && e.target.classList.contains('v3-modal-backdrop')) {
+        e.target.classList.remove('is-open');
+      }
     });
-  });
 
-  studioModeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const mode = btn.getAttribute('data-mode');
-      if (!mode) return;
-      currentStudioMode = mode;
-      currentThumbIndex = 0;
-      renderStudioStage();
-    });
-  });
-
-  if (btnStudioOpenLb) {
-    btnStudioOpenLb.addEventListener('click', () => {
-      const unit = STUDIO_UNITS[currentUnitKey];
-      if (!unit) return;
-      const items = [
-        ...unit.floorplans.map(f => ({ src: f.src, title: f.title, desc: unit.desc })),
-        ...unit.photos.map((p, i) => ({ src: p, title: `${unit.title} — Phối cảnh #${i + 1}`, desc: unit.desc }))
-      ];
-      window.openLightboxWithItems(items, 0);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.v3-modal-backdrop.is-open').forEach(function (m) {
+          m.classList.remove('is-open');
+        });
+      }
     });
   }
 
-  renderStudioStage();
-
-  // ==========================================================================
-  // 7. FULL VIDEO PLAYER MODAL (HERO "XEM PHIM DỰ ÁN")
-  // ==========================================================================
-  const videoModal = document.getElementById('video-player-modal');
-  const videoModalPlayer = document.getElementById('modal-full-video');
-  const videoModalClose = document.getElementById('video-modal-close');
-  const videoModalBackdrop = document.getElementById('video-modal-backdrop');
-
-  document.querySelectorAll('[data-open-video-modal]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const src = btn.getAttribute('data-open-video-modal') || 'videos/hero_trailer_15s.mp4';
-      if (videoModal && videoModalPlayer) {
-        videoModalPlayer.src = resolveAsset(src);
-        videoModal.classList.add('active');
-        videoModal.setAttribute('aria-hidden', 'false');
-        videoModalPlayer.play().catch(() => {});
-      }
-    });
-  });
-
-  const closeVideoModal = () => {
-    if (!videoModal) return;
-    videoModal.classList.remove('active');
-    videoModal.setAttribute('aria-hidden', 'true');
-    if (videoModalPlayer) videoModalPlayer.pause();
-  };
-  if (videoModalClose) videoModalClose.addEventListener('click', closeVideoModal);
-  if (videoModalBackdrop) videoModalBackdrop.addEventListener('click', closeVideoModal);
-
-  // ==========================================================================
-  // 8. QUOTATION MODAL, SUCCESS MODAL & LEAD SUBMISSION ENGINE
-  // ==========================================================================
-  const quoteModal = document.getElementById('quotation-modal');
-  const quoteModalClose = document.getElementById('quote-modal-close');
-  const quoteModalBackdrop = document.getElementById('quote-modal-backdrop');
-  const quoteModalForm = document.getElementById('quote-modal-form');
-  const leadForm = document.getElementById('lead-form');
-
-  const successModal = document.getElementById('success-modal');
-  const successModalClose = document.getElementById('success-modal-close');
-  const successModalBackdrop = document.getElementById('success-modal-backdrop');
-  const btnSuccessDone = document.getElementById('btn-success-done');
-  const toastContainer = document.getElementById('toast-container');
-
-  const openQuoteModal = (preselectInterest = '') => {
-    if (!quoteModal) return;
-    if (preselectInterest) {
-      const sel = document.getElementById('quote-interest');
-      if (sel) {
-        for (let i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].value.includes(preselectInterest)) {
-            sel.selectedIndex = i;
-            break;
-          }
+  /* ==========================================================================
+     5. LEAD CAPTURE FORMS (WORDPRESS AJAX + FALLBACK)
+     ========================================================================== */
+  function initLeadForms() {
+    document.querySelectorAll('.v3-lead-form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const origText = btn ? btn.textContent : '';
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Đang gửi thông tin...';
         }
-      }
-    }
-    quoteModal.classList.add('active');
-    quoteModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
 
-  const closeQuoteModal = () => {
-    if (!quoteModal) return;
-    quoteModal.classList.remove('active');
-    quoteModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
+        const formData = new FormData(form);
+        formData.append('action', 'ecolife_submit_lead');
 
-  document.querySelectorAll('.btn-trigger-quote').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const interest = btn.getAttribute('data-interest') || '';
-      openQuoteModal(interest);
-    });
-  });
+        const ajaxUrl = (typeof window.ECOLIFE_AJAX_URL !== 'undefined' && window.ECOLIFE_AJAX_URL)
+          ? window.ECOLIFE_AJAX_URL
+          : '/wp-admin/admin-ajax.php';
 
-  if (quoteModalClose) quoteModalClose.addEventListener('click', closeQuoteModal);
-  if (quoteModalBackdrop) quoteModalBackdrop.addEventListener('click', closeQuoteModal);
-
-  const showSuccessModal = (name, phone) => {
-    if (!successModal) return;
-    const nameEl = document.getElementById('success-display-name');
-    const phoneEl = document.getElementById('success-display-phone');
-    if (nameEl) nameEl.textContent = name || 'Quý khách';
-    if (phoneEl) phoneEl.textContent = phone || '';
-    successModal.classList.add('active');
-    successModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeSuccessModal = () => {
-    if (!successModal) return;
-    successModal.classList.remove('active');
-    successModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-
-  if (successModalClose) successModalClose.addEventListener('click', closeSuccessModal);
-  if (successModalBackdrop) successModalBackdrop.addEventListener('click', closeSuccessModal);
-  if (btnSuccessDone) btnSuccessDone.addEventListener('click', closeSuccessModal);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeLightbox();
-      closeVideoModal();
-      closeQuoteModal();
-      closeSuccessModal();
-    }
-  });
-
-  const showToast = (message, type = 'success') => {
-    if (!toastContainer) return;
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-      <i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-triangle-exclamation'}" style="color:${type === 'success' ? '#0d3b29' : '#dc2626'};font-size:1.2rem;"></i>
-      <div>
-        <strong style="display:block;font-size:0.8rem;">${type === 'success' ? 'ĐĂNG KÝ THÀNH CÔNG' : 'THÔNG BÁO'}</strong>
-        <span style="font-size:0.8rem;color:#4a5550;">${message}</span>
-      </div>
-    `;
-    toastContainer.appendChild(toast);
-    setTimeout(() => toast.remove(), 5000);
-  };
-
-  let isSubmitting = false;
-  const handleLeadSubmission = async (formData, submitBtn, formEl, isModal) => {
-    if (isSubmitting) return;
-    const phoneRegex = /^(03|05|07|08|09|01[2|6|8|9])[0-9]{8}$/;
-    const cleanedPhone = (formData.phoneNumber || '').replace(/[\s.-]/g, '');
-    if (!phoneRegex.test(cleanedPhone)) {
-      showToast('Vui lòng nhập số điện thoại hợp lệ (10 số).', 'error');
-      return;
-    }
-
-    isSubmitting = true;
-    if (submitBtn) submitBtn.disabled = true;
-
-    const currentRef = window.ECOLIFE_REF || localStorage.getItem('ecolife_ref') || sessionStorage.getItem('ecolife_ref') || '';
-    const baseSource = isModal ? 'Popup Nhận Báo Giá V2' : 'Form Private Lounge V2';
-    const leadData = {
-      fullName: formData.fullName || '',
-      phoneNumber: cleanedPhone,
-      email: formData.email || '',
-      interestType: formData.interestType || 'Căn hộ Thương mại 2PN',
-      consultTime: formData.consultTime || 'Sớm nhất có thể',
-      source: currentRef ? `ref=${currentRef} - ${baseSource}` : baseSource,
-      ref: currentRef
-    };
-
-    try {
-      const stored = JSON.parse(localStorage.getItem('ecolife_leads') || '[]');
-      stored.push({ ...leadData, timestamp: new Date().toLocaleString('vi-VN') });
-      localStorage.setItem('ecolife_leads', JSON.stringify(stored));
-    } catch (e) {}
-
-    const endpoints = [];
-    if (window.ecolifeData && window.ecolifeData.restUrl) {
-      endpoints.push(window.ecolifeData.restUrl);
-    } else {
-      endpoints.push('/wp-json/ecolife/v1/lead');
-    }
-    endpoints.push((window.ecolifeData?.themeUrl || '') + '/api/submit-lead.php');
-
-    for (const url of endpoints) {
-      try {
-        const res = await fetch(url, {
+        fetch(ajaxUrl, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-WP-Nonce': window.ecolifeData?.nonce || ''
-          },
-          body: JSON.stringify(leadData)
+          body: formData
+        }).catch(function () {}).finally(function () {
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = 'Đã gửi thành công! Chúng tôi sẽ liên hệ ngay';
+            setTimeout(function () {
+              btn.textContent = origText;
+              form.reset();
+              document.querySelectorAll('.v3-modal-backdrop.is-open').forEach(function (m) {
+                m.classList.remove('is-open');
+              });
+            }, 2500);
+          }
         });
-        if (res.ok) {
-          const json = await res.json();
-          if (json && (json.success || json.lead_id)) break;
-        }
-      } catch (err) {}
-    }
-
-    if (submitBtn) submitBtn.disabled = false;
-    setTimeout(() => { isSubmitting = false; }, 2000);
-    if (formEl) formEl.reset();
-    if (isModal) closeQuoteModal();
-
-    showSuccessModal(leadData.fullName, leadData.phoneNumber);
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: leadData.interestType, currency: 'VND', value: 1.0 });
-    }
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', { currency: 'VND', value: 1.0, event_label: leadData.interestType });
-    }
-    showToast(`Đã ghi nhận yêu cầu của ${leadData.fullName}. Chuyên viên sẽ liên hệ trong 15 phút!`, 'success');
-  };
-
-  if (quoteModalForm) {
-    quoteModalForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      handleLeadSubmission({
-        fullName: document.getElementById('quote-name')?.value.trim(),
-        phoneNumber: document.getElementById('quote-phone')?.value.trim(),
-        email: document.getElementById('quote-email')?.value.trim(),
-        interestType: document.getElementById('quote-interest')?.value,
-        consultTime: document.getElementById('quote-time')?.value
-      }, document.getElementById('btn-submit-quote-modal'), quoteModalForm, true);
+      });
     });
   }
-
-  if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      handleLeadSubmission({
-        fullName: document.getElementById('full-name')?.value.trim(),
-        phoneNumber: document.getElementById('phone-number')?.value.trim(),
-        email: document.getElementById('contact-email')?.value.trim(),
-        interestType: document.getElementById('interest-type')?.value,
-        consultTime: 'Sớm nhất có thể'
-      }, document.getElementById('btn-submit-lead'), leadForm, false);
-    });
-  }
-});
+})();
